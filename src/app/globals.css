@@ -133,11 +133,30 @@
   
   /* Gradientes oscuros personalizados */
   .bg-gradient-dark {
-    background: linear-gradient(135deg, oklch(0.08 0.005 285.823) 0%, oklch(0.05 0.008 285.823) 100%);
+    background: linear-gradient(135deg, 
+      oklch(0.08 0.005 285.823) 0%, 
+      oklch(0.05 0.015 260) 25%,
+      oklch(0.03 0.02 240) 50%,
+      oklch(0.06 0.01 280) 75%,
+      oklch(0.04 0.008 285.823) 100%);
   }
   
   .bg-gradient-dark-card {
-    background: linear-gradient(135deg, oklch(0.12 0.008 285.885) 0%, oklch(0.08 0.005 285.823) 100%);
+    background: linear-gradient(135deg, 
+      oklch(0.12 0.008 285.885) 0%, 
+      oklch(0.08 0.02 270) 30%,
+      oklch(0.06 0.025 250) 60%,
+      oklch(0.08 0.005 285.823) 100%);
+  }
+  
+  /* Gradiente hero más dramático */
+  .bg-gradient-hero {
+    background: linear-gradient(135deg, 
+      oklch(0.795 0.184 86.047 / 0.08) 0%,
+      oklch(0.6 0.15 70 / 0.06) 25%,
+      oklch(0.4 0.1 50 / 0.04) 50%,
+      oklch(0.3 0.08 30 / 0.06) 75%,
+      oklch(0.2 0.05 10 / 0.08) 100%);
   }
   
   /* Bordes con glow sutil */

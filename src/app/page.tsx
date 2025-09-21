@@ -8,7 +8,7 @@ export default function Home() {
       <Header />
 
       {/* Hero Section */}
-      <section id="inicio" className="relative bg-gradient-to-br from-primary/5 to-secondary/10 pt-32 pb-20">
+      <section id="inicio" className="relative bg-gradient-hero pt-32 pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
