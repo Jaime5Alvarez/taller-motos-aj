@@ -11,8 +11,23 @@ export default function Home() {
       <section id="inicio" className="relative bg-gradient-hero pt-32 pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
+            <div className="relative">
+              {/* Efecto de rayo detrás del título */}
+              <div className="absolute -top-8 -right-4 w-80 h-80 opacity-80 pointer-events-none">
+                <Image
+                  src="/lightb_car.webp"
+                  alt="Efecto de luz en título"
+                  width={320}
+                  height={320}
+                  className="w-full h-full object-contain mix-blend-screen"
+                  style={{
+                    maskImage: 'radial-gradient(circle at 60% 50%, black 25%, rgba(0,0,0,0.6) 55%, transparent 80%)',
+                    WebkitMaskImage: 'radial-gradient(circle at 60% 50%, black 25%, rgba(0,0,0,0.6) 55%, transparent 80%)'
+                  }}
+                />
+              </div>
+              
+              <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6 relative z-10">
                 Tu Moto en las
                 <span className="text-primary block">Mejores Manos</span>
               </h2>
@@ -30,33 +45,31 @@ export default function Home() {
               </div>
             </div>
             <div className="relative">
-              {/* Imagen principal del taller con mask */}
-              <div className="relative overflow-hidden rounded-2xl shadow-dark-lg">
+              {/* Imagen principal del taller con mask espectacular */}
+              <div className="relative overflow-hidden rounded-2xl shadow-dark-lg border border-primary/20">
                 <Image
                   src="/photo-1604260324056-45f7c778754a.avif"
                   alt="Taller de motocicletas AJ"
                   width={600}
                   height={400}
-                  className="object-cover w-full h-[400px]"
+                  className="object-cover w-full h-[400px] transform hover:scale-105 transition-transform duration-700"
                   style={{
-                    maskImage: 'radial-gradient(ellipse 85% 75% at 50% 45%, black 50%, transparent 85%)',
-                    WebkitMaskImage: 'radial-gradient(ellipse 85% 75% at 50% 45%, black 50%, transparent 85%)'
+                    maskImage: 'radial-gradient(ellipse 90% 85% at 45% 50%, black 40%, rgba(0,0,0,0.8) 65%, transparent 90%)',
+                    WebkitMaskImage: 'radial-gradient(ellipse 90% 85% at 45% 50%, black 40%, rgba(0,0,0,0.8) 65%, transparent 90%)'
                   }}
                 />
                 
-                {/* Efecto de luz superpuesto */}
-                <div className="absolute -top-4 -right-6 w-80 h-80">
-                  <Image
-                    src="/lighta_car.webp"
-                    alt="Efecto de luz"
-                    width={320}
-                    height={320}
-                    className="w-full h-full object-contain mix-blend-screen"
-                  />
-                </div>
                 
-                {/* Overlay gradient para mejorar el contraste */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-transparent to-background/30 rounded-2xl"></div>
+                {/* Overlay gradient dramático */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent via-transparent to-orange-500/10 rounded-2xl"></div>
+                
+                {/* Efecto de brillo en los bordes */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-primary/5 to-transparent"></div>
+                
+                {/* Partículas de luz flotantes */}
+                <div className="absolute top-4 right-8 w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                <div className="absolute top-12 right-16 w-1 h-1 bg-orange-400 rounded-full animate-pulse delay-300"></div>
+                <div className="absolute top-8 right-24 w-1.5 h-1.5 bg-yellow-300 rounded-full animate-pulse delay-700"></div>
               </div>
 
               {/* Card de rating */}
