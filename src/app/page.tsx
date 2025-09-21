@@ -54,8 +54,8 @@ export default function Home() {
                   height={400}
                   className="object-cover w-full h-[400px] transform hover:scale-105 transition-transform duration-700"
                   style={{
-                    maskImage: 'radial-gradient(ellipse 90% 85% at 45% 50%, black 40%, rgba(0,0,0,0.8) 65%, transparent 90%)',
-                    WebkitMaskImage: 'radial-gradient(ellipse 90% 85% at 45% 50%, black 40%, rgba(0,0,0,0.8) 65%, transparent 90%)'
+                    maskImage: 'radial-gradient(ellipse 80% 70% at 50% 50%, black 20%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.1) 80%, transparent 100%)',
+                    WebkitMaskImage: 'radial-gradient(ellipse 80% 70% at 50% 50%, black 20%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.1) 80%, transparent 100%)'
                   }}
                 />
                 
