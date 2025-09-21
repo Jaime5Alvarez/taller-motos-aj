@@ -30,36 +30,21 @@ export default function Home() {
               </div>
             </div>
             <div className="relative">
-              {/* Imagen principal con mask */}
+              {/* Imagen principal del taller con mask */}
               <div className="relative overflow-hidden rounded-2xl shadow-dark-lg">
                 <Image
-                  src="/photo-1591637333184-19aa84b3e01f.avif"
+                  src="/photo-1604260324056-45f7c778754a.avif"
                   alt="Taller de motocicletas AJ"
                   width={600}
                   height={400}
                   className="object-cover w-full h-[400px]"
                   style={{
-                    maskImage: 'radial-gradient(ellipse 80% 70% at 50% 40%, black 40%, transparent 80%)',
-                    WebkitMaskImage: 'radial-gradient(ellipse 80% 70% at 50% 40%, black 40%, transparent 80%)'
+                    maskImage: 'radial-gradient(ellipse 85% 75% at 50% 45%, black 50%, transparent 85%)',
+                    WebkitMaskImage: 'radial-gradient(ellipse 85% 75% at 50% 45%, black 50%, transparent 85%)'
                   }}
                 />
                 {/* Overlay gradient para mejorar el contraste */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-background/40 rounded-2xl"></div>
-              </div>
-              
-              {/* Imagen secundaria con mask diferente */}
-              <div className="absolute -top-4 -right-4 w-48 h-32 overflow-hidden rounded-xl shadow-lg border-2 border-primary/30">
-                <Image
-                  src="/photo-1604260324056-45f7c778754a.avif"
-                  alt="Detalle del taller"
-                  width={200}
-                  height={130}
-                  className="object-cover w-full h-full"
-                  style={{
-                    maskImage: 'linear-gradient(135deg, black 60%, transparent 90%)',
-                    WebkitMaskImage: 'linear-gradient(135deg, black 60%, transparent 90%)'
-                  }}
-                />
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-transparent to-background/30 rounded-2xl"></div>
               </div>
 
               {/* Card de rating */}
@@ -137,14 +122,26 @@ export default function Home() {
       <section id="nosotros" className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <Image
-                src="/lightb_car.webp"
-                alt="Taller AJ Motorbikes"
-                width={600}
-                height={400}
-                className="rounded-2xl shadow-dark-lg border-glow"
-              />
+            <div className="relative">
+              {/* Imagen con mask creativo */}
+              <div className="relative overflow-hidden rounded-2xl shadow-dark-lg">
+                <Image
+                  src="/photo-1591637333184-19aa84b3e01f.avif"
+                  alt="Pasión por las motocicletas"
+                  width={600}
+                  height={400}
+                  className="object-cover w-full h-[400px]"
+                  style={{
+                    maskImage: 'linear-gradient(45deg, black 0%, black 70%, transparent 100%)',
+                    WebkitMaskImage: 'linear-gradient(45deg, black 0%, black 70%, transparent 100%)'
+                  }}
+                />
+                {/* Overlay sutil */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-transparent rounded-2xl"></div>
+              </div>
+              
+              {/* Elemento decorativo */}
+              <div className="absolute -top-3 -right-3 w-24 h-24 bg-primary/20 rounded-full blur-xl"></div>
             </div>
             <div>
               <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
