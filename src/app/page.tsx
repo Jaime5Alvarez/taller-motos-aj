@@ -352,7 +352,7 @@ export default function Home() {
               
               <p className="text-gray-300 font-medium">
                 Contamos con <span className="text-yellow-500">mecánicos certificados</span> y 
-                <span className="text-white">herramientas de diagnóstico de última generación</span> para ofrecerte 
+                <span className="text-white"> herramientas de diagnóstico de última generación</span> para ofrecerte 
                 un servicio profesional de máxima calidad, sin importar la marca o modelo de tu <span className="text-yellow-500">motocicleta</span>.
               </p>
               
