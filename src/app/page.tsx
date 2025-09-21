@@ -9,13 +9,35 @@ export default function Home() {
 
       {/* Hero Section - Estilo Militarizado */}
       <section id="inicio" className="relative bg-gradient-to-br from-slate-900 via-gray-900 to-gray-900 pt-32 pb-32 overflow-hidden">
-        {/* Elementos geométricos militares */}
+        {/* Elementos geométricos militares intensificados */}
         <div className="absolute top-0 left-0 w-full h-full opacity-10">
+          {/* Líneas principales */}
           <div className="absolute top-20 left-10 w-32 h-0.5 bg-yellow-500 transform rotate-45"></div>
           <div className="absolute top-40 right-20 w-24 h-0.5 bg-yellow-500 transform -rotate-12"></div>
           <div className="absolute bottom-32 left-1/4 w-16 h-0.5 bg-yellow-500 transform rotate-12"></div>
+          <div className="absolute top-16 left-1/2 w-20 h-0.5 bg-yellow-500 transform rotate-75"></div>
+          <div className="absolute bottom-20 right-1/4 w-28 h-0.5 bg-yellow-500 transform -rotate-30"></div>
+          
+          {/* Formas geométricas */}
           <div className="absolute top-1/3 right-1/3 w-2 h-2 bg-yellow-500 rotate-45"></div>
           <div className="absolute bottom-1/4 right-10 w-1 h-1 bg-yellow-500"></div>
+          <div className="absolute top-24 right-1/2 w-3 h-3 border border-yellow-500 rotate-45"></div>
+          <div className="absolute bottom-40 left-16 w-4 h-4 border border-yellow-500 transform rotate-12"></div>
+          
+          {/* Triángulos tácticos */}
+          <div className="absolute top-32 right-16 w-0 h-0 border-l-2 border-r-2 border-b-4 border-transparent border-b-yellow-500"></div>
+          <div className="absolute bottom-28 left-1/3 w-0 h-0 border-l-3 border-r-3 border-t-6 border-transparent border-t-yellow-500 transform rotate-45"></div>
+          
+          {/* Retículas */}
+          <div className="absolute top-12 left-1/3 w-8 h-8 grid grid-cols-3 gap-0.5">
+            <div className="w-1 h-1 bg-yellow-500"></div>
+            <div className="w-1 h-1 bg-yellow-500"></div>
+            <div className="w-1 h-1 bg-yellow-500"></div>
+          </div>
+          
+          {/* Líneas de conexión */}
+          <div className="absolute top-28 left-20 w-12 h-0.5 bg-gradient-to-r from-yellow-500 to-transparent transform rotate-30"></div>
+          <div className="absolute bottom-36 right-32 w-16 h-0.5 bg-gradient-to-l from-yellow-500 to-transparent transform -rotate-15"></div>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -127,11 +149,29 @@ export default function Home() {
 
       {/* Servicios - Estilo Militar */}
       <section id="servicios" className="py-20 bg-gradient-to-b from-gray-900 via-gray-900 to-black relative overflow-hidden">
-        {/* Elementos tácticos de fondo */}
-        <div className="absolute top-0 left-0 w-full h-full opacity-5">
+        {/* Elementos tácticos de fondo intensificados */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-8">
+          {/* Líneas principales */}
           <div className="absolute top-10 right-1/4 w-20 h-0.5 bg-yellow-500 transform rotate-12"></div>
           <div className="absolute bottom-20 left-1/3 w-16 h-0.5 bg-yellow-500 transform -rotate-45"></div>
           <div className="absolute top-1/2 left-10 w-2 h-2 bg-yellow-500 rotate-45"></div>
+          
+          {/* Nuevos elementos geométricos */}
+          <div className="absolute top-16 left-1/2 w-24 h-0.5 bg-yellow-500 transform rotate-60"></div>
+          <div className="absolute bottom-32 right-20 w-18 h-0.5 bg-yellow-500 transform -rotate-25"></div>
+          <div className="absolute top-32 right-1/3 w-14 h-0.5 bg-yellow-500 transform rotate-80"></div>
+          
+          {/* Formas complejas */}
+          <div className="absolute top-24 left-20 w-3 h-3 border-2 border-yellow-500 rotate-45"></div>
+          <div className="absolute bottom-28 right-1/4 w-4 h-4 border border-yellow-500 transform rotate-12"></div>
+          
+          {/* Puntos de conexión */}
+          <div className="absolute top-40 left-1/4 w-1.5 h-1.5 bg-yellow-500 rounded-full"></div>
+          <div className="absolute bottom-40 right-1/3 w-1 h-1 bg-yellow-500 rounded-full"></div>
+          
+          {/* Líneas de escaneo */}
+          <div className="absolute top-20 right-10 w-12 h-0.5 bg-gradient-to-r from-transparent via-yellow-500 to-transparent"></div>
+          <div className="absolute bottom-24 left-16 w-16 h-0.5 bg-gradient-to-l from-transparent via-yellow-500 to-transparent transform rotate-45"></div>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
@@ -227,11 +267,29 @@ export default function Home() {
 
       {/* Sobre Nosotros - Estilo Militar */}
       <section id="nosotros" className="py-20 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
-        {/* Elementos tácticos de fondo */}
-        <div className="absolute top-0 left-0 w-full h-full opacity-5">
+        {/* Elementos tácticos de fondo intensificados */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-8">
+          {/* Líneas existentes */}
           <div className="absolute top-32 left-20 w-28 h-0.5 bg-yellow-500 transform rotate-30"></div>
           <div className="absolute bottom-40 right-1/4 w-20 h-0.5 bg-yellow-500 transform -rotate-12"></div>
           <div className="absolute top-1/3 right-20 w-2 h-2 bg-yellow-500 rotate-45"></div>
+          
+          {/* Nuevos elementos */}
+          <div className="absolute top-16 right-1/3 w-22 h-0.5 bg-yellow-500 transform rotate-65"></div>
+          <div className="absolute bottom-24 left-1/4 w-18 h-0.5 bg-yellow-500 transform -rotate-35"></div>
+          <div className="absolute top-48 left-16 w-16 h-0.5 bg-yellow-500 transform rotate-15"></div>
+          
+          {/* Marcos tácticos */}
+          <div className="absolute top-20 right-16 w-6 h-6 border border-yellow-500 rotate-45"></div>
+          <div className="absolute bottom-32 left-1/3 w-4 h-4 border-2 border-yellow-500 transform rotate-30"></div>
+          
+          {/* Indicadores de radar */}
+          <div className="absolute top-36 left-1/2 w-2 h-2 bg-yellow-500 rounded-full animate-pulse"></div>
+          <div className="absolute bottom-36 right-1/2 w-1.5 h-1.5 bg-yellow-500 rounded-full animate-pulse delay-300"></div>
+          
+          {/* Líneas de barrido */}
+          <div className="absolute top-28 left-24 w-20 h-0.5 bg-gradient-to-r from-yellow-500 via-transparent to-yellow-500 transform rotate-20"></div>
+          <div className="absolute bottom-28 right-24 w-14 h-0.5 bg-gradient-to-l from-yellow-500 via-transparent to-yellow-500 transform -rotate-40"></div>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -310,11 +368,31 @@ export default function Home() {
 
       {/* Contacto - Estilo Militar */}
       <section id="contacto" className="py-20 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
-        {/* Elementos tácticos de fondo */}
-        <div className="absolute top-0 left-0 w-full h-full opacity-5">
+        {/* Elementos tácticos de fondo intensificados */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-8">
+          {/* Líneas principales */}
           <div className="absolute top-16 left-1/4 w-24 h-0.5 bg-yellow-500 transform rotate-45"></div>
           <div className="absolute bottom-24 right-1/3 w-18 h-0.5 bg-yellow-500 transform -rotate-30"></div>
           <div className="absolute top-1/2 right-16 w-2 h-2 bg-yellow-500 rotate-45"></div>
+          
+          {/* Red táctica compleja */}
+          <div className="absolute top-12 right-1/4 w-20 h-0.5 bg-yellow-500 transform rotate-75"></div>
+          <div className="absolute bottom-16 left-1/3 w-16 h-0.5 bg-yellow-500 transform -rotate-50"></div>
+          <div className="absolute top-32 left-16 w-22 h-0.5 bg-yellow-500 transform rotate-25"></div>
+          
+          {/* Marcos de mira */}
+          <div className="absolute top-20 right-20 w-8 h-8 border-2 border-yellow-500 rotate-45">
+            <div className="absolute top-1/2 left-1/2 w-2 h-2 bg-yellow-500 transform -translate-x-1/2 -translate-y-1/2 rotate-45"></div>
+          </div>
+          <div className="absolute bottom-20 left-20 w-6 h-6 border border-yellow-500 transform rotate-30"></div>
+          
+          {/* Indicadores de sistema */}
+          <div className="absolute top-28 left-1/2 w-1 h-1 bg-yellow-500 animate-pulse"></div>
+          <div className="absolute bottom-32 right-1/2 w-1.5 h-1.5 bg-yellow-500 animate-pulse delay-500"></div>
+          
+          {/* Líneas de conexión */}
+          <div className="absolute top-24 right-32 w-12 h-0.5 bg-gradient-to-r from-transparent via-yellow-500 to-transparent transform rotate-60"></div>
+          <div className="absolute bottom-28 left-32 w-14 h-0.5 bg-gradient-to-l from-transparent via-yellow-500 to-transparent transform -rotate-20"></div>
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -404,11 +482,32 @@ export default function Home() {
 
       {/* Footer - Estilo Militar */}
       <footer className="bg-gradient-to-b from-black to-gray-900 py-12 border-t-2 border-yellow-500/30 relative overflow-hidden">
-        {/* Elementos tácticos de fondo */}
-        <div className="absolute top-0 left-0 w-full h-full opacity-5">
+        {/* Elementos tácticos de fondo intensificados */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-8">
+          {/* Líneas base */}
           <div className="absolute top-8 left-1/4 w-20 h-0.5 bg-yellow-500 transform rotate-12"></div>
           <div className="absolute bottom-8 right-1/4 w-16 h-0.5 bg-yellow-500 transform -rotate-12"></div>
           <div className="absolute top-1/2 left-1/2 w-2 h-2 bg-yellow-500 rotate-45"></div>
+          
+          {/* Red geométrica compleja */}
+          <div className="absolute top-4 right-1/3 w-18 h-0.5 bg-yellow-500 transform rotate-45"></div>
+          <div className="absolute bottom-4 left-1/3 w-14 h-0.5 bg-yellow-500 transform -rotate-35"></div>
+          <div className="absolute top-6 left-16 w-12 h-0.5 bg-yellow-500 transform rotate-70"></div>
+          <div className="absolute bottom-6 right-16 w-10 h-0.5 bg-yellow-500 transform -rotate-55"></div>
+          
+          {/* Elementos de interfaz táctica */}
+          <div className="absolute top-3 left-1/2 w-4 h-4 border border-yellow-500 rotate-45">
+            <div className="absolute top-1 left-1 w-2 h-2 border border-yellow-500"></div>
+          </div>
+          <div className="absolute bottom-3 right-1/2 w-3 h-3 border-2 border-yellow-500 transform rotate-30"></div>
+          
+          {/* Puntos de navegación */}
+          <div className="absolute top-2 right-20 w-1 h-1 bg-yellow-500 rounded-full animate-pulse"></div>
+          <div className="absolute bottom-2 left-20 w-1.5 h-1.5 bg-yellow-500 rounded-full animate-pulse delay-700"></div>
+          
+          {/* Líneas de escaneo */}
+          <div className="absolute top-5 left-8 w-16 h-0.5 bg-gradient-to-r from-yellow-500 via-transparent to-yellow-500 transform rotate-15"></div>
+          <div className="absolute bottom-5 right-8 w-12 h-0.5 bg-gradient-to-l from-yellow-500 via-transparent to-yellow-500 transform -rotate-25"></div>
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
