@@ -29,8 +29,8 @@ export function Header() {
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? "bg-card/80 backdrop-blur-md shadow-dark border-b border-glow" 
-          : "bg-card shadow-sm border-b border-border"
+          ? "bg-gradient-dark-card/90 backdrop-blur-md shadow-dark-lg border-b border-glow" 
+          : "bg-gradient-to-br from-primary/5 to-secondary/10 backdrop-blur-sm shadow-sm border-b border-border/50"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -78,15 +78,15 @@ export function Header() {
           {/* Contacto y menú móvil */}
           <div className="flex items-center space-x-4">
             {/* Teléfono */}
-            <div className="hidden sm:flex items-center space-x-2 text-sm bg-primary/10 px-3 py-2 rounded-full border border-primary/20 hover:bg-primary/20 transition-all duration-300">
+            <div className="hidden sm:flex items-center space-x-2 text-sm bg-primary/15 px-3 py-2 rounded-full border border-primary/30 hover:bg-primary/25 hover:border-primary/50 transition-all duration-300 shadow-sm">
               <Phone className="h-4 w-4 text-primary" />
-              <span className="text-foreground font-medium">941 13 XX XX</span>
+              <span className="text-white font-medium">941 13 XX XX</span>
             </div>
 
             {/* Botón menú móvil */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg bg-primary/10 hover:bg-primary/20 transition-all duration-300 border border-primary/20"
+              className="md:hidden p-2 rounded-lg bg-primary/15 hover:bg-primary/25 transition-all duration-300 border border-primary/30 hover:border-primary/50 shadow-sm"
             >
               {isMobileMenuOpen ? (
                 <X className="h-5 w-5 text-primary" />
@@ -101,7 +101,7 @@ export function Header() {
         <div className={`md:hidden transition-all duration-300 overflow-hidden ${
           isMobileMenuOpen ? "max-h-64 pb-4" : "max-h-0"
         }`}>
-          <nav className="flex flex-col space-y-3 pt-4 border-t border-border">
+          <nav className="flex flex-col space-y-3 pt-4 border-t border-glow/50">
             {[
               { id: "inicio", label: "Inicio" },
               { id: "servicios", label: "Servicios" },
@@ -111,14 +111,14 @@ export function Header() {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="text-left text-foreground hover:text-primary transition-colors py-2 px-4 rounded-lg hover:bg-primary/10 font-medium"
+                className="text-left text-white hover:text-primary transition-colors py-2 px-4 rounded-lg hover:bg-primary/15 font-medium"
               >
                 {item.label}
               </button>
             ))}
-            <div className="flex items-center space-x-2 text-sm py-2 px-4">
+            <div className="flex items-center space-x-2 text-sm py-2 px-4 bg-primary/10 rounded-lg border border-primary/20">
               <Phone className="h-4 w-4 text-primary" />
-              <span className="text-foreground">941 13 XX XX</span>
+              <span className="text-white font-medium">941 13 XX XX</span>
             </div>
           </nav>
         </div>
