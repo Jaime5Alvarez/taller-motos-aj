@@ -67,7 +67,7 @@ export default function Home() {
               
               {/* Subtítulo militar */}
               <div className="text-yellow-500 font-mono text-sm tracking-widest mb-4 opacity-80">
-                [ ESPECIALISTAS EN MOTOCICLETAS ]
+                ESPECIALISTAS EN MOTOCICLETAS
               </div>
               
               {/* Línea decorativa inferior */}
@@ -183,7 +183,7 @@ export default function Home() {
             </h3>
             
             <div className="text-yellow-500 font-mono text-sm tracking-widest mb-4 opacity-80">
-              [ SERVICIOS ESPECIALIZADOS PARA MOTOCICLETAS ]
+              SERVICIOS ESPECIALIZADOS PARA MOTOCICLETAS
             </div>
             
             <p className="text-lg text-gray-300 max-w-2xl mx-auto font-medium">
@@ -328,7 +328,7 @@ export default function Home() {
               </h3>
               
               <div className="text-yellow-500 font-mono text-sm tracking-widest mb-6 opacity-80">
-                [ TECNOLOGÍA AVANZADA - SERVICIO PROFESIONAL ]
+                TECNOLOGÍA AVANZADA - SERVICIO PROFESIONAL
               </div>
               
               <p className="text-lg text-gray-300 mb-6 font-medium leading-relaxed">
@@ -402,7 +402,7 @@ export default function Home() {
             </h3>
             
             <div className="text-yellow-500 font-mono text-sm tracking-widest mb-4 opacity-80">
-              [ CALAHORRA - LA RIOJA ]
+                CALAHORRA - LA RIOJA
             </div>
             
             <p className="text-lg text-gray-300 font-medium">
@@ -589,7 +589,7 @@ export default function Home() {
           {/* Copyright */}
           <div className="text-center">
             <div className="text-yellow-500 font-mono text-sm tracking-widest mb-2">
-              [ ESPECIALISTAS EN MOTOCICLETAS - TECNOLOGÍA AVANZADA ]
+                ESPECIALISTAS EN MOTOCICLETAS - TECNOLOGÍA AVANZADA
             </div>
             <p className="text-gray-400 font-mono text-sm">
               &copy; 2025 <span className="text-yellow-500">AJ MOTORBIKES</span> - Todos los derechos reservados
