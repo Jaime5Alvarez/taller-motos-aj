@@ -77,48 +77,60 @@ export function Header() {
 
           {/* Contacto y menú móvil */}
           <div className="flex items-center space-x-4">
-            {/* Teléfono */}
-            <div className="hidden sm:flex items-center space-x-2 text-sm bg-primary/15 px-3 py-2 rounded-full border border-primary/30 hover:bg-primary/25 hover:border-primary/50 transition-all duration-300 shadow-sm">
-              <Phone className="h-4 w-4 text-primary" />
-              <span className="text-white font-medium">941 13 XX XX</span>
+            {/* Teléfono táctico */}
+            <div className="hidden sm:flex items-center space-x-2 text-sm bg-yellow-500 text-black px-4 py-2 font-bold tracking-wider hover:bg-yellow-400 transition-all duration-300 transform hover:scale-105 relative overflow-hidden group">
+              <div className="relative z-10 flex items-center space-x-2">
+                <Phone className="h-4 w-4" />
+                <span className="font-mono">941 13 XX XX</span>
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-r from-yellow-600 to-yellow-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
             </div>
 
-            {/* Botón menú móvil */}
+            {/* Botón menú móvil táctico */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg bg-primary/15 hover:bg-primary/25 transition-all duration-300 border border-primary/30 hover:border-primary/50 shadow-sm"
+              className="md:hidden p-2 bg-black/60 hover:bg-yellow-500/20 transition-all duration-300 border-2 border-yellow-500/30 hover:border-yellow-500 relative"
             >
+              {/* Esquinas tácticas */}
+              <div className="absolute top-0 left-0 w-2 h-2 border-l border-t border-yellow-500"></div>
+              <div className="absolute top-0 right-0 w-2 h-2 border-r border-t border-yellow-500"></div>
+              <div className="absolute bottom-0 left-0 w-2 h-2 border-l border-b border-yellow-500"></div>
+              <div className="absolute bottom-0 right-0 w-2 h-2 border-r border-b border-yellow-500"></div>
+              
               {isMobileMenuOpen ? (
-                <X className="h-5 w-5 text-primary" />
+                <X className="h-5 w-5 text-yellow-500 relative z-10" />
               ) : (
-                <Menu className="h-5 w-5 text-primary" />
+                <Menu className="h-5 w-5 text-yellow-500 relative z-10" />
               )}
             </button>
           </div>
         </div>
 
-        {/* Menú móvil */}
+        {/* Menú móvil táctico */}
         <div className={`md:hidden transition-all duration-300 overflow-hidden ${
           isMobileMenuOpen ? "max-h-64 pb-4" : "max-h-0"
         }`}>
-          <nav className="flex flex-col space-y-3 pt-4 border-t border-glow/50">
+          <nav className="flex flex-col space-y-3 pt-4 border-t border-yellow-500/30">
             {[
-              { id: "inicio", label: "Inicio" },
-              { id: "servicios", label: "Servicios" },
-              { id: "nosotros", label: "Nosotros" },
-              { id: "contacto", label: "Contacto" }
+              { id: "inicio", label: "INICIO", code: "[01]" },
+              { id: "servicios", label: "SERVICIOS", code: "[02]" },
+              { id: "nosotros", label: "NOSOTROS", code: "[03]" },
+              { id: "contacto", label: "CONTACTO", code: "[04]" }
             ].map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="text-left text-white hover:text-primary transition-colors py-2 px-4 rounded-lg hover:bg-primary/15 font-medium"
+                className="text-left text-gray-300 hover:text-yellow-500 transition-colors py-2 px-4 hover:bg-yellow-500/10 font-bold tracking-wider border-l-2 border-transparent hover:border-yellow-500"
               >
-                {item.label}
+                <div className="flex items-center space-x-2">
+                  <span className="text-yellow-500 font-mono text-xs">{item.code}</span>
+                  <span>{item.label}</span>
+                </div>
               </button>
             ))}
-            <div className="flex items-center space-x-2 text-sm py-2 px-4 bg-primary/10 rounded-lg border border-primary/20">
-              <Phone className="h-4 w-4 text-primary" />
-              <span className="text-white font-medium">941 13 XX XX</span>
+            <div className="flex items-center space-x-2 text-sm py-2 px-4 bg-yellow-500/10 border border-yellow-500/30 mx-4">
+              <Phone className="h-4 w-4 text-yellow-500" />
+              <span className="text-white font-mono font-bold">941 13 XX XX</span>
             </div>
           </nav>
         </div>
