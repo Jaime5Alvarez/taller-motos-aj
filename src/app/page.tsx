@@ -3,7 +3,7 @@ import { Phone, MapPin, Clock, Wrench, Shield, Star, Mail } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-dark">
       {/* Header */}
       <header className="bg-card shadow-sm border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -36,7 +36,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section id="inicio" className="relative bg-gradient-to-br from-primary/10 to-secondary/20 py-20">
+      <section id="inicio" className="relative bg-gradient-to-br from-primary/5 to-secondary/10 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -63,9 +63,9 @@ export default function Home() {
                 alt="Motocicleta en el taller"
                 width={600}
                 height={400}
-                className="rounded-2xl shadow-2xl"
+                className="rounded-2xl shadow-dark-lg"
               />
-              <div className="absolute -bottom-6 -left-6 bg-card p-4 rounded-xl shadow-lg border border-border">
+              <div className="absolute -bottom-6 -left-6 bg-gradient-dark-card p-4 rounded-xl shadow-dark border-glow">
                 <div className="flex items-center space-x-2">
                   <Star className="h-5 w-5 text-yellow-500 fill-current" />
                   <span className="font-semibold">4.9/5</span>
@@ -78,7 +78,7 @@ export default function Home() {
       </section>
 
       {/* Servicios */}
-      <section id="servicios" className="py-20 bg-muted/30">
+      <section id="servicios" className="py-20 bg-gradient-to-b from-background to-muted/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -90,7 +90,7 @@ export default function Home() {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-card p-8 rounded-2xl shadow-sm border hover:shadow-md transition-shadow">
+            <div className="bg-gradient-dark-card p-8 rounded-2xl shadow-dark border-glow hover:shadow-dark-lg transition-all duration-300 hover:border-primary/40">
               <Wrench className="h-12 w-12 text-primary mb-4" />
               <h4 className="text-xl font-semibold mb-3">Mantenimiento Preventivo</h4>
               <p className="text-muted-foreground mb-4">
@@ -104,7 +104,7 @@ export default function Home() {
               </ul>
             </div>
 
-            <div className="bg-card p-8 rounded-2xl shadow-sm border hover:shadow-md transition-shadow">
+            <div className="bg-gradient-dark-card p-8 rounded-2xl shadow-dark border-glow hover:shadow-dark-lg transition-all duration-300 hover:border-primary/40">
               <Shield className="h-12 w-12 text-primary mb-4" />
               <h4 className="text-xl font-semibold mb-3">Reparaciones</h4>
               <p className="text-muted-foreground mb-4">
@@ -118,7 +118,7 @@ export default function Home() {
               </ul>
             </div>
 
-            <div className="bg-card p-8 rounded-2xl shadow-sm border hover:shadow-md transition-shadow">
+            <div className="bg-gradient-dark-card p-8 rounded-2xl shadow-dark border-glow hover:shadow-dark-lg transition-all duration-300 hover:border-primary/40">
               <Star className="h-12 w-12 text-primary mb-4" />
               <h4 className="text-xl font-semibold mb-3">Personalización</h4>
               <p className="text-muted-foreground mb-4">
@@ -145,7 +145,7 @@ export default function Home() {
                 alt="Taller AJ Motorbikes"
                 width={600}
                 height={400}
-                className="rounded-2xl shadow-lg"
+                className="rounded-2xl shadow-dark-lg border-glow"
               />
             </div>
             <div>
@@ -179,7 +179,7 @@ export default function Home() {
       </section>
 
       {/* Contacto */}
-      <section id="contacto" className="py-20 bg-muted/30">
+      <section id="contacto" className="py-20 bg-gradient-to-b from-background to-muted/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -191,7 +191,7 @@ export default function Home() {
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8">
-            <div className="bg-card p-8 rounded-2xl shadow-sm border text-center">
+            <div className="bg-gradient-dark-card p-8 rounded-2xl shadow-dark border-glow text-center hover:shadow-dark-lg transition-all duration-300">
               <MapPin className="h-12 w-12 text-primary mx-auto mb-4" />
               <h4 className="text-xl font-semibold mb-3">Ubicación</h4>
               <p className="text-muted-foreground">
@@ -201,7 +201,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="bg-card p-8 rounded-2xl shadow-sm border text-center">
+            <div className="bg-gradient-dark-card p-8 rounded-2xl shadow-dark border-glow text-center hover:shadow-dark-lg transition-all duration-300">
               <Clock className="h-12 w-12 text-primary mx-auto mb-4" />
               <h4 className="text-xl font-semibold mb-3">Horarios</h4>
               <div className="text-muted-foreground space-y-1">
@@ -211,7 +211,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="bg-card p-8 rounded-2xl shadow-sm border text-center">
+            <div className="bg-gradient-dark-card p-8 rounded-2xl shadow-dark border-glow text-center hover:shadow-dark-lg transition-all duration-300">
               <Phone className="h-12 w-12 text-primary mx-auto mb-4" />
               <h4 className="text-xl font-semibold mb-3">Contacto</h4>
               <div className="text-muted-foreground space-y-2">
@@ -230,7 +230,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-foreground text-background py-12">
+      <footer className="bg-gradient-to-b from-card to-background text-foreground py-12 border-t border-glow">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8">
             <div>
