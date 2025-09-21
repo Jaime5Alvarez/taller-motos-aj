@@ -94,13 +94,19 @@ export default function Home() {
                 <div className="absolute top-8 right-24 w-1.5 h-1.5 bg-yellow-300 rounded-full animate-pulse delay-700"></div>
               </div>
 
-              {/* Card de rating */}
-              <div className="absolute -bottom-6 -left-6 bg-gradient-dark-card p-4 rounded-xl shadow-dark border-glow backdrop-blur-sm bg-opacity-90">
-                <div className="flex items-center space-x-2">
-                  <Star className="h-5 w-5 text-yellow-500 fill-current" />
-                  <span className="font-semibold">4.9/5</span>
-                  <span className="text-muted-foreground text-sm">+200 clientes</span>
-                </div>
+              {/* Efecto de luz adicional */}
+              <div className="absolute -bottom-12 -left-16 w-48 h-48 opacity-90 transform rotate-x-180">
+                <Image
+                  src="/lighta_car.webp"
+                  alt="Efecto de luz"
+                  width={192}
+                  height={192}
+                  className="w-full h-full object-contain mix-blend-screen"
+                  style={{
+                    maskImage: 'radial-gradient(circle at center, black 35%, rgba(0,0,0,0.7) 65%, transparent 85%)',
+                    WebkitMaskImage: 'radial-gradient(circle at center, black 35%, rgba(0,0,0,0.7) 65%, transparent 85%)'
+                  }}
+                />
               </div>
             </div>
           </div>
