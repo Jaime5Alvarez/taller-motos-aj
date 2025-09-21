@@ -73,7 +73,7 @@ export default function Home() {
               {/* Línea decorativa inferior */}
               <div className="w-24 h-0.5 bg-yellow-500 mb-6"></div>
               <p className="text-lg text-gray-300 mb-8 font-medium leading-relaxed">
-                <span className="text-yellow-500 font-mono">[15+ AÑOS]</span> de experiencia profesional en mantenimiento y reparación de motocicletas.<br/>
+                <span className="text-yellow-500 font-mono">TALLER DE MOTOS</span> con pasión por las motocicletas desde hace decadas.<br/>
                 <span className="text-gray-400">Calahorra, La Rioja</span> - <span className="text-yellow-500">Especialistas en todas las marcas</span>
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -179,7 +179,7 @@ export default function Home() {
             <div className="w-24 h-0.5 bg-yellow-500 mx-auto mb-6"></div>
             
             <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-wider">
-              <span className="text-gray-300">TACTICAL</span> <span className="text-yellow-500">SERVICES</span>
+              <span className="text-gray-300">SERVICIOS</span> <span className="text-yellow-500"> PARA MOTOS</span>
             </h3>
             
             <div className="text-yellow-500 font-mono text-sm tracking-widest mb-4 opacity-80">
@@ -331,32 +331,32 @@ export default function Home() {
               </h3>
               
               <div className="text-yellow-500 font-mono text-sm tracking-widest mb-6 opacity-80">
-                [ DESDE 2008 - ESPECIALISTAS EN MOTOCICLETAS ]
+                [ TECNOLOGÍA AVANZADA - SERVICIO PROFESIONAL ]
               </div>
               
               <p className="text-lg text-gray-300 mb-6 font-medium leading-relaxed">
-                En <span className="text-yellow-500 font-bold">AJ Motorbikes</span> somos más que un taller, somos 
-                <span className="text-white">mecánicos especializados</span> que entienden la importancia crítica 
-                de mantener tu moto en <span className="text-yellow-500">condiciones perfectas de funcionamiento</span>. 
-                Ubicados en el corazón de <span className="text-gray-400">Calahorra, La Rioja</span>.
+                En <span className="text-yellow-500 font-bold">AJ Motorbikes</span> combinamos 
+                <span className="text-white"> equipamiento de última generación</span> con 
+                <span className="text-yellow-500">pasión genuina por las motocicletas</span>. Nuestro compromiso es 
+                ofrecer el mejor servicio profesional en <span className="text-gray-400">Calahorra, La Rioja</span>.
               </p>
               
-              {/* Estadísticas militares */}
+              {/* Estadísticas de calidad */}
               <div className="grid grid-cols-2 gap-6 mb-8">
                 <div className="bg-black/40 border border-yellow-500/30 p-4 text-center">
-                  <div className="text-3xl font-bold text-yellow-500 mb-2 font-mono">15+</div>
-                  <div className="text-gray-400 font-mono text-sm tracking-wider">AÑOS DE EXPERIENCIA</div>
+                  <div className="text-3xl font-bold text-yellow-500 mb-2 font-mono">24/7</div>
+                  <div className="text-gray-400 font-mono text-sm tracking-wider">DISPONIBILIDAD</div>
                 </div>
                 <div className="bg-black/40 border border-yellow-500/30 p-4 text-center">
-                  <div className="text-3xl font-bold text-yellow-500 mb-2 font-mono">500+</div>
-                  <div className="text-gray-400 font-mono text-sm tracking-wider">MOTOS REPARADAS</div>
+                  <div className="text-3xl font-bold text-yellow-500 mb-2 font-mono">100%</div>
+                  <div className="text-gray-400 font-mono text-sm tracking-wider">GARANTÍA DE CALIDAD</div>
                 </div>
               </div>
               
               <p className="text-gray-300 font-medium">
-                Nuestro <span className="text-yellow-500">equipo de mecánicos especializados</span> está constantemente 
-                actualizándose en las <span className="text-white">últimas tecnologías automotrices</span> para ofrecerte el mejor servicio, 
-                sin importar la marca o modelo de tu <span className="text-yellow-500">motocicleta</span>.
+                Contamos con <span className="text-yellow-500">mecánicos certificados</span> y 
+                <span className="text-white">herramientas de diagnóstico de última generación</span> para ofrecerte 
+                un servicio profesional de máxima calidad, sin importar la marca o modelo de tu <span className="text-yellow-500">motocicleta</span>.
               </p>
               
               {/* Línea táctica inferior */}
@@ -532,7 +532,7 @@ export default function Home() {
               </div>
               <p className="text-gray-300 font-medium leading-relaxed">
                 <span className="text-yellow-500">Taller especializado</span> en Calahorra, La Rioja. 
-                <span className="text-white">Expertos en mantenimiento</span> y reparación de 
+                <span className="text-white">Equipamiento de última generación</span> para el mantenimiento y reparación de 
                 <span className="text-yellow-500">motocicletas de todas las marcas</span>.
               </p>
             </div>
@@ -584,7 +584,7 @@ export default function Home() {
           {/* Copyright */}
           <div className="text-center">
             <div className="text-yellow-500 font-mono text-sm tracking-widest mb-2">
-              [ ESPECIALISTAS EN MOTOCICLETAS DESDE 2008 ]
+              [ ESPECIALISTAS EN MOTOCICLETAS - TECNOLOGÍA AVANZADA ]
             </div>
             <p className="text-gray-400 font-mono text-sm">
               &copy; 2024 <span className="text-yellow-500">AJ MOTORBIKES</span> - Todos los derechos reservados
