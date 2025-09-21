@@ -290,104 +290,192 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contacto */}
-      <section id="contacto" className="py-20 bg-gradient-to-b from-background to-muted/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Contacto - Estilo Militar */}
+      <section id="contacto" className="py-20 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
+        {/* Elementos tácticos de fondo */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-5">
+          <div className="absolute top-16 left-1/4 w-24 h-0.5 bg-yellow-500 transform rotate-45"></div>
+          <div className="absolute bottom-24 right-1/3 w-18 h-0.5 bg-yellow-500 transform -rotate-30"></div>
+          <div className="absolute top-1/2 right-16 w-2 h-2 bg-yellow-500 rotate-45"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
-            <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Visítanos en Calahorra
+            {/* Línea táctica superior */}
+            <div className="w-24 h-0.5 bg-yellow-500 mx-auto mb-6"></div>
+            
+            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-wider">
+              <span className="text-gray-300">TACTICAL</span> <span className="text-yellow-500">BASE</span>
             </h3>
-            <p className="text-xl text-muted-foreground">
-              Estamos aquí para cuidar de tu moto
+            
+            <div className="text-yellow-500 font-mono text-sm tracking-widest mb-4 opacity-80">
+              [ CALAHORRA OPERATIONS CENTER ]
+            </div>
+            
+            <p className="text-lg text-gray-300 font-medium">
+              <span className="text-yellow-500">Coordina tu misión</span> con nuestro 
+              <span className="text-white">centro de operaciones tácticas</span>
             </p>
+            
+            {/* Línea táctica inferior */}
+            <div className="w-16 h-0.5 bg-yellow-500 mx-auto mt-6"></div>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8">
-            <div className="bg-gradient-dark-card p-8 rounded-2xl shadow-dark border-glow text-center hover:shadow-dark-lg transition-all duration-300">
-              <MapPin className="h-12 w-12 text-primary mx-auto mb-4" />
-              <h4 className="text-xl font-semibold mb-3">Ubicación</h4>
-              <p className="text-muted-foreground">
-                Calle Principal, 123<br />
-                26500 Calahorra<br />
-                La Rioja, España
-              </p>
-            </div>
-
-            <div className="bg-gradient-dark-card p-8 rounded-2xl shadow-dark border-glow text-center hover:shadow-dark-lg transition-all duration-300">
-              <Clock className="h-12 w-12 text-primary mx-auto mb-4" />
-              <h4 className="text-xl font-semibold mb-3">Horarios</h4>
-              <div className="text-muted-foreground space-y-1">
-                <p>Lunes - Viernes: 9:00 - 18:00</p>
-                <p>Sábados: 9:00 - 14:00</p>
-                <p>Domingos: Cerrado</p>
+            {/* Ubicación Táctica */}
+            <div className="bg-black/60 border-2 border-gray-700 p-8 text-center hover:border-yellow-500 transition-all duration-300 relative group">
+              {/* Esquinas tácticas */}
+              <div className="absolute top-2 left-2 w-4 h-4 border-l-2 border-t-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute top-2 right-2 w-4 h-4 border-r-2 border-t-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60"></div>
+              
+              <MapPin className="h-12 w-12 text-yellow-500 mx-auto mb-4" />
+              <div className="text-yellow-500 font-mono text-xs tracking-widest mb-2">[COORDINATES]</div>
+              <h4 className="text-xl font-bold mb-3 text-white tracking-wide">BASE DE OPERACIONES</h4>
+              <div className="text-gray-300 font-mono space-y-1">
+                <p className="text-yellow-500">Calle Principal, 123</p>
+                <p>26500 Calahorra</p>
+                <p>La Rioja, <span className="text-yellow-500">ESP</span></p>
               </div>
             </div>
 
-            <div className="bg-gradient-dark-card p-8 rounded-2xl shadow-dark border-glow text-center hover:shadow-dark-lg transition-all duration-300">
-              <Phone className="h-12 w-12 text-primary mx-auto mb-4" />
-              <h4 className="text-xl font-semibold mb-3">Contacto</h4>
-              <div className="text-muted-foreground space-y-2">
-                <p className="flex items-center justify-center gap-2">
-                  <Phone className="h-4 w-4" />
-                  941 13 XX XX
-                </p>
-                <p className="flex items-center justify-center gap-2">
-                  <Mail className="h-4 w-4" />
-                  info@ajmotorbikes.com
-                </p>
+            {/* Horarios de Misión */}
+            <div className="bg-black/60 border-2 border-gray-700 p-8 text-center hover:border-yellow-500 transition-all duration-300 relative group">
+              {/* Esquinas tácticas */}
+              <div className="absolute top-2 left-2 w-4 h-4 border-l-2 border-t-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute top-2 right-2 w-4 h-4 border-r-2 border-t-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60"></div>
+              
+              <Clock className="h-12 w-12 text-yellow-500 mx-auto mb-4" />
+              <div className="text-yellow-500 font-mono text-xs tracking-widest mb-2">[SCHEDULE]</div>
+              <h4 className="text-xl font-bold mb-3 text-white tracking-wide">HORARIOS DE MISIÓN</h4>
+              <div className="text-gray-300 font-mono space-y-2">
+                <p><span className="text-yellow-500">LUN-VIE:</span> 09:00 - 18:00</p>
+                <p><span className="text-yellow-500">SÁBADOS:</span> 09:00 - 14:00</p>
+                <p><span className="text-gray-500">DOMINGOS:</span> STAND-BY</p>
+              </div>
+            </div>
+
+            {/* Canal de Comunicación */}
+            <div className="bg-black/60 border-2 border-gray-700 p-8 text-center hover:border-yellow-500 transition-all duration-300 relative group">
+              {/* Esquinas tácticas */}
+              <div className="absolute top-2 left-2 w-4 h-4 border-l-2 border-t-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute top-2 right-2 w-4 h-4 border-r-2 border-t-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60"></div>
+              
+              <Phone className="h-12 w-12 text-yellow-500 mx-auto mb-4" />
+              <div className="text-yellow-500 font-mono text-xs tracking-widest mb-2">[COMMS]</div>
+              <h4 className="text-xl font-bold mb-3 text-white tracking-wide">CANAL DE COMUNICACIÓN</h4>
+              <div className="text-gray-300 font-mono space-y-3">
+                <div className="flex items-center justify-center gap-2">
+                  <Phone className="h-4 w-4 text-yellow-500" />
+                  <span className="text-yellow-500">941 13 XX XX</span>
+                </div>
+                <div className="flex items-center justify-center gap-2">
+                  <Mail className="h-4 w-4 text-yellow-500" />
+                  <span className="text-gray-300">info@ajmotorbikes.com</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gradient-to-b from-card to-background py-12 border-t border-glow">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Footer - Estilo Militar */}
+      <footer className="bg-gradient-to-b from-black to-gray-900 py-12 border-t-2 border-yellow-500/30 relative overflow-hidden">
+        {/* Elementos tácticos de fondo */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-5">
+          <div className="absolute top-8 left-1/4 w-20 h-0.5 bg-yellow-500 transform rotate-12"></div>
+          <div className="absolute bottom-8 right-1/4 w-16 h-0.5 bg-yellow-500 transform -rotate-12"></div>
+          <div className="absolute top-1/2 left-1/2 w-2 h-2 bg-yellow-500 rotate-45"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid md:grid-cols-3 gap-8">
+            {/* Comando Central */}
             <div>
               <div className="flex items-center space-x-3 mb-4">
-                <Image
-                  src="/aj-logo.jpeg"
-                  alt="AJ Motorbikes Logo"
-                  width={40}
-                  height={40}
-                  className="rounded-full"
-                />
-                <h4 className="text-xl font-bold text-white">AJ Motorbikes</h4>
+                <div className="relative">
+                  <Image
+                    src="/aj-logo.jpeg"
+                    alt="AJ Motorbikes Tactical Logo"
+                    width={40}
+                    height={40}
+                    className="rounded-full border-2 border-yellow-500/50"
+                  />
+                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-500 rounded-full animate-pulse"></div>
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-white tracking-wider">AJ MOTORBIKES</h4>
+                  <div className="text-yellow-500 font-mono text-xs tracking-widest">[TACTICAL UNIT]</div>
+                </div>
               </div>
-              <p className="text-gray-300">
-                Tu taller de confianza en Calahorra, La Rioja. 
-                Especialistas en mantenimiento y reparación de motocicletas.
+              <p className="text-gray-300 font-medium leading-relaxed">
+                <span className="text-yellow-500">Centro de operaciones tácticas</span> en Calahorra, La Rioja. 
+                <span className="text-white">Especialistas en mantenimiento</span> y reparación de 
+                <span className="text-yellow-500">máquinas de combate</span>.
               </p>
             </div>
             
+            {/* Operaciones Tácticas */}
             <div>
-              <h5 className="font-semibold mb-4 text-white">Servicios</h5>
-              <ul className="space-y-2 text-gray-300">
-                <li>Mantenimiento preventivo</li>
-                <li>Reparaciones mecánicas</li>
-                <li>Diagnóstico electrónico</li>
-                <li>Personalización</li>
+              <div className="flex items-center mb-4">
+                <div className="w-4 h-0.5 bg-yellow-500 mr-3"></div>
+                <h5 className="font-bold text-white tracking-wider">OPERACIONES TÁCTICAS</h5>
+              </div>
+              <ul className="space-y-2 text-gray-300 font-mono">
+                <li className="flex items-center">
+                  <span className="text-yellow-500 mr-2">■</span> Mantenimiento preventivo
+                </li>
+                <li className="flex items-center">
+                  <span className="text-yellow-500 mr-2">■</span> Reparaciones de combate
+                </li>
+                <li className="flex items-center">
+                  <span className="text-yellow-500 mr-2">■</span> Diagnóstico avanzado
+                </li>
+                <li className="flex items-center">
+                  <span className="text-yellow-500 mr-2">■</span> Modificaciones tácticas
+                </li>
               </ul>
             </div>
 
+            {/* Canal de Comunicación */}
             <div>
-              <h5 className="font-semibold mb-4 text-white">Contacto</h5>
-              <div className="space-y-2 text-gray-300">
-                <p>Calle Principal, 123</p>
-                <p>26500 Calahorra, La Rioja</p>
-                <p>Tel: 941 13 XX XX</p>
-                <p>info@ajmotorbikes.com</p>
+              <div className="flex items-center mb-4">
+                <div className="w-4 h-0.5 bg-yellow-500 mr-3"></div>
+                <h5 className="font-bold text-white tracking-wider">CANAL DE COMUNICACIÓN</h5>
+              </div>
+              <div className="space-y-2 text-gray-300 font-mono">
+                <p><span className="text-yellow-500">[LOC]</span> Calle Principal, 123</p>
+                <p><span className="text-yellow-500">[ZONE]</span> 26500 Calahorra, La Rioja</p>
+                <p><span className="text-yellow-500">[COMM]</span> 941 13 XX XX</p>
+                <p><span className="text-yellow-500">[DATA]</span> info@ajmotorbikes.com</p>
               </div>
             </div>
           </div>
           
-          <div className="border-t border-gray-600 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 AJ Motorbikes. Todos los derechos reservados.</p>
+          {/* Línea de separación táctica */}
+          <div className="flex items-center mt-8 mb-6">
+            <div className="flex-1 h-0.5 bg-gradient-to-r from-transparent via-yellow-500/50 to-transparent"></div>
+            <div className="mx-4 w-2 h-2 bg-yellow-500 rotate-45"></div>
+            <div className="flex-1 h-0.5 bg-gradient-to-r from-transparent via-yellow-500/50 to-transparent"></div>
+          </div>
+          
+          {/* Copyright Militar */}
+          <div className="text-center">
+            <div className="text-yellow-500 font-mono text-sm tracking-widest mb-2">
+              [ CLASSIFIED OPERATIONS - AUTHORIZED PERSONNEL ONLY ]
+            </div>
+            <p className="text-gray-400 font-mono text-sm">
+              &copy; 2024 <span className="text-yellow-500">AJ MOTORBIKES TACTICAL UNIT</span> - All rights reserved
+            </p>
           </div>
         </div>
       </footer>
     </div>
   );
 }
+
