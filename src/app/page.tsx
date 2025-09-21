@@ -464,13 +464,13 @@ export default function Home() {
             <div className="flex-1 h-0.5 bg-gradient-to-r from-transparent via-yellow-500/50 to-transparent"></div>
           </div>
           
-          {/* Copyright Militar */}
+          {/* Copyright */}
           <div className="text-center">
             <div className="text-yellow-500 font-mono text-sm tracking-widest mb-2">
-              [ CLASSIFIED OPERATIONS - AUTHORIZED PERSONNEL ONLY ]
+              [ ESPECIALISTAS EN MOTOCICLETAS DESDE 2008 ]
             </div>
             <p className="text-gray-400 font-mono text-sm">
-              &copy; 2024 <span className="text-yellow-500">AJ MOTORBIKES TACTICAL UNIT</span> - All rights reserved
+              &copy; 2024 <span className="text-yellow-500">AJ MOTORBIKES</span> - Todos los derechos reservados
             </p>
           </div>
         </div>
