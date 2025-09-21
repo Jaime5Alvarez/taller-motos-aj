@@ -424,7 +424,7 @@ export default function Home() {
               <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60"></div>
               
               <MapPin className="h-12 w-12 text-yellow-500 mx-auto mb-4" />
-              <div className="text-yellow-500 font-mono text-xs tracking-widest mb-2">[UBICACIÓN]</div>
+              <div className="text-yellow-500 font-mono text-xs tracking-widest mb-2">UBICACIÓN</div>
               <h4 className="text-xl font-bold mb-3 text-white tracking-wide">UBICACIÓN DEL TALLER</h4>
               <div className="text-gray-300 font-mono space-y-1">
                 <p className="text-yellow-500">Calle Principal, 123</p>
@@ -442,7 +442,7 @@ export default function Home() {
               <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60"></div>
               
               <Clock className="h-12 w-12 text-yellow-500 mx-auto mb-4" />
-              <div className="text-yellow-500 font-mono text-xs tracking-widest mb-2">[HORARIOS]</div>
+              <div className="text-yellow-500 font-mono text-xs tracking-widest mb-2">HORARIOS</div>
               <h4 className="text-xl font-bold mb-3 text-white tracking-wide">HORARIOS DE ATENCIÓN</h4>
               <div className="text-gray-300 font-mono space-y-2">
                 <p><span className="text-yellow-500">LUN-VIE:</span> 09:00 - 18:00</p>
@@ -460,7 +460,7 @@ export default function Home() {
               <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60"></div>
               
               <Phone className="h-12 w-12 text-yellow-500 mx-auto mb-4" />
-              <div className="text-yellow-500 font-mono text-xs tracking-widest mb-2">[COMUNICACIÓN]</div>
+              <div className="text-yellow-500 font-mono text-xs tracking-widest mb-2">COMUNICACIÓN</div>
               <h4 className="text-xl font-bold mb-3 text-white tracking-wide">CANAL DE COMUNICACIÓN</h4>
               <div className="text-gray-300 font-mono space-y-3">
                 <div className="flex items-center justify-center gap-2">
@@ -524,7 +524,7 @@ export default function Home() {
                 </div>
                 <div>
                   <h4 className="text-xl font-bold text-white tracking-wider">AJ MOTORBIKES</h4>
-                  <div className="text-yellow-500 font-mono text-xs tracking-widest">[TALLER ESPECIALIZADO]</div>
+                  <div className="text-yellow-500 font-mono text-xs tracking-widest">TALLER ESPECIALIZADO</div>
                 </div>
               </div>
               <p className="text-gray-300 font-medium leading-relaxed">
