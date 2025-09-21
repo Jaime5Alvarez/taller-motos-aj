@@ -43,6 +43,18 @@ export default function Home() {
                     WebkitMaskImage: 'radial-gradient(ellipse 85% 75% at 50% 45%, black 50%, transparent 85%)'
                   }}
                 />
+                
+                {/* Efecto de luz superpuesto */}
+                <div className="absolute -top-4 -right-6 w-80 h-80">
+                  <Image
+                    src="/lighta_car.webp"
+                    alt="Efecto de luz"
+                    width={320}
+                    height={320}
+                    className="w-full h-full object-contain mix-blend-screen"
+                  />
+                </div>
+                
                 {/* Overlay gradient para mejorar el contraste */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-transparent to-background/30 rounded-2xl"></div>
               </div>
@@ -136,11 +148,23 @@ export default function Home() {
                     WebkitMaskImage: 'linear-gradient(45deg, black 0%, black 70%, transparent 100%)'
                   }}
                 />
+                
+                {/* Efecto de luz superpuesto */}
+                <div className="absolute -top-6 -left-8 w-72 h-72">
+                  <Image
+                    src="/lightb_car.webp"
+                    alt="Efecto de luz"
+                    width={288}
+                    height={288}
+                    className="w-full h-full object-contain mix-blend-screen"
+                  />
+                </div>
+                
                 {/* Overlay sutil */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-transparent rounded-2xl"></div>
               </div>
               
-              {/* Elemento decorativo */}
+              {/* Elemento decorativo mejorado */}
               <div className="absolute -top-3 -right-3 w-24 h-24 bg-primary/20 rounded-full blur-xl"></div>
             </div>
             <div>
