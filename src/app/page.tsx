@@ -230,7 +230,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gradient-to-b from-card to-background text-foreground py-12 border-t border-glow">
+      <footer className="bg-gradient-to-b from-card to-background py-12 border-t border-glow">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8">
             <div>
@@ -242,17 +242,17 @@ export default function Home() {
                   height={40}
                   className="rounded-full"
                 />
-                <h4 className="text-xl font-bold">AJ Motorbikes</h4>
+                <h4 className="text-xl font-bold text-white">AJ Motorbikes</h4>
               </div>
-              <p className="text-background/80">
+              <p className="text-gray-300">
                 Tu taller de confianza en Calahorra, La Rioja. 
                 Especialistas en mantenimiento y reparación de motocicletas.
               </p>
             </div>
             
             <div>
-              <h5 className="font-semibold mb-4">Servicios</h5>
-              <ul className="space-y-2 text-background/80">
+              <h5 className="font-semibold mb-4 text-white">Servicios</h5>
+              <ul className="space-y-2 text-gray-300">
                 <li>Mantenimiento preventivo</li>
                 <li>Reparaciones mecánicas</li>
                 <li>Diagnóstico electrónico</li>
@@ -261,8 +261,8 @@ export default function Home() {
             </div>
 
             <div>
-              <h5 className="font-semibold mb-4">Contacto</h5>
-              <div className="space-y-2 text-background/80">
+              <h5 className="font-semibold mb-4 text-white">Contacto</h5>
+              <div className="space-y-2 text-gray-300">
                 <p>Calle Principal, 123</p>
                 <p>26500 Calahorra, La Rioja</p>
                 <p>Tel: 941 13 XX XX</p>
@@ -271,7 +271,7 @@ export default function Home() {
             </div>
           </div>
           
-          <div className="border-t border-background/20 mt-8 pt-8 text-center text-background/60">
+          <div className="border-t border-gray-600 mt-8 pt-8 text-center text-gray-400">
             <p>&copy; 2024 AJ Motorbikes. Todos los derechos reservados.</p>
           </div>
         </div>
