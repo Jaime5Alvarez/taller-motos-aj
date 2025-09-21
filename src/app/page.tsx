@@ -8,7 +8,7 @@ export default function Home() {
       <Header />
 
       {/* Hero Section - Estilo Militarizado */}
-      <section id="inicio" className="relative bg-gradient-to-br from-slate-900 via-gray-900 to-black pt-32 pb-20 overflow-hidden">
+      <section id="inicio" className="relative bg-gradient-to-br from-slate-900 via-gray-900 to-gray-900 pt-32 pb-32 overflow-hidden">
         {/* Elementos geométricos militares */}
         <div className="absolute top-0 left-0 w-full h-full opacity-10">
           <div className="absolute top-20 left-10 w-32 h-0.5 bg-yellow-500 transform rotate-45"></div>
@@ -111,10 +111,22 @@ export default function Home() {
             </div>
           </div>
         </div>
+        
+        {/* Elemento de transición */}
+        <div className="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-b from-transparent to-gray-900/50"></div>
+        
+        {/* Línea de separación táctica */}
+        <div className="absolute bottom-0 left-0 w-full flex items-center justify-center">
+          <div className="flex items-center">
+            <div className="w-32 h-0.5 bg-gradient-to-r from-transparent to-yellow-500/30"></div>
+            <div className="mx-4 w-2 h-2 bg-yellow-500/60 rotate-45"></div>
+            <div className="w-32 h-0.5 bg-gradient-to-l from-transparent to-yellow-500/30"></div>
+          </div>
+        </div>
       </section>
 
       {/* Servicios - Estilo Militar */}
-      <section id="servicios" className="py-20 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
+      <section id="servicios" className="py-20 bg-gradient-to-b from-gray-900 via-gray-900 to-black relative overflow-hidden">
         {/* Elementos tácticos de fondo */}
         <div className="absolute top-0 left-0 w-full h-full opacity-5">
           <div className="absolute top-10 right-1/4 w-20 h-0.5 bg-yellow-500 transform rotate-12"></div>
