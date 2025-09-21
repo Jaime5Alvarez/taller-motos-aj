@@ -30,14 +30,40 @@ export default function Home() {
               </div>
             </div>
             <div className="relative">
-              <Image
-                src="/lighta_car.webp"
-                alt="Motocicleta en el taller"
-                width={600}
-                height={400}
-                className="rounded-2xl shadow-dark-lg"
-              />
-              <div className="absolute -bottom-6 -left-6 bg-gradient-dark-card p-4 rounded-xl shadow-dark border-glow">
+              {/* Imagen principal con mask */}
+              <div className="relative overflow-hidden rounded-2xl shadow-dark-lg">
+                <Image
+                  src="/photo-1591637333184-19aa84b3e01f.avif"
+                  alt="Taller de motocicletas AJ"
+                  width={600}
+                  height={400}
+                  className="object-cover w-full h-[400px]"
+                  style={{
+                    maskImage: 'radial-gradient(ellipse 80% 70% at 50% 40%, black 40%, transparent 80%)',
+                    WebkitMaskImage: 'radial-gradient(ellipse 80% 70% at 50% 40%, black 40%, transparent 80%)'
+                  }}
+                />
+                {/* Overlay gradient para mejorar el contraste */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-background/40 rounded-2xl"></div>
+              </div>
+              
+              {/* Imagen secundaria con mask diferente */}
+              <div className="absolute -top-4 -right-4 w-48 h-32 overflow-hidden rounded-xl shadow-lg border-2 border-primary/30">
+                <Image
+                  src="/photo-1604260324056-45f7c778754a.avif"
+                  alt="Detalle del taller"
+                  width={200}
+                  height={130}
+                  className="object-cover w-full h-full"
+                  style={{
+                    maskImage: 'linear-gradient(135deg, black 60%, transparent 90%)',
+                    WebkitMaskImage: 'linear-gradient(135deg, black 60%, transparent 90%)'
+                  }}
+                />
+              </div>
+
+              {/* Card de rating */}
+              <div className="absolute -bottom-6 -left-6 bg-gradient-dark-card p-4 rounded-xl shadow-dark border-glow backdrop-blur-sm bg-opacity-90">
                 <div className="flex items-center space-x-2">
                   <Star className="h-5 w-5 text-yellow-500 fill-current" />
                   <span className="font-semibold">4.9/5</span>
