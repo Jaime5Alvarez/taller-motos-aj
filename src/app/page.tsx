@@ -407,7 +407,7 @@ export default function Home() {
             
             <p className="text-lg text-gray-300 font-medium">
               <span className="text-yellow-500">Visítanos</span> en nuestro 
-              <span className="text-white">taller especializado en motocicletas</span>
+              <span className="text-white"> taller especializado en motocicletas</span>
             </p>
             
             {/* Línea táctica inferior */}
