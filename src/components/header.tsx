@@ -108,7 +108,7 @@ export function Header() {
 
         {/* Menú móvil táctico */}
         <div className={`md:hidden transition-all duration-300 overflow-hidden ${
-          isMobileMenuOpen ? "max-h-64 pb-4" : "max-h-0"
+          isMobileMenuOpen ? " pb-8" : "max-h-0"
         }`}>
           <nav className="flex flex-col space-y-3 pt-4 border-t border-yellow-500/30">
             {[
@@ -128,7 +128,7 @@ export function Header() {
                 </div>
               </button>
             ))}
-            <div className="flex items-center space-x-2 text-sm py-2 px-4 bg-yellow-500/10 border border-yellow-500/30 mx-4">
+            <div className="flex items-center space-x-2 text-sm py-2 px-4 bg-yellow-500/10 border border-yellow-500/30 mx-4 mt-4">
               <Phone className="h-4 w-4 text-yellow-500" />
               <span className="text-white font-mono font-bold">941 13 XX XX</span>
             </div>
