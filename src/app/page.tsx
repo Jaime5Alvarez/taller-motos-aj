@@ -7,8 +7,16 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-dark">
       <Header />
 
-      {/* Hero Section */}
-      <section id="inicio" className="relative bg-gradient-hero pt-32 pb-20">
+      {/* Hero Section - Estilo Militarizado */}
+      <section id="inicio" className="relative bg-gradient-to-br from-slate-900 via-gray-900 to-black pt-32 pb-20 overflow-hidden">
+        {/* Elementos geométricos militares */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-10">
+          <div className="absolute top-20 left-10 w-32 h-0.5 bg-yellow-500 transform rotate-45"></div>
+          <div className="absolute top-40 right-20 w-24 h-0.5 bg-yellow-500 transform -rotate-12"></div>
+          <div className="absolute bottom-32 left-1/4 w-16 h-0.5 bg-yellow-500 transform rotate-12"></div>
+          <div className="absolute top-1/3 right-1/3 w-2 h-2 bg-yellow-500 rotate-45"></div>
+          <div className="absolute bottom-1/4 right-10 w-1 h-1 bg-yellow-500"></div>
+        </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative">
@@ -27,36 +35,50 @@ export default function Home() {
                 />
               </div>
               
-              <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6 relative z-10">
-                Tu Moto en las
-                <span className="text-primary block">Mejores Manos</span>
+              {/* Línea decorativa superior */}
+              <div className="w-16 h-0.5 bg-yellow-500 mb-4"></div>
+              
+              <h2 className="text-4xl md:text-6xl font-bold text-white mb-2 relative z-10 tracking-wider">
+                <span className="text-gray-300">TALLER</span>
+                <span className="text-yellow-500 block font-black">AJ MOTORBIKES</span>
               </h2>
-              <p className="text-xl text-muted-foreground mb-8">
-                Más de 15 años de experiencia en el mantenimiento y reparación de motocicletas en Calahorra, La Rioja. 
-                Especialistas en todas las marcas.
+              
+              {/* Subtítulo militar */}
+              <div className="text-yellow-500 font-mono text-sm tracking-widest mb-4 opacity-80">
+                [ TACTICAL MOTORCYCLE REPAIR ]
+              </div>
+              
+              {/* Línea decorativa inferior */}
+              <div className="w-24 h-0.5 bg-yellow-500 mb-6"></div>
+              <p className="text-lg text-gray-300 mb-8 font-medium leading-relaxed">
+                <span className="text-yellow-500 font-mono">[15+ AÑOS]</span> de experiencia táctica en mantenimiento y reparación de motocicletas.<br/>
+                <span className="text-gray-400">Calahorra, La Rioja</span> - <span className="text-yellow-500">Especialistas en todas las marcas</span>
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors">
-                  Pedir Cita
+                <button className="bg-yellow-500 text-black px-8 py-3 font-bold tracking-wider hover:bg-yellow-400 transition-all duration-300 transform hover:scale-105 relative overflow-hidden group">
+                  <span className="relative z-10">PEDIR CITA</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-yellow-600 to-yellow-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
                 </button>
-                <button className="border border-primary text-primary px-8 py-3 rounded-lg font-semibold hover:bg-primary/10 transition-colors">
-                  Ver Servicios
+                <button className="border-2 border-yellow-500 text-yellow-500 px-8 py-3 font-bold tracking-wider hover:bg-yellow-500 hover:text-black transition-all duration-300 relative overflow-hidden group">
+                  <span className="relative z-10">VER SERVICIOS</span>
+                  <div className="absolute top-0 left-0 w-2 h-2 bg-yellow-500 transform rotate-45 group-hover:scale-150 transition-transform duration-300"></div>
+                  <div className="absolute bottom-0 right-0 w-2 h-2 bg-yellow-500 transform rotate-45 group-hover:scale-150 transition-transform duration-300"></div>
                 </button>
               </div>
             </div>
             <div className="relative">
               {/* Imagen principal del taller con mask espectacular */}
-              <div className="relative overflow-hidden rounded-2xl shadow-dark-lg border border-primary/20">
+              <div className="relative ">
                 <Image
                   src="/photo-1604260324056-45f7c778754a.avif"
                   alt="Taller de motocicletas AJ"
                   width={600}
                   height={400}
                   className="object-cover w-full h-[400px] transform hover:scale-105 transition-transform duration-700"
-                  style={{
-                    maskImage: 'radial-gradient(ellipse 80% 70% at 50% 50%, black 20%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.1) 80%, transparent 100%)',
-                    WebkitMaskImage: 'radial-gradient(ellipse 80% 70% at 50% 50%, black 20%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.1) 80%, transparent 100%)'
-                  }}
+                    style={{
+                      maskImage: 'radial-gradient(circle at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,0.4) 70%, rgba(0,0,0,0) 100%)',
+                      WebkitMaskImage: 'radial-gradient(circle at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,0.4) 70%, rgba(0,0,0,0) 100%)'
+                    }}
                 />
                 
                 
