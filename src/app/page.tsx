@@ -45,13 +45,13 @@ export default function Home() {
               
               {/* Subtítulo militar */}
               <div className="text-yellow-500 font-mono text-sm tracking-widest mb-4 opacity-80">
-                [ TACTICAL MOTORCYCLE REPAIR ]
+                [ ESPECIALISTAS EN MOTOCICLETAS ]
               </div>
               
               {/* Línea decorativa inferior */}
               <div className="w-24 h-0.5 bg-yellow-500 mb-6"></div>
               <p className="text-lg text-gray-300 mb-8 font-medium leading-relaxed">
-                <span className="text-yellow-500 font-mono">[15+ AÑOS]</span> de experiencia táctica en mantenimiento y reparación de motocicletas.<br/>
+                <span className="text-yellow-500 font-mono">[15+ AÑOS]</span> de experiencia profesional en mantenimiento y reparación de motocicletas.<br/>
                 <span className="text-gray-400">Calahorra, La Rioja</span> - <span className="text-yellow-500">Especialistas en todas las marcas</span>
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -125,12 +125,12 @@ export default function Home() {
             </h3>
             
             <div className="text-yellow-500 font-mono text-sm tracking-widest mb-4 opacity-80">
-              [ SPECIALIZED MOTORCYCLE OPERATIONS ]
+              [ SERVICIOS ESPECIALIZADOS PARA MOTOCICLETAS ]
             </div>
             
             <p className="text-lg text-gray-300 max-w-2xl mx-auto font-medium">
-              <span className="text-yellow-500">Servicios tácticos completos</span> para mantener tu moto en 
-              <span className="text-white">condiciones óptimas de combate</span>
+              <span className="text-yellow-500">Servicios profesionales completos</span> para mantener tu moto en 
+              <span className="text-white">condiciones óptimas de rendimiento</span>
             </p>
             
             {/* Línea táctica inferior */}
@@ -147,10 +147,10 @@ export default function Home() {
               
               <Wrench className="h-12 w-12 text-yellow-500 mb-4" />
               <div className="text-yellow-500 font-mono text-xs tracking-widest mb-2">[SERVICE-01]</div>
-              <h4 className="text-xl font-bold mb-3 text-white tracking-wide">MANTENIMIENTO TÁCTICO</h4>
+              <h4 className="text-xl font-bold mb-3 text-white tracking-wide">MANTENIMIENTO PROFESIONAL</h4>
               <p className="text-gray-300 mb-4 font-medium">
-                <span className="text-yellow-500">Operaciones preventivas</span> para mantener tu moto en 
-                <span className="text-white">condiciones de combate óptimas</span>.
+                <span className="text-yellow-500">Servicios preventivos</span> para mantener tu moto en 
+                <span className="text-white">condiciones óptimas de funcionamiento</span>.
               </p>
               <ul className="text-sm text-gray-400 space-y-2 font-mono">
                 <li className="flex items-center"><span className="text-yellow-500 mr-2">■</span> Cambio de aceite y filtros</li>
@@ -169,10 +169,10 @@ export default function Home() {
               
               <Shield className="h-12 w-12 text-yellow-500 mb-4" />
               <div className="text-yellow-500 font-mono text-xs tracking-widest mb-2">[SERVICE-02]</div>
-              <h4 className="text-xl font-bold mb-3 text-white tracking-wide">REPARACIONES DE COMBATE</h4>
+              <h4 className="text-xl font-bold mb-3 text-white tracking-wide">REPARACIONES ESPECIALIZADAS</h4>
               <p className="text-gray-300 mb-4 font-medium">
-                <span className="text-yellow-500">Diagnóstico avanzado</span> y reparación de averías críticas con 
-                <span className="text-white">garantía táctica</span>.
+                <span className="text-yellow-500">Diagnóstico avanzado</span> y reparación de averías complejas con 
+                <span className="text-white">garantía profesional</span>.
               </p>
               <ul className="text-sm text-gray-400 space-y-2 font-mono">
                 <li className="flex items-center"><span className="text-yellow-500 mr-2">■</span> Reparación de motor</li>
@@ -191,10 +191,10 @@ export default function Home() {
               
               <Star className="h-12 w-12 text-yellow-500 mb-4" />
               <div className="text-yellow-500 font-mono text-xs tracking-widest mb-2">[SERVICE-03]</div>
-              <h4 className="text-xl font-bold mb-3 text-white tracking-wide">MODIFICACIONES TÁCTICAS</h4>
+              <h4 className="text-xl font-bold mb-3 text-white tracking-wide">MODIFICACIONES PERSONALIZADAS</h4>
               <p className="text-gray-300 mb-4 font-medium">
                 <span className="text-yellow-500">Upgrades especializados</span> para hacer tu moto única y 
-                <span className="text-white">adaptada a tu misión</span>.
+                <span className="text-white">adaptada a tus necesidades</span>.
               </p>
               <ul className="text-sm text-gray-400 space-y-2 font-mono">
                 <li className="flex items-center"><span className="text-yellow-500 mr-2">■</span> Escape deportivo</li>
@@ -251,17 +251,17 @@ export default function Home() {
               <div className="w-20 h-0.5 bg-yellow-500 mb-6"></div>
               
               <h3 className="text-3xl md:text-4xl font-bold text-white mb-2 tracking-wider">
-                <span className="text-gray-300">TACTICAL</span> <span className="text-yellow-500">OPERATIONS</span>
+                <span className="text-gray-300">EXPERTOS</span> <span className="text-yellow-500">MOTOCICLETAS</span>
               </h3>
               
               <div className="text-yellow-500 font-mono text-sm tracking-widest mb-6 opacity-80">
-                [ SINCE 2008 - MOTORCYCLE WARFARE SPECIALISTS ]
+                [ DESDE 2008 - ESPECIALISTAS EN MOTOCICLETAS ]
               </div>
               
               <p className="text-lg text-gray-300 mb-6 font-medium leading-relaxed">
                 En <span className="text-yellow-500 font-bold">AJ Motorbikes</span> somos más que un taller, somos 
-                <span className="text-white">operadores tácticos especializados</span> que entienden la importancia crítica 
-                de mantener tu moto en <span className="text-yellow-500">condiciones de combate perfectas</span>. 
+                <span className="text-white">mecánicos especializados</span> que entienden la importancia crítica 
+                de mantener tu moto en <span className="text-yellow-500">condiciones perfectas de funcionamiento</span>. 
                 Ubicados en el corazón de <span className="text-gray-400">Calahorra, La Rioja</span>.
               </p>
               
@@ -269,18 +269,18 @@ export default function Home() {
               <div className="grid grid-cols-2 gap-6 mb-8">
                 <div className="bg-black/40 border border-yellow-500/30 p-4 text-center">
                   <div className="text-3xl font-bold text-yellow-500 mb-2 font-mono">15+</div>
-                  <div className="text-gray-400 font-mono text-sm tracking-wider">AÑOS DE SERVICIO</div>
+                  <div className="text-gray-400 font-mono text-sm tracking-wider">AÑOS DE EXPERIENCIA</div>
                 </div>
                 <div className="bg-black/40 border border-yellow-500/30 p-4 text-center">
                   <div className="text-3xl font-bold text-yellow-500 mb-2 font-mono">500+</div>
-                  <div className="text-gray-400 font-mono text-sm tracking-wider">MISIONES COMPLETADAS</div>
+                  <div className="text-gray-400 font-mono text-sm tracking-wider">MOTOS REPARADAS</div>
                 </div>
               </div>
               
               <p className="text-gray-300 font-medium">
-                Nuestro <span className="text-yellow-500">escuadrón de mecánicos especializados</span> está constantemente 
-                entrenando en las <span className="text-white">últimas tecnologías tácticas</span> para ofrecerte el mejor servicio, 
-                sin importar la marca o modelo de tu <span className="text-yellow-500">máquina de combate</span>.
+                Nuestro <span className="text-yellow-500">equipo de mecánicos especializados</span> está constantemente 
+                actualizándose en las <span className="text-white">últimas tecnologías automotrices</span> para ofrecerte el mejor servicio, 
+                sin importar la marca o modelo de tu <span className="text-yellow-500">motocicleta</span>.
               </p>
               
               {/* Línea táctica inferior */}
@@ -305,16 +305,16 @@ export default function Home() {
             <div className="w-24 h-0.5 bg-yellow-500 mx-auto mb-6"></div>
             
             <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-wider">
-              <span className="text-gray-300">TACTICAL</span> <span className="text-yellow-500">BASE</span>
+              <span className="text-gray-300">NUESTRO</span> <span className="text-yellow-500">TALLER</span>
             </h3>
             
             <div className="text-yellow-500 font-mono text-sm tracking-widest mb-4 opacity-80">
-              [ CALAHORRA OPERATIONS CENTER ]
+              [ CALAHORRA - LA RIOJA ]
             </div>
             
             <p className="text-lg text-gray-300 font-medium">
-              <span className="text-yellow-500">Coordina tu misión</span> con nuestro 
-              <span className="text-white">centro de operaciones tácticas</span>
+              <span className="text-yellow-500">Visítanos</span> en nuestro 
+              <span className="text-white">taller especializado en motocicletas</span>
             </p>
             
             {/* Línea táctica inferior */}
@@ -332,7 +332,7 @@ export default function Home() {
               
               <MapPin className="h-12 w-12 text-yellow-500 mx-auto mb-4" />
               <div className="text-yellow-500 font-mono text-xs tracking-widest mb-2">[COORDINATES]</div>
-              <h4 className="text-xl font-bold mb-3 text-white tracking-wide">BASE DE OPERACIONES</h4>
+              <h4 className="text-xl font-bold mb-3 text-white tracking-wide">UBICACIÓN DEL TALLER</h4>
               <div className="text-gray-300 font-mono space-y-1">
                 <p className="text-yellow-500">Calle Principal, 123</p>
                 <p>26500 Calahorra</p>
@@ -350,7 +350,7 @@ export default function Home() {
               
               <Clock className="h-12 w-12 text-yellow-500 mx-auto mb-4" />
               <div className="text-yellow-500 font-mono text-xs tracking-widest mb-2">[SCHEDULE]</div>
-              <h4 className="text-xl font-bold mb-3 text-white tracking-wide">HORARIOS DE MISIÓN</h4>
+              <h4 className="text-xl font-bold mb-3 text-white tracking-wide">HORARIOS DE ATENCIÓN</h4>
               <div className="text-gray-300 font-mono space-y-2">
                 <p><span className="text-yellow-500">LUN-VIE:</span> 09:00 - 18:00</p>
                 <p><span className="text-yellow-500">SÁBADOS:</span> 09:00 - 14:00</p>
@@ -410,13 +410,13 @@ export default function Home() {
                 </div>
                 <div>
                   <h4 className="text-xl font-bold text-white tracking-wider">AJ MOTORBIKES</h4>
-                  <div className="text-yellow-500 font-mono text-xs tracking-widest">[TACTICAL UNIT]</div>
+                  <div className="text-yellow-500 font-mono text-xs tracking-widest">[TALLER ESPECIALIZADO]</div>
                 </div>
               </div>
               <p className="text-gray-300 font-medium leading-relaxed">
-                <span className="text-yellow-500">Centro de operaciones tácticas</span> en Calahorra, La Rioja. 
-                <span className="text-white">Especialistas en mantenimiento</span> y reparación de 
-                <span className="text-yellow-500">máquinas de combate</span>.
+                <span className="text-yellow-500">Taller especializado</span> en Calahorra, La Rioja. 
+                <span className="text-white">Expertos en mantenimiento</span> y reparación de 
+                <span className="text-yellow-500">motocicletas de todas las marcas</span>.
               </p>
             </div>
             
@@ -424,20 +424,20 @@ export default function Home() {
             <div>
               <div className="flex items-center mb-4">
                 <div className="w-4 h-0.5 bg-yellow-500 mr-3"></div>
-                <h5 className="font-bold text-white tracking-wider">OPERACIONES TÁCTICAS</h5>
+                <h5 className="font-bold text-white tracking-wider">SERVICIOS ESPECIALIZADOS</h5>
               </div>
               <ul className="space-y-2 text-gray-300 font-mono">
                 <li className="flex items-center">
                   <span className="text-yellow-500 mr-2">■</span> Mantenimiento preventivo
                 </li>
                 <li className="flex items-center">
-                  <span className="text-yellow-500 mr-2">■</span> Reparaciones de combate
+                  <span className="text-yellow-500 mr-2">■</span> Reparaciones especializadas
                 </li>
                 <li className="flex items-center">
                   <span className="text-yellow-500 mr-2">■</span> Diagnóstico avanzado
                 </li>
                 <li className="flex items-center">
-                  <span className="text-yellow-500 mr-2">■</span> Modificaciones tácticas
+                  <span className="text-yellow-500 mr-2">■</span> Modificaciones personalizadas
                 </li>
               </ul>
             </div>
