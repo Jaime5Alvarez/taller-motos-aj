@@ -107,126 +107,184 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Servicios */}
-      <section id="servicios" className="py-20 bg-gradient-to-b from-background to-muted/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Servicios - Estilo Militar */}
+      <section id="servicios" className="py-20 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
+        {/* Elementos tácticos de fondo */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-5">
+          <div className="absolute top-10 right-1/4 w-20 h-0.5 bg-yellow-500 transform rotate-12"></div>
+          <div className="absolute bottom-20 left-1/3 w-16 h-0.5 bg-yellow-500 transform -rotate-45"></div>
+          <div className="absolute top-1/2 left-10 w-2 h-2 bg-yellow-500 rotate-45"></div>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
-            <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Nuestros Servicios
+            {/* Línea táctica superior */}
+            <div className="w-24 h-0.5 bg-yellow-500 mx-auto mb-6"></div>
+            
+            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-wider">
+              <span className="text-gray-300">TACTICAL</span> <span className="text-yellow-500">SERVICES</span>
             </h3>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Ofrecemos un servicio completo para mantener tu moto en perfecto estado
+            
+            <div className="text-yellow-500 font-mono text-sm tracking-widest mb-4 opacity-80">
+              [ SPECIALIZED MOTORCYCLE OPERATIONS ]
+            </div>
+            
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto font-medium">
+              <span className="text-yellow-500">Servicios tácticos completos</span> para mantener tu moto en 
+              <span className="text-white">condiciones óptimas de combate</span>
             </p>
+            
+            {/* Línea táctica inferior */}
+            <div className="w-16 h-0.5 bg-yellow-500 mx-auto mt-6"></div>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-gradient-dark-card p-8 rounded-2xl shadow-dark border-glow hover:shadow-dark-lg transition-all duration-300 hover:border-primary/40">
-              <Wrench className="h-12 w-12 text-primary mb-4" />
-              <h4 className="text-xl font-semibold mb-3">Mantenimiento Preventivo</h4>
-              <p className="text-muted-foreground mb-4">
-                Revisiones completas, cambio de aceite, filtros y ajustes para mantener tu moto como nueva.
+            <div className="bg-black/60 border-2 border-gray-700 p-8 hover:border-yellow-500 transition-all duration-300 relative group">
+              {/* Esquinas tácticas */}
+              <div className="absolute top-2 left-2 w-4 h-4 border-l-2 border-t-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute top-2 right-2 w-4 h-4 border-r-2 border-t-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60"></div>
+              
+              <Wrench className="h-12 w-12 text-yellow-500 mb-4" />
+              <div className="text-yellow-500 font-mono text-xs tracking-widest mb-2">[SERVICE-01]</div>
+              <h4 className="text-xl font-bold mb-3 text-white tracking-wide">MANTENIMIENTO TÁCTICO</h4>
+              <p className="text-gray-300 mb-4 font-medium">
+                <span className="text-yellow-500">Operaciones preventivas</span> para mantener tu moto en 
+                <span className="text-white">condiciones de combate óptimas</span>.
               </p>
-              <ul className="text-sm text-muted-foreground space-y-1">
-                <li>• Cambio de aceite y filtros</li>
-                <li>• Revisión de frenos</li>
-                <li>• Ajuste de cadena</li>
-                <li>• Revisión general</li>
+              <ul className="text-sm text-gray-400 space-y-2 font-mono">
+                <li className="flex items-center"><span className="text-yellow-500 mr-2">■</span> Cambio de aceite y filtros</li>
+                <li className="flex items-center"><span className="text-yellow-500 mr-2">■</span> Revisión de frenos</li>
+                <li className="flex items-center"><span className="text-yellow-500 mr-2">■</span> Ajuste de cadena</li>
+                <li className="flex items-center"><span className="text-yellow-500 mr-2">■</span> Revisión general</li>
               </ul>
             </div>
 
-            <div className="bg-gradient-dark-card p-8 rounded-2xl shadow-dark border-glow hover:shadow-dark-lg transition-all duration-300 hover:border-primary/40">
-              <Shield className="h-12 w-12 text-primary mb-4" />
-              <h4 className="text-xl font-semibold mb-3">Reparaciones</h4>
-              <p className="text-muted-foreground mb-4">
-                Diagnóstico y reparación de averías mecánicas y eléctricas con garantía.
+            <div className="bg-black/60 border-2 border-gray-700 p-8 hover:border-yellow-500 transition-all duration-300 relative group">
+              {/* Esquinas tácticas */}
+              <div className="absolute top-2 left-2 w-4 h-4 border-l-2 border-t-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute top-2 right-2 w-4 h-4 border-r-2 border-t-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60"></div>
+              
+              <Shield className="h-12 w-12 text-yellow-500 mb-4" />
+              <div className="text-yellow-500 font-mono text-xs tracking-widest mb-2">[SERVICE-02]</div>
+              <h4 className="text-xl font-bold mb-3 text-white tracking-wide">REPARACIONES DE COMBATE</h4>
+              <p className="text-gray-300 mb-4 font-medium">
+                <span className="text-yellow-500">Diagnóstico avanzado</span> y reparación de averías críticas con 
+                <span className="text-white">garantía táctica</span>.
               </p>
-              <ul className="text-sm text-muted-foreground space-y-1">
-                <li>• Reparación de motor</li>
-                <li>• Sistema eléctrico</li>
-                <li>• Transmisión</li>
-                <li>• Diagnóstico por ordenador</li>
+              <ul className="text-sm text-gray-400 space-y-2 font-mono">
+                <li className="flex items-center"><span className="text-yellow-500 mr-2">■</span> Reparación de motor</li>
+                <li className="flex items-center"><span className="text-yellow-500 mr-2">■</span> Sistema eléctrico</li>
+                <li className="flex items-center"><span className="text-yellow-500 mr-2">■</span> Transmisión</li>
+                <li className="flex items-center"><span className="text-yellow-500 mr-2">■</span> Diagnóstico por ordenador</li>
               </ul>
             </div>
 
-            <div className="bg-gradient-dark-card p-8 rounded-2xl shadow-dark border-glow hover:shadow-dark-lg transition-all duration-300 hover:border-primary/40">
-              <Star className="h-12 w-12 text-primary mb-4" />
-              <h4 className="text-xl font-semibold mb-3">Personalización</h4>
-              <p className="text-muted-foreground mb-4">
-                Modificaciones y mejoras para hacer tu moto única y adaptada a tus necesidades.
+            <div className="bg-black/60 border-2 border-gray-700 p-8 hover:border-yellow-500 transition-all duration-300 relative group">
+              {/* Esquinas tácticas */}
+              <div className="absolute top-2 left-2 w-4 h-4 border-l-2 border-t-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute top-2 right-2 w-4 h-4 border-r-2 border-t-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60"></div>
+              
+              <Star className="h-12 w-12 text-yellow-500 mb-4" />
+              <div className="text-yellow-500 font-mono text-xs tracking-widest mb-2">[SERVICE-03]</div>
+              <h4 className="text-xl font-bold mb-3 text-white tracking-wide">MODIFICACIONES TÁCTICAS</h4>
+              <p className="text-gray-300 mb-4 font-medium">
+                <span className="text-yellow-500">Upgrades especializados</span> para hacer tu moto única y 
+                <span className="text-white">adaptada a tu misión</span>.
               </p>
-              <ul className="text-sm text-muted-foreground space-y-1">
-                <li>• Escape deportivo</li>
-                <li>• Suspensiones</li>
-                <li>• Accesorios</li>
-                <li>• Pintura personalizada</li>
+              <ul className="text-sm text-gray-400 space-y-2 font-mono">
+                <li className="flex items-center"><span className="text-yellow-500 mr-2">■</span> Escape deportivo</li>
+                <li className="flex items-center"><span className="text-yellow-500 mr-2">■</span> Suspensiones</li>
+                <li className="flex items-center"><span className="text-yellow-500 mr-2">■</span> Accesorios tácticos</li>
+                <li className="flex items-center"><span className="text-yellow-500 mr-2">■</span> Pintura personalizada</li>
               </ul>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Sobre Nosotros */}
-      <section id="nosotros" className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Sobre Nosotros - Estilo Militar */}
+      <section id="nosotros" className="py-20 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
+        {/* Elementos tácticos de fondo */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-5">
+          <div className="absolute top-32 left-20 w-28 h-0.5 bg-yellow-500 transform rotate-30"></div>
+          <div className="absolute bottom-40 right-1/4 w-20 h-0.5 bg-yellow-500 transform -rotate-12"></div>
+          <div className="absolute top-1/3 right-20 w-2 h-2 bg-yellow-500 rotate-45"></div>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative">
-              {/* Imagen con mask creativo */}
-              <div className="relative overflow-hidden rounded-2xl shadow-dark-lg">
+              {/* Marco táctico para imagen */}
+              <div className="absolute -top-4 -left-4 w-8 h-8 border-l-2 border-t-2 border-yellow-500 z-20"></div>
+              <div className="absolute -top-4 -right-4 w-8 h-8 border-r-2 border-t-2 border-yellow-500 z-20"></div>
+              <div className="absolute -bottom-4 -left-4 w-8 h-8 border-l-2 border-b-2 border-yellow-500 z-20"></div>
+              <div className="absolute -bottom-4 -right-4 w-8 h-8 border-r-2 border-b-2 border-yellow-500 z-20"></div>
+              
+              {/* Imagen con mask militar */}
+              <div className="relative overflow-hidden">
                 <Image
                   src="/photo-1591637333184-19aa84b3e01f.avif"
-                  alt="Pasión por las motocicletas"
+                  alt="Operaciones tácticas motocicletas"
                   width={600}
                   height={400}
-                  className="object-cover w-full h-[400px]"
+                  className="object-cover w-full h-[400px] grayscale-[0.4] contrast-110"
                   style={{
-                    maskImage: 'linear-gradient(45deg, black 0%, black 70%, transparent 100%)',
-                    WebkitMaskImage: 'linear-gradient(45deg, black 0%, black 70%, transparent 100%)'
+                    maskImage: 'linear-gradient(45deg, black 0%, black 65%, rgba(0,0,0,0.7) 80%, transparent 100%)',
+                    WebkitMaskImage: 'linear-gradient(45deg, black 0%, black 65%, rgba(0,0,0,0.7) 80%, transparent 100%)'
                   }}
                 />
+                {/* Overlay militar */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-yellow-500/15 via-transparent to-gray-900/30"></div>
                 
-                {/* Efecto de luz superpuesto */}
-                <div className="absolute -top-6 -left-8 w-72 h-72">
-                  <Image
-                    src="/lightb_car.webp"
-                    alt="Efecto de luz"
-                    width={288}
-                    height={288}
-                    className="w-full h-full object-contain mix-blend-screen"
-                  />
-                </div>
-                
-                {/* Overlay sutil */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-transparent rounded-2xl"></div>
+                {/* Indicadores tácticos */}
+                <div className="absolute top-4 left-4 w-1 h-6 bg-yellow-500 opacity-70"></div>
+                <div className="absolute top-4 left-8 w-6 h-1 bg-yellow-500 opacity-70"></div>
+                <div className="absolute bottom-4 right-4 w-2 h-2 bg-yellow-500 animate-pulse"></div>
               </div>
-              
-              {/* Elemento decorativo mejorado */}
-              <div className="absolute -top-3 -right-3 w-24 h-24 bg-primary/20 rounded-full blur-xl"></div>
             </div>
             <div>
-              <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                Pasión por las Motos desde 2008
+              {/* Línea táctica superior */}
+              <div className="w-20 h-0.5 bg-yellow-500 mb-6"></div>
+              
+              <h3 className="text-3xl md:text-4xl font-bold text-white mb-2 tracking-wider">
+                <span className="text-gray-300">TACTICAL</span> <span className="text-yellow-500">OPERATIONS</span>
               </h3>
-              <p className="text-lg text-muted-foreground mb-6">
-                En AJ Motorbikes somos más que un taller, somos moteros apasionados que entienden 
-                la importancia de mantener tu moto en perfecto estado. Ubicados en el corazón de 
-                Calahorra, La Rioja, hemos construido nuestra reputación basada en la calidad, 
-                confianza y atención personalizada.
+              
+              <div className="text-yellow-500 font-mono text-sm tracking-widest mb-6 opacity-80">
+                [ SINCE 2008 - MOTORCYCLE WARFARE SPECIALISTS ]
+              </div>
+              
+              <p className="text-lg text-gray-300 mb-6 font-medium leading-relaxed">
+                En <span className="text-yellow-500 font-bold">AJ Motorbikes</span> somos más que un taller, somos 
+                <span className="text-white">operadores tácticos especializados</span> que entienden la importancia crítica 
+                de mantener tu moto en <span className="text-yellow-500">condiciones de combate perfectas</span>. 
+                Ubicados en el corazón de <span className="text-gray-400">Calahorra, La Rioja</span>.
               </p>
+              
+              {/* Estadísticas militares */}
               <div className="grid grid-cols-2 gap-6 mb-8">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">15+</div>
-                  <div className="text-muted-foreground">Años de experiencia</div>
+                <div className="bg-black/40 border border-yellow-500/30 p-4 text-center">
+                  <div className="text-3xl font-bold text-yellow-500 mb-2 font-mono">15+</div>
+                  <div className="text-gray-400 font-mono text-sm tracking-wider">AÑOS DE SERVICIO</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">500+</div>
-                  <div className="text-muted-foreground">Motos reparadas</div>
+                <div className="bg-black/40 border border-yellow-500/30 p-4 text-center">
+                  <div className="text-3xl font-bold text-yellow-500 mb-2 font-mono">500+</div>
+                  <div className="text-gray-400 font-mono text-sm tracking-wider">MISIONES COMPLETADAS</div>
                 </div>
               </div>
-              <p className="text-muted-foreground">
-                Nuestro equipo de mecánicos especializados está constantemente formándose en las 
-                últimas tecnologías para ofrecerte el mejor servicio, sin importar la marca o 
-                modelo de tu motocicleta.
+              
+              <p className="text-gray-300 font-medium">
+                Nuestro <span className="text-yellow-500">escuadrón de mecánicos especializados</span> está constantemente 
+                entrenando en las <span className="text-white">últimas tecnologías tácticas</span> para ofrecerte el mejor servicio, 
+                sin importar la marca o modelo de tu <span className="text-yellow-500">máquina de combate</span>.
               </p>
+              
+              {/* Línea táctica inferior */}
+              <div className="w-16 h-0.5 bg-yellow-500 mt-6"></div>
             </div>
           </div>
         </div>
