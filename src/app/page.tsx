@@ -1,42 +1,14 @@
 import Image from "next/image";
-import { Phone, MapPin, Clock, Wrench, Shield, Star, Mail } from "lucide-react";
+import { MapPin, Clock, Wrench, Shield, Star, Mail, Phone } from "lucide-react";
+import { Header } from "@/components/header";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-dark">
-      {/* Header */}
-      <header className="bg-card shadow-sm border-b border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <div className="flex items-center space-x-3">
-              <Image
-                src="/aj-logo.jpeg"
-                alt="AJ Motorbikes Logo"
-                width={50}
-                height={50}
-                className="rounded-full"
-              />
-              <div>
-                <h1 className="text-2xl font-bold text-primary">AJ Motorbikes</h1>
-                <p className="text-sm text-muted-foreground">Taller de Motos en Calahorra</p>
-              </div>
-            </div>
-            <nav className="hidden md:flex space-x-8">
-              <a href="#inicio" className="text-foreground hover:text-primary transition-colors">Inicio</a>
-              <a href="#servicios" className="text-foreground hover:text-primary transition-colors">Servicios</a>
-              <a href="#nosotros" className="text-foreground hover:text-primary transition-colors">Nosotros</a>
-              <a href="#contacto" className="text-foreground hover:text-primary transition-colors">Contacto</a>
-            </nav>
-            <div className="flex items-center space-x-2 text-sm">
-              <Phone className="h-4 w-4 text-primary" />
-              <span className="hidden sm:inline">941 13 XX XX</span>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
-      <section id="inicio" className="relative bg-gradient-to-br from-primary/5 to-secondary/10 py-20">
+      <section id="inicio" className="relative bg-gradient-to-br from-primary/5 to-secondary/10 pt-32 pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
