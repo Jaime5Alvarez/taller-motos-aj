@@ -75,10 +75,10 @@ export default function Home() {
                   width={600}
                   height={400}
                   className="object-cover w-full h-[400px] transform hover:scale-105 transition-transform duration-700"
-                    style={{
-                      maskImage: 'radial-gradient(circle at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,0.4) 70%, rgba(0,0,0,0) 100%)',
-                      WebkitMaskImage: 'radial-gradient(circle at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,0.4) 70%, rgba(0,0,0,0) 100%)'
-                    }}
+                  style={{
+                    maskImage: 'radial-gradient(circle at center, rgba(0,0,0,1) 25%, rgba(0,0,0,0.9) 40%, rgba(0,0,0,0.6) 55%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.1) 85%, rgba(0,0,0,0) 100%)',
+                    WebkitMaskImage: 'radial-gradient(circle at center, rgba(0,0,0,1) 25%, rgba(0,0,0,0.9) 40%, rgba(0,0,0,0.6) 55%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.1) 85%, rgba(0,0,0,0) 100%)'
+                  }}
                 />
                 
                 
