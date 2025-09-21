@@ -204,7 +204,6 @@ export default function Home() {
               <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60"></div>
               
               <Wrench className="h-12 w-12 text-yellow-500 mb-4" />
-              <div className="text-yellow-500 font-mono text-xs tracking-widest mb-2">[SERVICE-01]</div>
               <h4 className="text-xl font-bold mb-3 text-white tracking-wide">MANTENIMIENTO PROFESIONAL</h4>
               <p className="text-gray-300 mb-4 font-medium">
                 <span className="text-yellow-500">Servicios preventivos</span> para mantener tu moto en 
@@ -226,7 +225,6 @@ export default function Home() {
               <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60"></div>
               
               <Shield className="h-12 w-12 text-yellow-500 mb-4" />
-              <div className="text-yellow-500 font-mono text-xs tracking-widest mb-2">[SERVICE-02]</div>
               <h4 className="text-xl font-bold mb-3 text-white tracking-wide">REPARACIONES ESPECIALIZADAS</h4>
               <p className="text-gray-300 mb-4 font-medium">
                 <span className="text-yellow-500">Diagnóstico avanzado</span> y reparación de averías complejas con 
@@ -248,7 +246,6 @@ export default function Home() {
               <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60"></div>
               
               <Star className="h-12 w-12 text-yellow-500 mb-4" />
-              <div className="text-yellow-500 font-mono text-xs tracking-widest mb-2">[SERVICE-03]</div>
               <h4 className="text-xl font-bold mb-3 text-white tracking-wide">MODIFICACIONES PERSONALIZADAS</h4>
               <p className="text-gray-300 mb-4 font-medium">
                 <span className="text-yellow-500">Upgrades especializados</span> para hacer tu moto única y 
@@ -337,7 +334,7 @@ export default function Home() {
               <p className="text-lg text-gray-300 mb-6 font-medium leading-relaxed">
                 En <span className="text-yellow-500 font-bold">AJ Motorbikes</span> combinamos 
                 <span className="text-white"> equipamiento de última generación</span> con 
-                <span className="text-yellow-500">pasión genuina por las motocicletas</span>. Nuestro compromiso es 
+                <span className="text-yellow-500"> pasión genuina por las motocicletas</span>. Nuestro compromiso es 
                 ofrecer el mejor servicio profesional en <span className="text-gray-400">Calahorra, La Rioja</span>.
               </p>
               
@@ -401,7 +398,7 @@ export default function Home() {
             <div className="w-24 h-0.5 bg-yellow-500 mx-auto mb-6"></div>
             
             <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-wider">
-              <span className="text-gray-300">NUESTRO</span> <span className="text-yellow-500">TALLER</span>
+              <span className="text-gray-300">NUESTRO</span> <span className="text-yellow-500"> TALLER</span>
             </h3>
             
             <div className="text-yellow-500 font-mono text-sm tracking-widest mb-4 opacity-80">
@@ -427,7 +424,7 @@ export default function Home() {
               <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60"></div>
               
               <MapPin className="h-12 w-12 text-yellow-500 mx-auto mb-4" />
-              <div className="text-yellow-500 font-mono text-xs tracking-widest mb-2">[COORDINATES]</div>
+              <div className="text-yellow-500 font-mono text-xs tracking-widest mb-2">[UBICACIÓN]</div>
               <h4 className="text-xl font-bold mb-3 text-white tracking-wide">UBICACIÓN DEL TALLER</h4>
               <div className="text-gray-300 font-mono space-y-1">
                 <p className="text-yellow-500">Calle Principal, 123</p>
@@ -445,7 +442,7 @@ export default function Home() {
               <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60"></div>
               
               <Clock className="h-12 w-12 text-yellow-500 mx-auto mb-4" />
-              <div className="text-yellow-500 font-mono text-xs tracking-widest mb-2">[SCHEDULE]</div>
+              <div className="text-yellow-500 font-mono text-xs tracking-widest mb-2">[HORARIOS]</div>
               <h4 className="text-xl font-bold mb-3 text-white tracking-wide">HORARIOS DE ATENCIÓN</h4>
               <div className="text-gray-300 font-mono space-y-2">
                 <p><span className="text-yellow-500">LUN-VIE:</span> 09:00 - 18:00</p>
@@ -463,7 +460,7 @@ export default function Home() {
               <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60"></div>
               
               <Phone className="h-12 w-12 text-yellow-500 mx-auto mb-4" />
-              <div className="text-yellow-500 font-mono text-xs tracking-widest mb-2">[COMMS]</div>
+              <div className="text-yellow-500 font-mono text-xs tracking-widest mb-2">[COMUNICACIÓN]</div>
               <h4 className="text-xl font-bold mb-3 text-white tracking-wide">CANAL DE COMUNICACIÓN</h4>
               <div className="text-gray-300 font-mono space-y-3">
                 <div className="flex items-center justify-center gap-2">
@@ -533,7 +530,7 @@ export default function Home() {
               <p className="text-gray-300 font-medium leading-relaxed">
                 <span className="text-yellow-500">Taller especializado</span> en Calahorra, La Rioja. 
                 <span className="text-white">Equipamiento de última generación</span> para el mantenimiento y reparación de 
-                <span className="text-yellow-500">motocicletas de todas las marcas</span>.
+                <span className="text-yellow-500"> motocicletas de todas las marcas</span>.
               </p>
             </div>
             
@@ -565,12 +562,20 @@ export default function Home() {
                 <div className="w-4 h-0.5 bg-yellow-500 mr-3"></div>
                 <h5 className="font-bold text-white tracking-wider">CANAL DE COMUNICACIÓN</h5>
               </div>
-              <div className="space-y-2 text-gray-300 font-mono">
-                <p><span className="text-yellow-500">[LOC]</span> Calle Principal, 123</p>
-                <p><span className="text-yellow-500">[ZONE]</span> 26500 Calahorra, La Rioja</p>
-                <p><span className="text-yellow-500">[COMM]</span> 941 13 XX XX</p>
-                <p><span className="text-yellow-500">[DATA]</span> info@ajmotorbikes.com</p>
-              </div>
+              <ul className="space-y-2 text-gray-300 font-mono">
+                <li className="flex items-center">
+                  <span className="text-yellow-500 mr-2">■</span> Calle Principal, 123
+                </li>
+                <li className="flex items-center">
+                  <span className="text-yellow-500 mr-2">■</span> 26500 Calahorra, La Rioja
+                </li>
+                <li className="flex items-center">
+                  <span className="text-yellow-500 mr-2">■</span> 941 13 XX XX
+                </li>
+                <li className="flex items-center">
+                  <span className="text-yellow-500 mr-2">■</span> info@ajmotorbikes.com
+                </li>
+              </ul>
             </div>
           </div>
           
@@ -587,7 +592,7 @@ export default function Home() {
               [ ESPECIALISTAS EN MOTOCICLETAS - TECNOLOGÍA AVANZADA ]
             </div>
             <p className="text-gray-400 font-mono text-sm">
-              &copy; 2024 <span className="text-yellow-500">AJ MOTORBIKES</span> - Todos los derechos reservados
+              &copy; 2025 <span className="text-yellow-500">AJ MOTORBIKES</span> - Todos los derechos reservados
             </p>
           </div>
         </div>
