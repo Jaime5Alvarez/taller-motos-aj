@@ -1282,9 +1282,23 @@ export default function Home() {
             <div className="text-yellow-500 font-mono text-sm tracking-widest mb-2">
                 ESPECIALISTAS EN MOTOCICLETAS - TECNOLOGÍA AVANZADA
             </div>
-            <p className="text-gray-400 font-mono text-sm">
+            <p className="text-gray-400 font-mono text-sm mb-3">
               &copy; 2025 <span className="text-yellow-500">AJ MOTORBIKES</span> - Todos los derechos reservados
             </p>
+            <div className="border-t border-yellow-500/20 pt-4">
+              <p className="text-gray-500 text-xs">
+                Página realizada por{' '}
+                <a 
+                  href="https://www.linkedin.com/in/jaime-alvarez-b0441b241/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-yellow-500 hover:text-yellow-400 transition-colors font-medium"
+                >
+                  Jaime Álvarez
+                </a>
+                {' '}• Software Developer
+              </p>
+            </div>
           </div>
         </div>
       </footer>
