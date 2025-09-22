@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { MapPin, Clock, Wrench, Shield, Star, Mail, Phone } from "lucide-react";
+import { MapPin, Clock, Wrench, Shield, Star, Mail, Phone, Bike, Car } from "lucide-react";
 import { Header } from "@/components/header";
 
 export default function Home() {
@@ -439,9 +439,7 @@ export default function Home() {
               <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-yellow-500 opacity-60"></div>
               <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60"></div>
               
-              <div className="h-12 w-12 bg-yellow-500 mb-4 flex items-center justify-center">
-                <span className="text-black font-bold text-xl">🏍️</span>
-              </div>
+              <Bike className="h-12 w-12 text-yellow-500 mb-4" />
               <h4 className="text-xl font-bold mb-3 text-white tracking-wide">MOTOCICLETAS</h4>
               <p className="text-gray-300 mb-4 font-medium">
                 <span className="text-yellow-500">Motos de todas las cilindradas</span>, revisadas y 
@@ -463,9 +461,7 @@ export default function Home() {
               <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-yellow-500 opacity-60"></div>
               <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60"></div>
               
-              <div className="h-12 w-12 bg-yellow-500 mb-4 flex items-center justify-center">
-                <span className="text-black font-bold text-xl">🚗</span>
-              </div>
+              <Car className="h-12 w-12 text-yellow-500 mb-4" />
               <h4 className="text-xl font-bold mb-3 text-white tracking-wide">AUTOMÓVILES</h4>
               <p className="text-gray-300 mb-4 font-medium">
                 <span className="text-yellow-500">Coches seleccionados</span> con 
