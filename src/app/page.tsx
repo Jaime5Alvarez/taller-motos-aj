@@ -828,7 +828,6 @@ export default function Home() {
               className="inline-block bg-yellow-500 hover:bg-yellow-400 text-black px-8 py-4 font-bold tracking-wider transition-all duration-300 transform hover:scale-105 relative overflow-hidden group"
             >
               <span className="relative z-10 flex items-center gap-2">
-                <Phone className="h-5 w-5" />
                 VER MÁS VEHÍCULOS
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-yellow-600 to-yellow-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
