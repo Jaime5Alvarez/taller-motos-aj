@@ -60,8 +60,10 @@ export function Header() {
           <nav className="hidden md:flex space-x-8">
             {[
               { id: "inicio", label: "Inicio" },
-              { id: "servicios", label: "Servicios" },
-              { id: "nosotros", label: "Nosotros" },
+              { id: "taller", label: "Taller" },
+              { id: "vehiculos", label: "Vehículos en venta" },
+              { id: "tasacion", label: "Tasación" },
+              { id: "recambios", label: "Recambios y accesorios" },
               { id: "contacto", label: "Contacto" }
             ].map((item) => (
               <button
@@ -113,9 +115,11 @@ export function Header() {
           <nav className="flex flex-col space-y-3 pt-4 border-t border-yellow-500/30">
             {[
               { id: "inicio", label: "INICIO", code: "[01]" },
-              { id: "servicios", label: "SERVICIOS", code: "[02]" },
-              { id: "nosotros", label: "NOSOTROS", code: "[03]" },
-              { id: "contacto", label: "CONTACTO", code: "[04]" }
+              { id: "taller", label: "TALLER", code: "[02]" },
+              { id: "vehiculos", label: "VEHÍCULOS EN VENTA", code: "[03]" },
+              { id: "tasacion", label: "TASACIÓN", code: "[04]" },
+              { id: "recambios", label: "RECAMBIOS Y ACCESORIOS", code: "[05]" },
+              { id: "contacto", label: "CONTACTO", code: "[06]" }
             ].map((item) => (
               <button
                 key={item.id}
