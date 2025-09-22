@@ -504,7 +504,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Tasación - Estilo Militar */}
+      {/* Tasación y Recambios - Estilo Militar */}
       <section id="tasacion" className="py-20 bg-gradient-to-b from-gray-900 via-black to-gray-900 relative overflow-hidden">
         {/* Elementos tácticos de fondo intensificados */}
         <div className="absolute top-0 left-0 w-full h-full opacity-8">
@@ -533,23 +533,24 @@ export default function Home() {
             <div className="w-24 h-0.5 bg-yellow-500 mx-auto mb-6"></div>
             
             <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-wider">
-              <span className="text-gray-300">TASACIÓN</span> <span className="text-yellow-500">DE VEHÍCULOS</span>
+              <span className="text-gray-300">TASACIÓN Y</span> <span className="text-yellow-500">RECAMBIOS</span>
             </h3>
             
             <div className="text-yellow-500 font-mono text-sm tracking-widest mb-4 opacity-80">
-              TE COMPRAMOS TU MOTO - VALORACIÓN PROFESIONAL
+              TE COMPRAMOS TU MOTO - RECAMBIOS Y EQUIPACIÓN
             </div>
             
             <p className="text-lg text-gray-300 max-w-2xl mx-auto font-medium">
-              <span className="text-yellow-500">Tasación gratuita y profesional</span> de tu motocicleta. 
-              <span className="text-white">Te ofrecemos el mejor precio del mercado</span> con pago inmediato
+              <span className="text-yellow-500">Tasación gratuita de tu moto</span> y 
+              <span className="text-white"> amplio catálogo de recambios y equipación</span> para todas las marcas
             </p>
             
             {/* Línea táctica inferior */}
             <div className="w-16 h-0.5 bg-yellow-500 mx-auto mt-6"></div>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Primera parte: Tasación */}
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
             <div className="relative">
               {/* Marco táctico para imagen */}
               <div className="absolute -top-4 -left-4 w-8 h-8 border-l-2 border-t-2 border-yellow-500 z-20"></div>
@@ -585,45 +586,37 @@ export default function Home() {
               <div className="w-20 h-0.5 bg-yellow-500 mb-6"></div>
               
               <h4 className="text-2xl font-bold text-white mb-6 tracking-wider">
-                <span className="text-gray-300">PROCESO DE</span> <span className="text-yellow-500">TASACIÓN</span>
+                <span className="text-gray-300">TE COMPRAMOS</span> <span className="text-yellow-500">TU MOTO</span>
               </h4>
               
-              <div className="space-y-6">
+              <div className="space-y-4 mb-8">
                 <div className="flex items-start space-x-4">
                   <div className="w-8 h-8 bg-yellow-500 flex items-center justify-center font-mono font-bold text-black">1</div>
                   <div>
-                    <h5 className="font-bold text-white mb-2">EVALUACIÓN INICIAL</h5>
-                    <p className="text-gray-300">Inspección visual y técnica completa de tu motocicleta</p>
+                    <h5 className="font-bold text-white mb-2">EVALUACIÓN GRATUITA</h5>
+                    <p className="text-gray-300">Inspección completa y valoración profesional</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start space-x-4">
                   <div className="w-8 h-8 bg-yellow-500 flex items-center justify-center font-mono font-bold text-black">2</div>
                   <div>
-                    <h5 className="font-bold text-white mb-2">VALORACIÓN DE MERCADO</h5>
-                    <p className="text-gray-300">Análisis del precio actual según modelo, año y estado</p>
+                    <h5 className="font-bold text-white mb-2">MEJOR PRECIO</h5>
+                    <p className="text-gray-300">Oferta competitiva según el mercado actual</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start space-x-4">
                   <div className="w-8 h-8 bg-yellow-500 flex items-center justify-center font-mono font-bold text-black">3</div>
                   <div>
-                    <h5 className="font-bold text-white mb-2">OFERTA INMEDIATA</h5>
-                    <p className="text-gray-300">Te hacemos una oferta justa y competitiva al instante</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-yellow-500 flex items-center justify-center font-mono font-bold text-black">4</div>
-                  <div>
                     <h5 className="font-bold text-white mb-2">PAGO INMEDIATO</h5>
-                    <p className="text-gray-300">Transferencia o efectivo en el momento de la aceptación</p>
+                    <p className="text-gray-300">Transferencia o efectivo al momento</p>
                   </div>
                 </div>
               </div>
               
               {/* Botón de contacto para tasación */}
-              <div className="mt-8">
+              <div className="mb-6">
                 <a 
                   href="https://wa.me/34941130000?text=Hola,%20me%20gustaría%20solicitar%20una%20tasación%20para%20mi%20moto" 
                   target="_blank" 
@@ -636,57 +629,26 @@ export default function Home() {
               </div>
               
               {/* Línea táctica inferior */}
-              <div className="w-16 h-0.5 bg-yellow-500 mt-8"></div>
+              <div className="w-16 h-0.5 bg-yellow-500"></div>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Recambios y accesorios - Estilo Militar */}
-      <section id="recambios" className="py-20 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
-        {/* Elementos tácticos de fondo intensificados */}
-        <div className="absolute top-0 left-0 w-full h-full opacity-8">
-          {/* Líneas principales */}
-          <div className="absolute top-16 right-1/4 w-24 h-0.5 bg-yellow-500 transform rotate-45"></div>
-          <div className="absolute bottom-24 left-1/3 w-20 h-0.5 bg-yellow-500 transform -rotate-30"></div>
-          <div className="absolute top-1/2 right-20 w-2 h-2 bg-yellow-500 rotate-45"></div>
-          
-          {/* Red táctica compleja */}
-          <div className="absolute top-12 left-1/4 w-22 h-0.5 bg-yellow-500 transform rotate-75"></div>
-          <div className="absolute bottom-16 right-1/3 w-18 h-0.5 bg-yellow-500 transform -rotate-50"></div>
-          <div className="absolute top-32 right-16 w-20 h-0.5 bg-yellow-500 transform rotate-25"></div>
-          
-          {/* Marcos de mira */}
-          <div className="absolute top-20 left-20 w-8 h-8 border-2 border-yellow-500 rotate-45">
-            <div className="absolute top-1/2 left-1/2 w-2 h-2 bg-yellow-500 transform -translate-x-1/2 -translate-y-1/2 rotate-45"></div>
+          {/* Separador táctico */}
+          <div className="flex items-center mb-20">
+            <div className="flex-1 h-0.5 bg-gradient-to-r from-transparent via-yellow-500/50 to-transparent"></div>
+            <div className="mx-4 w-2 h-2 bg-yellow-500 rotate-45"></div>
+            <div className="flex-1 h-0.5 bg-gradient-to-r from-transparent via-yellow-500/50 to-transparent"></div>
           </div>
-          <div className="absolute bottom-20 right-20 w-6 h-6 border border-yellow-500 transform rotate-30"></div>
-          
-          {/* Indicadores de sistema */}
-          <div className="absolute top-28 left-1/2 w-1 h-1 bg-yellow-500 animate-pulse"></div>
-          <div className="absolute bottom-32 right-1/2 w-1.5 h-1.5 bg-yellow-500 animate-pulse delay-500"></div>
-        </div>
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+          {/* Segunda parte: Recambios y accesorios */}
           <div className="text-center mb-16">
-            {/* Línea táctica superior */}
-            <div className="w-24 h-0.5 bg-yellow-500 mx-auto mb-6"></div>
-            
-            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-wider">
-              <span className="text-gray-300">RECAMBIOS Y</span> <span className="text-yellow-500">ACCESORIOS</span>
-            </h3>
-            
-            <div className="text-yellow-500 font-mono text-sm tracking-widest mb-4 opacity-80">
-              REPUESTOS, ACCESORIOS Y EQUIPACIÓN PARA MOTOS
-            </div>
-            
+            <h4 className="text-2xl font-bold text-white mb-4 tracking-wider">
+              <span className="text-gray-300">RECAMBIOS Y</span> <span className="text-yellow-500">EQUIPACIÓN</span>
+            </h4>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto font-medium">
               <span className="text-yellow-500">Amplio catálogo de recambios</span> originales y compatibles, 
               <span className="text-white"> accesorios y equipación</span> para todas las marcas de motocicletas
             </p>
-            
-            {/* Línea táctica inferior */}
-            <div className="w-16 h-0.5 bg-yellow-500 mx-auto mt-6"></div>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
