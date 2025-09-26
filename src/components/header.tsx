@@ -39,7 +39,7 @@ export function Header() {
           <div className="flex items-center space-x-3">
             <div className="relative">
               <Image
-                src="/aj-logo.jpeg"
+                src="/aj-logo.png"
                 alt="AJ Motorbikes Logo"
                 width={50}
                 height={50}

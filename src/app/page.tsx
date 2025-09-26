@@ -1501,7 +1501,7 @@ export default function Home() {
               <div className="flex items-center space-x-3 mb-4">
                 <div className="relative">
                   <Image
-                    src="/aj-logo.jpeg"
+                    src="/aj-logo.png"
                     alt="AJ Motorbikes Tactical Logo"
                     width={40}
                     height={40}
