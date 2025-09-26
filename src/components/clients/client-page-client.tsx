@@ -3,6 +3,7 @@
 import { Plus } from "lucide-react";
 import { ClientTable } from "@/components/clients/client-table";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 import type { Client } from "@/types/client";
 
 interface ClientPageClientProps {
@@ -10,14 +11,14 @@ interface ClientPageClientProps {
 }
 
 export function ClientPageClient({ clients }: ClientPageClientProps) {
+  const router = useRouter();
+
   const handleClientClick = (client: Client) => {
-    console.log("Clicked on client:", client.name);
-    // Aquí podrías navegar a una página de detalles o abrir un modal
+    router.push(`/back-office/private/clients/${client.id}/edit`);
   };
 
   const handleAddClient = () => {
-    console.log("Add new client");
-    // Aquí podrías navegar a un formulario de creación o abrir un modal
+    router.push("/back-office/private/clients/new");
   };
 
   return (
