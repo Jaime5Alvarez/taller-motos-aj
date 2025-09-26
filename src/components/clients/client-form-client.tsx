@@ -2,15 +2,23 @@
 
 import { useRouter } from "next/navigation";
 import { ClientForm } from "@/components/clients/client-form";
+import { PageBreadcrumbs } from "@/components/page-breadcrumbs";
+import { Card } from "@/components/ui/card";
 import type { ClientSchema } from "@/lib/validations/client";
 import type { Client, ClientVehicle } from "@/types/client";
+
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
 
 interface ClientFormClientProps {
   client: Client;
   vehicles: ClientVehicle[];
+  breadcrumbs: BreadcrumbItem[];
 }
 
-export function ClientFormClient({ client, vehicles }: ClientFormClientProps) {
+export function ClientFormClient({ client, vehicles, breadcrumbs }: ClientFormClientProps) {
   const router = useRouter();
 
   const handleSubmit = async (
@@ -76,10 +84,15 @@ export function ClientFormClient({ client, vehicles }: ClientFormClientProps) {
   }));
 
   return (
-    <ClientForm
-      client={client}
-      initialVehicles={initialVehicles}
-      onSubmit={handleSubmit}
-    />
+    <div className="space-y-6">
+      <PageBreadcrumbs items={breadcrumbs} />
+      <Card>
+        <ClientForm
+          client={client}
+          initialVehicles={initialVehicles}
+          onSubmit={handleSubmit}
+        />
+      </Card>
+    </div>
   );
 }

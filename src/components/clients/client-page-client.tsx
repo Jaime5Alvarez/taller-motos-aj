@@ -3,14 +3,24 @@
 import { Plus } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { ClientTable } from "@/components/clients/client-table";
+import { PageBreadcrumbs } from "@/components/page-breadcrumbs";
 import { Button } from "@/components/ui/button";
 import type { Client } from "@/types/client";
 
-interface ClientPageClientProps {
-  clients: Client[];
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
 }
 
-export function ClientPageClient({ clients }: ClientPageClientProps) {
+interface ClientPageClientProps {
+  clients: Client[];
+  breadcrumbs: BreadcrumbItem[];
+}
+
+export function ClientPageClient({
+  clients,
+  breadcrumbs,
+}: ClientPageClientProps) {
   const router = useRouter();
 
   const handleClientClick = (client: Client) => {
@@ -22,7 +32,8 @@ export function ClientPageClient({ clients }: ClientPageClientProps) {
   };
 
   return (
-    <div className="container mx-auto py-6 px-4">
+    <div className="space-y-6">
+      <PageBreadcrumbs items={breadcrumbs} />
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">

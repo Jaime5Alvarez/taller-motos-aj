@@ -1,20 +1,29 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { PageBreadcrumbs } from "@/components/page-breadcrumbs";
+import { Card } from "@/components/ui/card";
 import type { VehicleSchema } from "@/lib/validations/vehicle";
 import type { VehicleWithDetails } from "@/types/vehicle";
 import { VehicleForm } from "./vehicle-form";
+
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
 
 interface VehicleFormClientProps {
   vehicle: VehicleWithDetails;
   features: string[];
   images: string[];
+  breadcrumbs: BreadcrumbItem[];
 }
 
 export function VehicleFormClient({
   vehicle,
   features,
   images,
+  breadcrumbs,
 }: VehicleFormClientProps) {
   const router = useRouter();
 
@@ -52,11 +61,16 @@ export function VehicleFormClient({
   };
 
   return (
-    <VehicleForm
-      vehicle={vehicle}
-      onSubmit={handleSubmit}
-      initialFeatures={features}
-      initialImages={images}
-    />
+    <div className="space-y-6">
+      <PageBreadcrumbs items={breadcrumbs} />
+      <Card>
+        <VehicleForm
+          vehicle={vehicle}
+          onSubmit={handleSubmit}
+          initialFeatures={features}
+          initialImages={images}
+        />
+      </Card>
+    </div>
   );
 }

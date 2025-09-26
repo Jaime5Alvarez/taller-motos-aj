@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 import { ClientFormClient } from "@/components/clients/client-form-client";
-import { Card } from "@/components/ui/card";
 import { ClientService } from "@/modules/clients/application/services/client-service";
 
 interface EditClientPageProps {
@@ -30,9 +29,15 @@ export default async function EditClientPage({ params }: EditClientPageProps) {
 
   return (
     <div className="container mx-auto py-6 px-4">
-      <Card>
-        <ClientFormClient client={data.client} vehicles={data.vehicles} />
-      </Card>
+      <ClientFormClient
+        client={data.client}
+        vehicles={data.vehicles}
+        breadcrumbs={[
+          { label: "Dashboard", href: "/back-office/private" },
+          { label: "Clientes", href: "/back-office/private/clients" },
+          { label: "Editar Cliente" },
+        ]}
+      />
     </div>
   );
 }

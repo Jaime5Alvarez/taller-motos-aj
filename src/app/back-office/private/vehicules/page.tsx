@@ -14,5 +14,13 @@ async function getVehicles() {
 export default async function VehiculesPage() {
   const vehicles = await getVehicles();
 
-  return <VehiclePageClient vehicles={vehicles} />;
+  return (
+    <VehiclePageClient
+      vehicles={vehicles}
+      breadcrumbs={[
+        { label: "Dashboard", href: "/back-office/private" },
+        { label: "Vehículos en Venta" },
+      ]}
+    />
+  );
 }

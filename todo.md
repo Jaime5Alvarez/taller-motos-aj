@@ -1,1 +1,3 @@
 - [] Poner checkbox de vendido en coches
+- [] Autenticar api routes
+- [] Dashboard

@@ -14,5 +14,13 @@ async function getClients() {
 export default async function ClientsPage() {
   const clients = await getClients();
 
-  return <ClientPageClient clients={clients} />;
+  return (
+    <ClientPageClient
+      clients={clients}
+      breadcrumbs={[
+        { label: "Dashboard", href: "/back-office/private" },
+        { label: "Clientes" },
+      ]}
+    />
+  );
 }
