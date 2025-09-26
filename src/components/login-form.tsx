@@ -16,6 +16,7 @@ import { Label } from "@/components/ui/label";
 import { authClient } from "@/lib/auth-client";
 import { cn } from "@/lib/utils";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
+import { Loader2 } from "lucide-react";
 
 export function LoginForm({
   className,
@@ -38,10 +39,12 @@ export function LoginForm({
       const response = await authClient.signIn.email({
         email,
         password,
+        callbackURL: "/back-office",
       });
       if (response.error) {
         setShowError(true);
       }
+
     } catch (_error) {
       setShowError(true);
     } finally {
@@ -90,7 +93,7 @@ export function LoginForm({
               </div>
               <div className="flex flex-col gap-3">
                 <Button type="submit" className="w-full" disabled={isLoading}>
-                  Login
+                  Login {isLoading && <Loader2 className="w-4 h-4 ml-2 animate-spin" />}
                 </Button>
               </div>
             </div>
