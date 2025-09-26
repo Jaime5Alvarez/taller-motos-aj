@@ -3,7 +3,6 @@
 import {
   BookOpen,
   Bot,
-  Command,
   Frame,
   LifeBuoy,
   Map as MapIcon,
@@ -12,8 +11,8 @@ import {
   Settings2,
   SquareTerminal,
 } from "lucide-react";
+import Image from "next/image";
 import type * as React from "react";
-
 import { NavMain } from "@/components/nav-main";
 import { NavProjects } from "@/components/nav-projects";
 import { NavSecondary } from "@/components/nav-secondary";
@@ -160,12 +159,19 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
               <a href="/back-office/private">
-                <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                  <Command className="size-4" />
+                <div className=" text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
+                  <Image
+                    src="/aj-logo.webp"
+                    alt="AJ Taller de Motos"
+                    width={32}
+                    height={32}
+                  />
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-medium">Acme Inc</span>
-                  <span className="truncate text-xs">Enterprise</span>
+                  <span className="truncate font-medium">
+                    AJ Taller de Motos
+                  </span>
+                  <span className="truncate text-xs">Back Office</span>
                 </div>
               </a>
             </SidebarMenuButton>
