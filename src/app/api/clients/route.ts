@@ -12,7 +12,7 @@ export async function POST(request: Request) {
     console.error("Error in POST /api/clients:", error);
     return NextResponse.json(
       { error: "Failed to create client" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

@@ -1,9 +1,9 @@
 "use client";
 
 import { Plus } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { ClientTable } from "@/components/clients/client-table";
 import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
 import type { Client } from "@/types/client";
 
 interface ClientPageClientProps {

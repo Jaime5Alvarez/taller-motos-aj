@@ -1,5 +1,25 @@
 "use client";
 
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  AlertCircle,
+  Car,
+  Mail,
+  Phone,
+  Plus,
+  Trash2,
+  User,
+} from "lucide-react";
+import { useState } from "react";
+import { useFieldArray, useForm } from "react-hook-form";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
+import {
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -8,24 +28,23 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { AlertCircle, Mail, Phone, User } from "lucide-react";
-import { useState } from "react";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { ClientSchema, zClientSchema } from "@/lib/validations/client";
-import { useForm } from "react-hook-form";
-import { CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { type ClientSchema, zClientSchema } from "@/lib/validations/client";
 import type { Client } from "@/types/client";
 
 interface ClientFormProps {
   client?: Client; // Si existe, estamos editando; si no, estamos creando
   onSubmit: (data: ClientSchema) => Promise<{ error?: string }>;
+  initialVehicles?: { carName: string; licensePlate: string }[]; // Vehículos iniciales
   isLoading?: boolean;
 }
 
-export function ClientForm({ client, onSubmit, isLoading = false }: ClientFormProps) {
+export function ClientForm({
+  client,
+  onSubmit,
+  initialVehicles = [],
+  isLoading = false,
+}: ClientFormProps) {
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -38,8 +57,18 @@ export function ClientForm({ client, onSubmit, isLoading = false }: ClientFormPr
       name: client?.name ?? "",
       email: client?.email ?? "",
       phone: client?.phone ?? "",
+      vehicles: initialVehicles,
     },
   });
+
+  const { fields, append, remove } = useFieldArray({
+    control: form.control,
+    name: "vehicles",
+  });
+
+  const addVehicle = () => {
+    append({ carName: "", licensePlate: "" });
+  };
 
   const onSubmitForm = async (data: ClientSchema) => {
     setIsSubmitting(true);
@@ -56,7 +85,9 @@ export function ClientForm({ client, onSubmit, isLoading = false }: ClientFormPr
       // Si no hay error, el componente padre manejará la navegación
     } catch (error) {
       console.error("Error submitting client form:", error);
-      setErrorMessage("Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo.");
+      setErrorMessage(
+        "Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo.",
+      );
       setShowError(true);
     } finally {
       setIsSubmitting(false);
@@ -66,9 +97,7 @@ export function ClientForm({ client, onSubmit, isLoading = false }: ClientFormPr
   return (
     <>
       <CardHeader>
-        <CardTitle>
-          {isEditing ? "Editar Cliente" : "Nuevo Cliente"}
-        </CardTitle>
+        <CardTitle>{isEditing ? "Editar Cliente" : "Nuevo Cliente"}</CardTitle>
       </CardHeader>
 
       <CardContent className="space-y-6">
@@ -87,10 +116,10 @@ export function ClientForm({ client, onSubmit, isLoading = false }: ClientFormPr
                     <FormControl>
                       <div className="relative">
                         <User className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                        <Input 
-                          placeholder="Juan Pérez García" 
+                        <Input
+                          placeholder="Juan Pérez García"
                           className="pl-10"
-                          {...field} 
+                          {...field}
                         />
                       </div>
                     </FormControl>
@@ -109,11 +138,11 @@ export function ClientForm({ client, onSubmit, isLoading = false }: ClientFormPr
                       <FormControl>
                         <div className="relative">
                           <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                          <Input 
+                          <Input
                             type="email"
-                            placeholder="juan.perez@ejemplo.com" 
+                            placeholder="juan.perez@ejemplo.com"
                             className="pl-10"
-                            {...field} 
+                            {...field}
                           />
                         </div>
                       </FormControl>
@@ -131,11 +160,11 @@ export function ClientForm({ client, onSubmit, isLoading = false }: ClientFormPr
                       <FormControl>
                         <div className="relative">
                           <Phone className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                          <Input 
+                          <Input
                             type="tel"
-                            placeholder="+34 612 345 678" 
+                            placeholder="+34 612 345 678"
                             className="pl-10"
-                            {...field} 
+                            {...field}
                           />
                         </div>
                       </FormControl>
@@ -146,15 +175,87 @@ export function ClientForm({ client, onSubmit, isLoading = false }: ClientFormPr
               </div>
             </div>
 
+            {/* Sección de vehículos */}
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <h3 className="text-lg font-medium flex items-center gap-2">
+                  <Car className="h-5 w-5" />
+                  Vehículos (opcional)
+                </h3>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={addVehicle}
+                >
+                  <Plus className="h-4 w-4 mr-2" />
+                  Agregar Vehículo
+                </Button>
+              </div>
+
+              {fields.map((field, index) => (
+                <div
+                  key={field.id}
+                  className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end p-4 border rounded-lg"
+                >
+                  <FormField
+                    control={form.control}
+                    name={`vehicles.${index}.carName`}
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Nombre del Vehículo</FormLabel>
+                        <FormControl>
+                          <Input placeholder="Toyota Corolla 2020" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name={`vehicles.${index}.licensePlate`}
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Matrícula</FormLabel>
+                        <FormControl>
+                          <Input placeholder="1234-ABC" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => remove(index)}
+                    className="text-red-600 hover:text-red-800 h-8 w-8 shrink-0"
+                  >
+                    <Trash2 className="h-4 w-4" />
+                  </Button>
+                </div>
+              ))}
+
+              {fields.length === 0 && (
+                <div className="text-center py-6 text-muted-foreground border-2 border-dashed rounded-lg">
+                  <Car className="h-12 w-12 mx-auto mb-2 opacity-50" />
+                  <p>No hay vehículos agregados</p>
+                  <p className="text-sm">Los vehículos son opcionales</p>
+                </div>
+              )}
+            </div>
+
             <div className="flex justify-end pt-4">
-              <Button 
-                type="submit" 
-                disabled={isSubmitting || isLoading}
-              >
-                {isSubmitting 
-                  ? (isEditing ? "Actualizando..." : "Creando...") 
-                  : (isEditing ? "Actualizar Cliente" : "Crear Cliente")
-                }
+              <Button type="submit" disabled={isSubmitting || isLoading}>
+                {isSubmitting
+                  ? isEditing
+                    ? "Actualizando..."
+                    : "Creando..."
+                  : isEditing
+                    ? "Actualizar Cliente"
+                    : "Crear Cliente"}
               </Button>
             </div>
           </form>

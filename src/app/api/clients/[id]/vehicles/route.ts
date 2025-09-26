@@ -3,22 +3,19 @@ import { ClientService } from "@/modules/clients/application/services/client-ser
 
 const clientService = new ClientService();
 
-export async function PUT(
+export async function POST(
   request: Request,
   { params }: { params: Promise<{ id: string }> },
 ) {
   try {
     const { id } = await params;
     const body = await request.json();
-    const client = await clientService.updateClient(id, body);
-    if (!client) {
-      return NextResponse.json({ error: "Client not found" }, { status: 404 });
-    }
-    return NextResponse.json(client);
+    const vehicle = await clientService.addClientVehicle(id, body);
+    return NextResponse.json(vehicle, { status: 201 });
   } catch (error) {
-    console.error("Error in PUT /api/clients/[id]:", error);
+    console.error("Error in POST /api/clients/[id]/vehicles:", error);
     return NextResponse.json(
-      { error: "Failed to update client" },
+      { error: "Failed to add vehicle" },
       { status: 500 },
     );
   }

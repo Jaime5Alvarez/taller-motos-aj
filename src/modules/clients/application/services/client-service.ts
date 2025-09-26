@@ -4,7 +4,12 @@ import {
   clients,
   clientVehicle,
 } from "@/modules/shared/database/infrastructure/drizzle/schema";
-import type { Client, ClientWithVehicles } from "@/types/client";
+import type {
+  Client,
+  ClientVehicle,
+  ClientVehicleInput,
+  ClientWithVehicles,
+} from "@/types/client";
 
 export class ClientService {
   private db = CreateDBClient();
@@ -105,6 +110,77 @@ export class ClientService {
     } catch (error) {
       console.error("Error deleting client:", error);
       throw new Error("Failed to delete client");
+    }
+  }
+
+  // Métodos para gestionar vehículos de clientes
+  async getClientVehicles(clientId: string): Promise<ClientVehicle[]> {
+    try {
+      const result = await this.db
+        .select()
+        .from(clientVehicle)
+        .where(eq(clientVehicle.clientId, clientId));
+
+      return result;
+    } catch (error) {
+      console.error("Error fetching client vehicles:", error);
+      throw new Error("Failed to fetch client vehicles");
+    }
+  }
+
+  async addClientVehicle(
+    clientId: string,
+    vehicleData: ClientVehicleInput,
+  ): Promise<ClientVehicle> {
+    try {
+      const newVehicle = {
+        id: crypto.randomUUID(),
+        clientId,
+        ...vehicleData,
+        createdAt: new Date(),
+      };
+
+      const result = await this.db
+        .insert(clientVehicle)
+        .values(newVehicle)
+        .returning();
+
+      return result[0];
+    } catch (error) {
+      console.error("Error adding client vehicle:", error);
+      throw new Error("Failed to add client vehicle");
+    }
+  }
+
+  async updateClientVehicle(
+    vehicleId: string,
+    vehicleData: Partial<ClientVehicleInput>,
+  ): Promise<ClientVehicle | null> {
+    try {
+      const result = await this.db
+        .update(clientVehicle)
+        .set(vehicleData)
+        .where(eq(clientVehicle.id, vehicleId))
+        .returning();
+
+      return result[0] || null;
+    } catch (error) {
+      console.error("Error updating client vehicle:", error);
+      throw new Error("Failed to update client vehicle");
+    }
+  }
+
+  async deleteClientVehicle(vehicleId: string): Promise<boolean> {
+    try {
+      const result = await this.db
+        .delete(clientVehicle)
+        .where(eq(clientVehicle.id, vehicleId))
+        .returning();
+
+      return result.length > 0;
+    } catch (error) {
+      console.error("Error deleting client vehicle:", error);
+      throw new Error("Failed to delete client vehicle");
     }
   }
 }

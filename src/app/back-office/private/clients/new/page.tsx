@@ -1,5 +1,5 @@
-import { Card } from "@/components/ui/card";
 import { NewClientFormClient } from "@/components/clients/new-client-form-client";
+import { Card } from "@/components/ui/card";
 
 export default function NewClientPage() {
   return (

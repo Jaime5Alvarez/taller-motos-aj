@@ -17,3 +17,9 @@ export interface ClientVehicle {
 export interface ClientWithVehicles extends Client {
   vehicles?: ClientVehicle[];
 }
+
+// Para el formulario de vehículo del cliente
+export interface ClientVehicleInput {
+  carName: string;
+  licensePlate: string;
+}
