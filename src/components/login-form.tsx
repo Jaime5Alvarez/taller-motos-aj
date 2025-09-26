@@ -56,7 +56,7 @@ export function LoginForm({
         <CardHeader className="text-center">
           <div className="flex justify-center mb-4">
             <Image
-              src="/aj-logo.png"
+              src="/aj-logo.webp"
               alt="AJ Taller de Motos"
               width={120}
               height={120}
