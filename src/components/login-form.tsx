@@ -15,6 +15,14 @@ export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
+    console.log(email, password);
+  };
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
