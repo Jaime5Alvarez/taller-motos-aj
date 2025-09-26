@@ -3,8 +3,8 @@
 import { Plus } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { ClientTable } from "@/components/clients/client-table";
-import { PageBreadcrumbs } from "@/components/page-breadcrumbs";
 import { Button } from "@/components/ui/button";
+import { useSetHeaderBreadcrumbs } from "@/hooks/use-set-header-breadcrumbs";
 import type { Client } from "@/types/client";
 
 interface BreadcrumbItem {
@@ -23,6 +23,8 @@ export function ClientPageClient({
 }: ClientPageClientProps) {
   const router = useRouter();
 
+  useSetHeaderBreadcrumbs(breadcrumbs);
+
   const handleClientClick = (client: Client) => {
     router.push(`/back-office/private/clients/${client.id}/edit`);
   };
@@ -32,8 +34,7 @@ export function ClientPageClient({
   };
 
   return (
-    <div className="space-y-6">
-      <PageBreadcrumbs items={breadcrumbs} />
+    <div>
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">

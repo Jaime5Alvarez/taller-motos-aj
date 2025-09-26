@@ -2,9 +2,9 @@
 
 import { Plus } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { PageBreadcrumbs } from "@/components/page-breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { VehicleTable } from "@/components/vehicles/vehicle-table";
+import { useSetHeaderBreadcrumbs } from "@/hooks/use-set-header-breadcrumbs";
 import type { Vehicle } from "@/types/vehicle";
 
 interface BreadcrumbItem {
@@ -23,6 +23,8 @@ export function VehiclePageClient({
 }: VehiclePageClientProps) {
   const router = useRouter();
 
+  useSetHeaderBreadcrumbs(breadcrumbs);
+
   const handleVehicleClick = (vehicle: Vehicle) => {
     router.push(`/back-office/private/vehicules/${vehicle.id}/edit`);
   };
@@ -32,8 +34,7 @@ export function VehiclePageClient({
   };
 
   return (
-    <div className="space-y-6">
-      <PageBreadcrumbs items={breadcrumbs} />
+    <div>
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">

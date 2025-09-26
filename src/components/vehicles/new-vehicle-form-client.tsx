@@ -1,8 +1,8 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { PageBreadcrumbs } from "@/components/page-breadcrumbs";
 import { Card } from "@/components/ui/card";
+import { useSetHeaderBreadcrumbs } from "@/hooks/use-set-header-breadcrumbs";
 import type { VehicleSchema } from "@/lib/validations/vehicle";
 import { VehicleForm } from "./vehicle-form";
 
@@ -19,6 +19,8 @@ export function NewVehicleFormClient({
   breadcrumbs,
 }: NewVehicleFormClientProps) {
   const router = useRouter();
+
+  useSetHeaderBreadcrumbs(breadcrumbs);
 
   const handleSubmit = async (
     data: VehicleSchema,
@@ -54,11 +56,8 @@ export function NewVehicleFormClient({
   };
 
   return (
-    <div className="space-y-6">
-      <PageBreadcrumbs items={breadcrumbs} />
-      <Card>
-        <VehicleForm onSubmit={handleSubmit} />
-      </Card>
-    </div>
+    <Card>
+      <VehicleForm onSubmit={handleSubmit} />
+    </Card>
   );
 }

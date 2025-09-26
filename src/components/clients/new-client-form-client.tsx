@@ -2,8 +2,8 @@
 
 import { useRouter } from "next/navigation";
 import { ClientForm } from "@/components/clients/client-form";
-import { PageBreadcrumbs } from "@/components/page-breadcrumbs";
 import { Card } from "@/components/ui/card";
+import { useSetHeaderBreadcrumbs } from "@/hooks/use-set-header-breadcrumbs";
 import type { ClientSchema } from "@/lib/validations/client";
 
 interface BreadcrumbItem {
@@ -17,6 +17,8 @@ interface NewClientFormClientProps {
 
 export function NewClientFormClient({ breadcrumbs }: NewClientFormClientProps) {
   const router = useRouter();
+
+  useSetHeaderBreadcrumbs(breadcrumbs);
 
   const handleSubmit = async (
     data: ClientSchema,
@@ -70,11 +72,8 @@ export function NewClientFormClient({ breadcrumbs }: NewClientFormClientProps) {
   };
 
   return (
-    <div className="space-y-6">
-      <PageBreadcrumbs items={breadcrumbs} />
-      <Card>
-        <ClientForm onSubmit={handleSubmit} />
-      </Card>
-    </div>
+    <Card>
+      <ClientForm onSubmit={handleSubmit} />
+    </Card>
   );
 }
