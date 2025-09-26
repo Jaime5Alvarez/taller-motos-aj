@@ -1,3 +1,3 @@
 export default function BackOfficePage() {
-    return <div>BackOfficePage</div>;
+  return <div>BackOfficePage</div>;
 }

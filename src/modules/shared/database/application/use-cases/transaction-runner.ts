@@ -1,5 +1,5 @@
-import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
-import * as schema from "@/modules/shared/database/infrastructure/drizzle/schema";
+import type { PostgresJsDatabase } from "drizzle-orm/postgres-js";
+import type * as schema from "@/modules/shared/database/infrastructure/drizzle/schema";
 
 export interface ITransactionRunner {
   run<T>(

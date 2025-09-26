@@ -15,7 +15,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "AJ Motorbikes - Taller de Motos en Calahorra",
-  description: "Taller especializado en mantenimiento y reparación de motocicletas en Calahorra, La Rioja. Más de 15 años de experiencia.",
+  description:
+    "Taller especializado en mantenimiento y reparación de motocicletas en Calahorra, La Rioja. Más de 15 años de experiencia.",
 };
 
 export default function RootLayout({
@@ -24,13 +25,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className="dark" style={{ colorScheme: 'dark' }}>
+    <html lang="es" className="dark" style={{ colorScheme: "dark" }}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );

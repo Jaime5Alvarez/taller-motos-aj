@@ -1,7 +1,7 @@
-import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
-import { DrizzleClient } from "../infrastructure/drizzle/drizzle-client";
-import * as schema from "@/modules/shared/database/infrastructure/drizzle/schema";
+import type { PostgresJsDatabase } from "drizzle-orm/postgres-js";
+import type * as schema from "@/modules/shared/database/infrastructure/drizzle/schema";
+import { getSession } from "../infrastructure/drizzle/drizzle-client";
 
 export function CreateDBClient(): PostgresJsDatabase<typeof schema> {
-  return DrizzleClient.getSession();
+  return getSession();
 }

@@ -1,35 +1,35 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Image from "next/image"
-import { Phone, Menu, X } from "lucide-react"
+import { Menu, Phone, X } from "lucide-react";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export function Header() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
-    }
+      setIsScrolled(window.scrollY > 20);
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
+    const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-      setIsMobileMenuOpen(false)
+      element.scrollIntoView({ behavior: "smooth" });
+      setIsMobileMenuOpen(false);
     }
-  }
+  };
 
   return (
-    <header 
+    <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? "bg-gradient-dark-card/90 backdrop-blur-md shadow-dark-lg border-b border-glow" 
+        isScrolled
+          ? "bg-gradient-dark-card/90 backdrop-blur-md shadow-dark-lg border-b border-glow"
           : "bg-gradient-hero backdrop-blur-sm shadow-sm border-b border-border/50"
       }`}
     >
@@ -48,11 +48,16 @@ export function Header() {
               <div className="absolute inset-0 rounded-full bg-primary/10 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-primary hover:text-primary/80 transition-colors cursor-pointer"
-                  onClick={() => scrollToSection("inicio")}>
+              <button
+                type="button"
+                className="text-2xl font-bold text-primary hover:text-primary/80 transition-colors cursor-pointer text-left"
+                onClick={() => scrollToSection("inicio")}
+              >
                 AJ Motorbikes
-              </h1>
-              <p className="text-sm text-muted-foreground">Taller de Motos en Calahorra</p>
+              </button>
+              <p className="text-sm text-muted-foreground">
+                Taller de Motos en Calahorra
+              </p>
             </div>
           </div>
 
@@ -63,9 +68,10 @@ export function Header() {
               { id: "taller", label: "Taller" },
               { id: "vehiculos", label: "Vehículos en venta" },
               { id: "tasacion", label: "Tasación y recambios" },
-              { id: "contacto", label: "Contacto" }
+              { id: "contacto", label: "Contacto" },
             ].map((item) => (
               <button
+                type="button"
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
                 className="text-foreground hover:text-primary transition-all duration-300 relative group font-medium"
@@ -89,6 +95,7 @@ export function Header() {
 
             {/* Botón menú móvil táctico */}
             <button
+              type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="md:hidden p-2 bg-black/60 hover:bg-yellow-500/20 transition-all duration-300 border-2 border-yellow-500/30 hover:border-yellow-500 relative"
             >
@@ -97,7 +104,7 @@ export function Header() {
               <div className="absolute top-0 right-0 w-2 h-2 border-r border-t border-yellow-500"></div>
               <div className="absolute bottom-0 left-0 w-2 h-2 border-l border-b border-yellow-500"></div>
               <div className="absolute bottom-0 right-0 w-2 h-2 border-r border-b border-yellow-500"></div>
-              
+
               {isMobileMenuOpen ? (
                 <X className="h-5 w-5 text-yellow-500 relative z-10" />
               ) : (
@@ -108,35 +115,42 @@ export function Header() {
         </div>
 
         {/* Menú móvil táctico */}
-        <div className={`md:hidden transition-all duration-300 overflow-hidden ${
-          isMobileMenuOpen ? " pb-8" : "max-h-0"
-        }`}>
+        <div
+          className={`md:hidden transition-all duration-300 overflow-hidden ${
+            isMobileMenuOpen ? " pb-8" : "max-h-0"
+          }`}
+        >
           <nav className="flex flex-col space-y-3 pt-4 border-t border-yellow-500/30">
             {[
               { id: "inicio", label: "INICIO", code: "[01]" },
               { id: "taller", label: "TALLER", code: "[02]" },
               { id: "vehiculos", label: "VEHÍCULOS EN VENTA", code: "[03]" },
               { id: "tasacion", label: "TASACIÓN Y RECAMBIOS", code: "[04]" },
-              { id: "contacto", label: "CONTACTO", code: "[05]" }
+              { id: "contacto", label: "CONTACTO", code: "[05]" },
             ].map((item) => (
               <button
+                type="button"
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
                 className="text-left text-gray-300 hover:text-yellow-500 transition-colors py-2 px-4 hover:bg-yellow-500/10 font-bold tracking-wider border-l-2 border-transparent hover:border-yellow-500"
               >
                 <div className="flex items-center space-x-2">
-                  <span className="text-yellow-500 font-mono text-xs">{item.code}</span>
+                  <span className="text-yellow-500 font-mono text-xs">
+                    {item.code}
+                  </span>
                   <span>{item.label}</span>
                 </div>
               </button>
             ))}
             <div className="flex items-center space-x-2 text-sm py-2 px-4 bg-yellow-500/10 border border-yellow-500/30 mx-4 mt-4">
               <Phone className="h-4 w-4 text-yellow-500" />
-              <span className="text-white font-mono font-bold">941 13 XX XX</span>
+              <span className="text-white font-mono font-bold">
+                941 13 XX XX
+              </span>
             </div>
           </nav>
         </div>
       </div>
     </header>
-  )
+  );
 }
