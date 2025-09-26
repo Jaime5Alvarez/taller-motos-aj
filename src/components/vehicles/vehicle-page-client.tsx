@@ -1,6 +1,7 @@
 "use client";
 
 import { Plus } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { VehicleTable } from "@/components/vehicles/vehicle-table";
 import type { Vehicle } from "@/types/vehicle";
@@ -10,14 +11,14 @@ interface VehiclePageClientProps {
 }
 
 export function VehiclePageClient({ vehicles }: VehiclePageClientProps) {
+  const router = useRouter();
+
   const handleVehicleClick = (vehicle: Vehicle) => {
-    console.log("Clicked on vehicle:", vehicle.name);
-    // Aquí podrías navegar a una página de detalles o abrir un modal
+    router.push(`/back-office/private/vehicules/${vehicle.id}/edit`);
   };
 
   const handleAddVehicle = () => {
-    console.log("Add new vehicle");
-    // Aquí podrías navegar a un formulario de creación o abrir un modal
+    router.push("/back-office/private/vehicules/new");
   };
 
   return (

@@ -1,7 +1,7 @@
 export interface Vehicle {
   id: string;
   name: string;
-  description: string | null;
+  description: string;
   price: number;
   mileage: number;
   year: number;
@@ -24,6 +24,6 @@ export interface VehicleImage {
 }
 
 export interface VehicleWithDetails extends Vehicle {
-  features?: VehicleFeature[];
-  images?: VehicleImage[];
+  features: VehicleFeature[];
+  images: VehicleImage[];
 }

@@ -69,7 +69,7 @@ export const verification = pgTable("verification", {
 export const vehicles = pgTable("vehicles", {
   id: text("id").primaryKey(),
   name: text("name").notNull(),
-  description: text("description"),
+  description: text("description").notNull(),
   price: integer("price").notNull(),
   mileage: integer("mileage").notNull(),
   year: integer("year").notNull(),
