@@ -1,27 +1,52 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { authClient } from "@/lib/auth-client";
 import { cn } from "@/lib/utils";
+import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
+  const [isLoading, setIsLoading] = useState(false);
+  const [showError, setShowError] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
-    const email = formData.get("email") as string;
-    const password = formData.get("password") as string;
-    console.log(email, password);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    try {
+      setIsLoading(true);
+      setShowError(false);
+      e.preventDefault();
+      const formData = new FormData(e.target as HTMLFormElement);
+      console.log(e);
+      const email = formData.get("email") as string;
+      const password = formData.get("password") as string;
+      console.log(email, password);
+
+      const response = await authClient.signIn.email({
+        email,
+        password,
+      });
+      if (response.error) {
+        setShowError(true);
+      }
+    } catch (_error) {
+      setShowError(true);
+    } finally {
+      setIsLoading(false);
+    }
   };
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
@@ -42,7 +67,7 @@ export function LoginForm({
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="flex flex-col gap-6">
               <div className="grid gap-3">
                 <Label htmlFor="email">Email</Label>
@@ -62,13 +87,23 @@ export function LoginForm({
                 />
               </div>
               <div className="flex flex-col gap-3">
-                <Button type="submit" className="w-full">
+                <Button type="submit" className="w-full" disabled={isLoading}>
                   Login
                 </Button>
               </div>
             </div>
           </form>
         </CardContent>
+        <CardFooter>
+          {showError && (
+            <Alert variant="destructive">
+              <AlertTitle>Error</AlertTitle>
+              <AlertDescription>
+                Las credenciales son incorrectas
+              </AlertDescription>
+            </Alert>
+          )}
+        </CardFooter>
       </Card>
     </div>
   );
