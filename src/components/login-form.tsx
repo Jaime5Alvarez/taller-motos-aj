@@ -73,6 +73,7 @@ export function LoginForm({
                 <Label htmlFor="email">Email</Label>
                 <Input
                   id="email"
+                  name="email"
                   type="email"
                   placeholder="m@example.com"
                   required
@@ -81,6 +82,7 @@ export function LoginForm({
               <div className="grid gap-3">
                 <Input
                   id="password"
+                  name="password"
                   type="password"
                   required
                   placeholder="Contraseña"
