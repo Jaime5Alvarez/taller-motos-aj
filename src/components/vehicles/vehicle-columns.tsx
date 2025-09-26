@@ -90,11 +90,7 @@ export const vehicleColumns: ColumnDef<Vehicle>[] = [
     },
     cell: ({ row }) => {
       const price = row.getValue("price") as number;
-      return (
-        <div>
-          €{price.toLocaleString()}
-        </div>
-      );
+      return <div>€{price.toLocaleString()}</div>;
     },
   },
   {
