@@ -7,16 +7,13 @@ const { values } = parseArgs({
     options: {
         name: {
             type: 'string',
-            short: 'n'
         },
         email: {
             type: 'string',
-            short: 'e'
         },
         password: {
             type: 'string',
-            short: 'p'
-        }
+        },
     },
     strict: true,
     allowPositionals: true,
