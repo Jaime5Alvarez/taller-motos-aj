@@ -39,7 +39,7 @@ export function LoginForm({
       const response = await authClient.signIn.email({
         email,
         password,
-        callbackURL: "/back-office",
+        callbackURL: "/back-office/private",
       });
       if (response.error) {
         setShowError(true);
