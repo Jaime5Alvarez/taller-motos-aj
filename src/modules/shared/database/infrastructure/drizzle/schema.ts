@@ -1,4 +1,10 @@
-import { boolean, pgTable, text, timestamp } from "drizzle-orm/pg-core";
+import {
+  boolean,
+  integer,
+  pgTable,
+  text,
+  timestamp,
+} from "drizzle-orm/pg-core";
 
 export const user = pgTable("user", {
   id: text("id").primaryKey(),
@@ -58,4 +64,33 @@ export const verification = pgTable("verification", {
     .defaultNow()
     .$onUpdate(() => /* @__PURE__ */ new Date())
     .notNull(),
+});
+
+export const vehicles = pgTable("vehicles", {
+  id: text("id").primaryKey(),
+  name: text("name").notNull(),
+  description: text("description"),
+  price: integer("price").notNull(),
+  mileage: integer("mileage").notNull(),
+  year: integer("year").notNull(),
+  fuel: text("fuel").notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export const vehiculeFeatures = pgTable("vehicule_features", {
+  id: text("id").primaryKey(),
+  vehiculeId: text("vehicule_id")
+    .notNull()
+    .references(() => vehicles.id, { onDelete: "cascade" }),
+  feature: text("feature").notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export const vehiculeImages = pgTable("vehicule_images", {
+  id: text("id").primaryKey(),
+  vehiculeId: text("vehicule_id")
+    .notNull()
+    .references(() => vehicles.id, { onDelete: "cascade" }),
+  imageUrl: text("image_url").notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
 });
