@@ -1,3 +1,4 @@
 - [] Poner checkbox de vendido en coches
 - [] Autenticar api routes
 - [] Dashboard
+- [] Validar imagenes en el front
