@@ -94,3 +94,29 @@ export const vehiculeImages = pgTable("vehicule_images", {
   imageUrl: text("image_url").notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
+
+export const clients = pgTable("clients", {
+  id: text("id").primaryKey(),
+  name: text("name").notNull(),
+  email: text("email").notNull(),
+  phone: text("phone").notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export const clientVehicles = pgTable("client_vehicles", {
+  id: text("id").primaryKey(),
+  clientId: text("client_id")
+    .notNull()
+    .references(() => clients.id, { onDelete: "cascade" }),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export const clientVehicle = pgTable("client_vehicle", {
+  id: text("id").primaryKey(),
+  clientId: text("client_id")
+    .notNull()
+    .references(() => clients.id, { onDelete: "cascade" }),
+  carName: text("car_name").notNull(),
+  licensePlate: text("license_plate").notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
