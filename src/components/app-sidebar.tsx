@@ -149,6 +149,9 @@ const data = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const userSession = useUserSession();
+  if (!userSession) {
+    return null;
+  }
   return (
     <Sidebar variant="inset" {...props}>
       <SidebarHeader>
@@ -181,7 +184,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser userSession={userSession!} />
+        <NavUser userSession={userSession} />
       </SidebarFooter>
     </Sidebar>
   );
