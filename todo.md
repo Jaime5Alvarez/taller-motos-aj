@@ -1,6 +1,6 @@
 - [] Poner checkbox de vendido en coches
 - [] Autenticar api routes
-- [] Dashboard
+- [x] Dashboard
 - [] Validar imagenes en el front
 - [] Checkbox de mostrar en el front
 - [] Refactorizar en facade toda la logica de editar y tal, que está en múltiples llamadas a endpoints, y debería de estar en una transacción para que fuera más robusto
