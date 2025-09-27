@@ -8,10 +8,10 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { useHeaderBreadcrumbs } from "@/contexts/header-breadcrumbs-context";
+import { useBreadcrumbsStore } from "@/stores/breadcrumbs-store";
 
 export function HeaderBreadcrumbs() {
-  const { breadcrumbs } = useHeaderBreadcrumbs();
+  const breadcrumbs = useBreadcrumbsStore((state) => state.breadcrumbs);
 
   if (breadcrumbs.length === 0) {
     return null;

@@ -8,7 +8,6 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { HeaderBreadcrumbsProvider } from "@/contexts/header-breadcrumbs-context";
 import { auth } from "@/lib/auth";
 import { UserSessionProvider } from "@/lib/providers/user-session";
 
@@ -31,26 +30,24 @@ export default async function PrivateLayout({
         id: session.user.id,
       }}
     >
-      <HeaderBreadcrumbsProvider>
-        <SidebarProvider>
-          <AppSidebar />
-          <SidebarInset>
-            <header className="flex h-16 shrink-0 items-center gap-2 justify-between px-4 border-b">
-              <div className="flex items-center gap-2 min-w-0 flex-1">
-                <SidebarTrigger className="-ml-1 shrink-0" />
-                <Separator
-                  orientation="vertical"
-                  className="mr-2 data-[orientation=vertical]:h-4 shrink-0"
-                />
-                <div className="min-w-0 flex-1">
-                  <HeaderBreadcrumbs />
-                </div>
+      <SidebarProvider>
+        <AppSidebar />
+        <SidebarInset>
+          <header className="flex h-16 shrink-0 items-center gap-2 justify-between px-4 border-b">
+            <div className="flex items-center gap-2 min-w-0 flex-1">
+              <SidebarTrigger className="-ml-1 shrink-0" />
+              <Separator
+                orientation="vertical"
+                className="mr-2 data-[orientation=vertical]:h-4 shrink-0"
+              />
+              <div className="min-w-0 flex-1">
+                <HeaderBreadcrumbs />
               </div>
-            </header>
-            <div className="flex flex-1 flex-col gap-4 p-4">{children}</div>
-          </SidebarInset>
-        </SidebarProvider>
-      </HeaderBreadcrumbsProvider>
+            </div>
+          </header>
+          <div className="flex flex-1 flex-col gap-4 p-4">{children}</div>
+        </SidebarInset>
+      </SidebarProvider>
     </UserSessionProvider>
   );
 }

@@ -10,14 +10,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { useHeaderBreadcrumbs } from "@/contexts/header-breadcrumbs-context";
+import { useSetHeaderBreadcrumbs } from "@/hooks/use-set-header-breadcrumbs";
 
 export default function BackOfficePage() {
   const router = useRouter();
 
-  const { setBreadcrumbs } = useHeaderBreadcrumbs();
-
-  setBreadcrumbs([{ label: "Dashboard" }]);
+  useSetHeaderBreadcrumbs([{ label: "Dashboard" }]);
 
   return (
     <div className="space-y-6">
