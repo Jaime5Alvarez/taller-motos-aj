@@ -4,7 +4,7 @@ import { Plus } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { ClientTable } from "@/components/clients/client-table";
 import { Button } from "@/components/ui/button";
-import { useSetHeaderBreadcrumbs } from "@/hooks/use-set-header-breadcrumbs";
+import { useHeaderBreadcrumbs } from "@/contexts/header-breadcrumbs-context";
 import type { Client } from "@/types/client";
 
 interface BreadcrumbItem {
@@ -22,8 +22,8 @@ export function ClientPageClient({
   breadcrumbs,
 }: ClientPageClientProps) {
   const router = useRouter();
-
-  useSetHeaderBreadcrumbs(breadcrumbs);
+  const { setBreadcrumbs } = useHeaderBreadcrumbs();
+  setBreadcrumbs(breadcrumbs);
 
   const handleAddClient = () => {
     router.push("/back-office/private/clients/new");

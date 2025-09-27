@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { Card } from "@/components/ui/card";
-import { useSetHeaderBreadcrumbs } from "@/hooks/use-set-header-breadcrumbs";
+import { useHeaderBreadcrumbs } from "@/contexts/header-breadcrumbs-context";
 import type { VehicleSchema } from "@/lib/validations/vehicle";
 import type { VehicleWithDetails } from "@/types/vehicle";
 import { VehicleForm } from "./vehicle-form";
@@ -27,7 +27,8 @@ export function VehicleFormClient({
 }: VehicleFormClientProps) {
   const router = useRouter();
 
-  useSetHeaderBreadcrumbs(breadcrumbs);
+  const { setBreadcrumbs } = useHeaderBreadcrumbs();
+  setBreadcrumbs(breadcrumbs);
 
   const handleSubmit = async (
     data: VehicleSchema,
