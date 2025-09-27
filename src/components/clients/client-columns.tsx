@@ -1,7 +1,8 @@
 "use client";
 
 import type { ColumnDef } from "@tanstack/react-table";
-import { ArrowUpDown, Eye, Mail, MoreHorizontal, Phone } from "lucide-react";
+import { ArrowUpDown, Mail, MoreHorizontal, Phone } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -80,7 +81,7 @@ export const clientColumns: ColumnDef<Client>[] = [
     header: "Acciones",
     cell: ({ row }) => {
       const client = row.original;
-
+      const router = useRouter();
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -91,25 +92,13 @@ export const clientColumns: ColumnDef<Client>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Acciones</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(client.id)}
-            >
-              Copiar ID
-            </DropdownMenuItem>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(client.email)}
-            >
-              Copiar email
-            </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <Eye className="mr-2 h-4 w-4" />
-              Ver detalles
-            </DropdownMenuItem>
-            <DropdownMenuItem>Ver vehículos</DropdownMenuItem>
-            <DropdownMenuItem>Editar cliente</DropdownMenuItem>
-            <DropdownMenuItem className="text-red-600">
-              Eliminar cliente
+            <DropdownMenuItem
+              onClick={() =>
+                router.push(`/back-office/private/clients/${client.id}`)
+              }
+            >
+              Editar cliente
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

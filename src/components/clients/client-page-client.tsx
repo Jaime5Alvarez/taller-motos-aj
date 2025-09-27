@@ -25,10 +25,6 @@ export function ClientPageClient({
 
   useSetHeaderBreadcrumbs(breadcrumbs);
 
-  const handleClientClick = (client: Client) => {
-    router.push(`/back-office/private/clients/${client.id}/edit`);
-  };
-
   const handleAddClient = () => {
     router.push("/back-office/private/clients/new");
   };
@@ -51,7 +47,7 @@ export function ClientPageClient({
       </div>
 
       <div className="bg-card rounded-lg border p-6">
-        <ClientTable clients={clients} onRowClick={handleClientClick} />
+        <ClientTable clients={clients} />
       </div>
     </div>
   );
