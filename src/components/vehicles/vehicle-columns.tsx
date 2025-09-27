@@ -132,7 +132,9 @@ export const vehicleColumns: ColumnDef<Vehicle>[] = [
             <DropdownMenuSeparator />
             <DropdownMenuItem
               onClick={() =>
-                router.push(`/back-office/private/vehicules/${_vehicle.id}`)
+                router.push(
+                  `/back-office/private/vehicules/${_vehicle.id}/edit`,
+                )
               }
             >
               Editar vehículo

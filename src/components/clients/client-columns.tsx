@@ -95,7 +95,7 @@ export const clientColumns: ColumnDef<Client>[] = [
             <DropdownMenuSeparator />
             <DropdownMenuItem
               onClick={() =>
-                router.push(`/back-office/private/clients/${client.id}`)
+                router.push(`/back-office/private/clients/${client.id}/edit`)
               }
             >
               Editar cliente
