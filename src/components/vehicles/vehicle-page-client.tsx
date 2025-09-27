@@ -25,10 +25,6 @@ export function VehiclePageClient({
 
   useSetHeaderBreadcrumbs(breadcrumbs);
 
-  const handleVehicleClick = (vehicle: Vehicle) => {
-    router.push(`/back-office/private/vehicules/${vehicle.id}/edit`);
-  };
-
   const handleAddVehicle = () => {
     router.push("/back-office/private/vehicules/new");
   };
@@ -51,7 +47,7 @@ export function VehiclePageClient({
       </div>
 
       <div className="bg-card rounded-lg border p-6">
-        <VehicleTable vehicles={vehicles} onRowClick={handleVehicleClick} />
+        <VehicleTable vehicles={vehicles} />
       </div>
     </div>
   );

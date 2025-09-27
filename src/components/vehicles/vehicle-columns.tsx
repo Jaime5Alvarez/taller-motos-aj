@@ -1,7 +1,8 @@
 "use client";
 
 import type { ColumnDef } from "@tanstack/react-table";
-import { ArrowUpDown, Eye, MoreHorizontal } from "lucide-react";
+import { ArrowUpDown, MoreHorizontal } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -115,7 +116,8 @@ export const vehicleColumns: ColumnDef<Vehicle>[] = [
     id: "actions",
     header: "Acciones",
     cell: ({ row }) => {
-      const vehicle = row.original;
+      const _vehicle = row.original;
+      const router = useRouter();
 
       return (
         <DropdownMenu>
@@ -127,19 +129,13 @@ export const vehicleColumns: ColumnDef<Vehicle>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Acciones</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(vehicle.id)}
-            >
-              Copiar ID
-            </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <Eye className="mr-2 h-4 w-4" />
-              Ver detalles
-            </DropdownMenuItem>
-            <DropdownMenuItem>Editar vehículo</DropdownMenuItem>
-            <DropdownMenuItem className="text-red-600">
-              Eliminar vehículo
+            <DropdownMenuItem
+              onClick={() =>
+                router.push(`/back-office/private/vehicules/${_vehicle.id}`)
+              }
+            >
+              Editar vehículo
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
