@@ -1,7 +1,7 @@
 "use client";
 
 import { Plus } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "nextjs-toploader/app";
 import { ClientTable } from "@/components/clients/client-table";
 import { Button } from "@/components/ui/button";
 import { useSetHeaderBreadcrumbs } from "@/hooks/use-set-header-breadcrumbs";

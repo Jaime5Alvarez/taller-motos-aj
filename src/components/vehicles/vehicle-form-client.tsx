@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useRouter } from "nextjs-toploader/app";
 import { Card } from "@/components/ui/card";
 import { useSetHeaderBreadcrumbs } from "@/hooks/use-set-header-breadcrumbs";
 import type { VehicleSchema } from "@/lib/validations/vehicle";

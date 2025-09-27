@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import NextTopLoader from "nextjs-toploader";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -32,6 +33,13 @@ export default function RootLayout({
       >
         <ThemeProvider>{children}</ThemeProvider>
         <Toaster />
+        <NextTopLoader
+          height={4}
+          color="hsl(from oklch(0.795 0.184 86.047) h s l)"
+          showSpinner={false}
+          speed={200}
+          easing="ease"
+        />
       </body>
     </html>
   );

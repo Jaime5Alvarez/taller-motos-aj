@@ -1,7 +1,7 @@
 "use client";
 
 import { Car, Users } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "nextjs-toploader/app";
 import { Button } from "@/components/ui/button";
 import {
   Card,
