@@ -7,8 +7,8 @@ async function getVehiclesForSale() {
   const vehicleService = new VehicleService();
   try {
     const vehicles = await vehicleService.getAllVehiclesWithDetails();
-    // Limitar a 6 vehículos para la página principal
-    return vehicles.slice(0, 6);
+    // Mostrar todos los vehículos disponibles
+    return vehicles;
   } catch (error) {
     console.error("Error fetching vehicles for sale:", error);
     return [];
