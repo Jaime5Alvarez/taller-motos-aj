@@ -608,7 +608,7 @@ export default async function Home() {
 
                     <div className="mb-4">
                       <div className="text-2xl font-bold text-yellow-500 mb-1">
-                        {vehicle.price.toLocaleString("es-ES")}€
+                        {(vehicle.price / 100).toLocaleString("es-ES", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}€
                       </div>
                       <div className="text-sm text-gray-400 font-mono">
                         {vehicle.mileage.toLocaleString("es-ES")} KM

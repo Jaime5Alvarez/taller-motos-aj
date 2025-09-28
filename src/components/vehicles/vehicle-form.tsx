@@ -172,7 +172,7 @@ export function VehicleForm({
     defaultValues: {
       name: vehicle?.name,
       description: vehicle?.description,
-      price: vehicle?.price,
+      price: vehicle?.price ? vehicle.price / 100 : undefined, // Convert cents to euros for display
       mileage: vehicle?.mileage,
       year: vehicle?.year,
       fuel: vehicle?.fuel as "gasolina" | "diesel" | "eléctrico" | "híbrido",
@@ -302,7 +302,13 @@ export function VehicleForm({
     setErrorMessage("");
 
     try {
-      const result = await onSubmit(data);
+      // Convert price from euros to cents before sending to API
+      const dataWithCentsPrice = {
+        ...data,
+        price: Math.round(data.price * 100), // Convert euros to cents
+      };
+
+      const result = await onSubmit(dataWithCentsPrice);
 
       // Si no hay error, el componente padre manejará la navegación
     } catch (error) {
@@ -418,7 +424,9 @@ export function VehicleForm({
                           <Euro className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                           <Input
                             type="number"
-                            placeholder="15000"
+                            step="0.01"
+                            min="0.01"
+                            placeholder="15000.00"
                             className="pl-10"
                             {...field}
                             onChange={(e) =>
@@ -443,12 +451,14 @@ export function VehicleForm({
                           <Gauge className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                           <Input
                             type="number"
+                            step="1"
+                            min="0"
                             placeholder="50000"
                             className="pl-10"
                             {...field}
                             onChange={(e) =>
                               field.onChange(Number(e.target.value))
-                            }
+                              }
                           />
                         </div>
                       </FormControl>

@@ -18,10 +18,11 @@ export const zVehicleSchema = z.object({
     .max(500, "La descripción no puede exceder 500 caracteres"),
   price: z
     .number()
-    .min(1, "El precio debe ser mayor a 0")
+    .min(0.01, "El precio debe ser mayor a 0")
     .max(999999, "El precio no puede exceder 999,999"),
   mileage: z
     .number()
+    .int("El kilometraje debe ser un número entero")
     .min(0, "El kilometraje no puede ser negativo")
     .max(999999, "El kilometraje no puede exceder 999,999"),
   year: z
