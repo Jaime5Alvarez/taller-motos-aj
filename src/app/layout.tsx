@@ -19,6 +19,9 @@ export const metadata: Metadata = {
   title: "AJ Motorbikes - Taller de Motos en Calahorra",
   description:
     "Taller especializado en mantenimiento y reparación de motocicletas en Calahorra, La Rioja. Más de 15 años de experiencia.",
+  icons: {
+    icon: "/aj-logo.webp",
+  },
 };
 
 export default function RootLayout({
