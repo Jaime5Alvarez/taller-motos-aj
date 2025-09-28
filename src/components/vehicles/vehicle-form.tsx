@@ -365,7 +365,10 @@ export function VehicleForm({
       <CardContent className="space-y-6">
         <Form {...form}>
           <form
-            onSubmit={form.handleSubmit(onSubmitForm)}
+            onSubmit={form.handleSubmit(onSubmitForm, (errors)=>{
+              console.log("errors", errors);
+              console.log("form", form.getValues());
+            })}
             className="space-y-6"
           >
             {/* Información básica */}
@@ -709,7 +712,7 @@ export function VehicleForm({
               )}
             />
 
-            <div className="flex justify-end pt-4">
+            <div className="flex justify-end pt-4 gap-2">
               {/* Botón de eliminar (solo en modo edición) */}
               {isEditing && onDelete && (
                 <AlertDialog>

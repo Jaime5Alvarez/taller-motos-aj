@@ -14,3 +14,12 @@ export const AWS_CONFIG = {
   maxFileSize: 5 * 1024 * 1024, // 5MB
   allowedTypes: ["image/jpeg", "image/png", "image/webp"],
 } as const;
+
+/**
+ * Genera la URL directa de S3 para un archivo
+ * @param key La clave del archivo en S3
+ * @returns URL directa de S3
+ */
+export function getS3DirectUrl(key: string): string {
+  return `https://${AWS_CONFIG.bucketName}.s3.${AWS_CONFIG.region}.amazonaws.com/${key}`;
+}

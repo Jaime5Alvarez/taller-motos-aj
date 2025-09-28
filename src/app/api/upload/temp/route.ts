@@ -1,6 +1,6 @@
 import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { type NextRequest, NextResponse } from "next/server";
-import { AWS_CONFIG, s3Client } from "@/lib/aws-config";
+import { AWS_CONFIG, s3Client, getS3DirectUrl } from "@/lib/aws-config";
 import { badResponsePrintable } from "@/lib/server-errors";
 
 export async function POST(request: NextRequest) {
@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
       Body: buffer,
       ContentType: file.type,
       // Hacer la imagen temporalmente pública para preview
-      CacheControl: "max-age=86400", // 24 horas
+      CacheControl: "max-age=31536000", // 1 año
       // Agregar metadata para limpieza automática
       Metadata: {
         uploadedAt: new Date().toISOString(),
@@ -63,8 +63,8 @@ export async function POST(request: NextRequest) {
 
     await s3Client.send(uploadCommand);
 
-    // Construir URL usando nuestro proxy para imágenes
-    const imageUrl = `/api/image/${fileName}`;
+    // Usar URL directa de S3 para imágenes temporales
+    const imageUrl = getS3DirectUrl(fileName);
 
     return NextResponse.json({
       success: true,

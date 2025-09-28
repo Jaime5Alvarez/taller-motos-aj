@@ -1,5 +1,5 @@
 import { CopyObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3";
-import { AWS_CONFIG, s3Client } from "@/lib/aws-config";
+import { AWS_CONFIG, s3Client, getS3DirectUrl } from "@/lib/aws-config";
 
 /**
  * Mueve una imagen de la carpeta temporal a la carpeta permanente
@@ -10,7 +10,7 @@ export async function moveImageFromTempToPermanent(
   tempImageUrl: string,
 ): Promise<string> {
   try {
-    // Extraer la key temporal de la URL
+    // Extraer la key temporal de la URL directa de S3
     const tempUrl = new URL(tempImageUrl);
     const tempKey = tempUrl.pathname.substring(1); // Remover el '/' inicial
 
@@ -47,8 +47,8 @@ export async function moveImageFromTempToPermanent(
 
     await s3Client.send(deleteCommand);
 
-    // Construir URL permanente usando nuestro proxy
-    const permanentUrl = `/api/image/${permanentKey}`;
+    // Construir URL directa de S3
+    const permanentUrl = getS3DirectUrl(permanentKey);
 
     console.log(
       `Image moved from temp to permanent: ${tempKey} -> ${permanentKey}`,

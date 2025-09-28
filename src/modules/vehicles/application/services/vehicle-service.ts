@@ -365,20 +365,9 @@ export class VehicleService {
 
   private async deleteImageFromS3(imageUrl: string): Promise<void> {
     try {
-      let key: string;
-
-      // Manejar tanto URLs de proxy como URLs directas de S3
-      if (imageUrl.startsWith("/api/image/")) {
-        // URL de proxy: /api/image/vehicles/filename.ext
-        key = imageUrl.replace("/api/image/", "");
-      } else if (imageUrl.startsWith("http")) {
-        // URL directa de S3: https://bucket-name.s3.region.amazonaws.com/vehicles/filename.ext
-        const url = new URL(imageUrl);
-        key = url.pathname.substring(1); // Remover el '/' inicial
-      } else {
-        // Asumir que ya es una key
-        key = imageUrl;
-      }
+      // Extraer la key de la URL directa de S3
+      const url = new URL(imageUrl);
+      const key = url.pathname.substring(1); // Remover el '/' inicial
 
       const deleteCommand = new DeleteObjectCommand({
         Bucket: AWS_CONFIG.bucketName,
