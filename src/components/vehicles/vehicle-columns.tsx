@@ -92,7 +92,15 @@ export const vehicleColumns: ColumnDef<Vehicle>[] = [
     cell: ({ row }) => {
       const price = row.getValue("price") as number;
       const priceInEuros = price / 100; // Convert cents to euros
-      return <div>€{priceInEuros.toLocaleString("es-ES", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>;
+      return (
+        <div>
+          €
+          {priceInEuros.toLocaleString("es-ES", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          })}
+        </div>
+      );
     },
   },
   {

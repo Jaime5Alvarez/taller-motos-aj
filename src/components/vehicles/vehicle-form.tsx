@@ -308,9 +308,7 @@ export function VehicleForm({
         price: Math.round(data.price * 100), // Convert euros to cents
       };
 
-      const result = await onSubmit(dataWithCentsPrice);
-
-      // Si no hay error, el componente padre manejará la navegación
+      await onSubmit(dataWithCentsPrice);
     } catch (error) {
       console.error("Error submitting vehicle form:", error);
       setErrorMessage(
@@ -458,7 +456,7 @@ export function VehicleForm({
                             {...field}
                             onChange={(e) =>
                               field.onChange(Number(e.target.value))
-                              }
+                            }
                           />
                         </div>
                       </FormControl>
