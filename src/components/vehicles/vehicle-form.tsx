@@ -78,12 +78,13 @@ import { type VehicleSchema, zVehicleSchema } from "@/lib/validations/vehicle";
 import type { Vehicle } from "@/types/vehicle";
 
 interface VehicleFormProps {
-  vehicle?: Vehicle; // Si existe, estamos editando
+  vehicle: Vehicle; // Si existe, estamos editando
   onSubmit: (data: VehicleSchema) => Promise<{ error?: string }>;
   onDelete?: () => Promise<{ error?: string }>;
   initialFeatures?: string[];
   initialImages?: Array<{ url: string; order: number }>;
   isLoading?: boolean;
+  isEditing?: boolean;
 }
 
 interface SortableImageProps {
@@ -157,6 +158,7 @@ export function VehicleForm({
   initialFeatures = [],
   initialImages = [],
   isLoading = false,
+  isEditing = false,
 }: VehicleFormProps) {
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -165,26 +167,22 @@ export function VehicleForm({
   const [uploadingImages, setUploadingImages] = useState<string[]>([]);
   const [sessionId] = useState(() => generateSessionId());
 
-  const isEditing = !!vehicle;
 
-  console.log("VehicleForm Debug:", { vehicle, isEditing, sessionId });
 
   const form = useForm({
     resolver: zodResolver(zVehicleSchema),
     defaultValues: {
-      name: vehicle?.name ?? "",
-      description: vehicle?.description ?? "",
-      price: vehicle?.price ?? 0,
-      mileage: vehicle?.mileage ?? 0,
-      year: vehicle?.year ?? new Date().getFullYear(),
-      fuel:
-        (vehicle?.fuel as "gasolina" | "diesel" | "eléctrico" | "híbrido") ??
-        "gasolina",
-      status: (vehicle?.status as "available" | "sold") ?? "available",
+      name: vehicle?.name,
+      description: vehicle?.description,
+      price: vehicle?.price,
+      mileage: vehicle?.mileage,
+      year: vehicle?.year,
+      fuel: vehicle?.fuel as "gasolina" | "diesel" | "eléctrico" | "híbrido",
+      status: vehicle?.status,
       features: initialFeatures.map((f) => ({ feature: f })),
-      images: initialImages.map((img, index) => ({
-        url: typeof img === "string" ? img : img.url,
-        order: typeof img === "string" ? index : img.order,
+      images: initialImages.map((img) => ({
+        url: img.url,
+        order: img.order,
       })),
     },
   });

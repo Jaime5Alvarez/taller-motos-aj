@@ -99,6 +99,7 @@ export function VehicleFormClient({
         onDelete={handleDelete}
         initialFeatures={features}
         initialImages={images}
+        isEditing={true}
       />
     </Card>
   );
