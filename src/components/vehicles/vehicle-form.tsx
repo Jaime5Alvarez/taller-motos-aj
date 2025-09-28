@@ -441,8 +441,8 @@ export function VehicleForm({
                           <Image
                             src={imageUrl}
                             alt="Imagen del vehículo"
-                            width={96}
-                            height={96}
+                            width={200}
+                            height={200}
                             className="w-full h-24 object-cover rounded-lg border"
                           />
                           <Button
