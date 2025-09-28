@@ -4,6 +4,7 @@ import { AWS_CONFIG, s3Client } from "@/lib/aws-config";
 
 export async function POST(request: NextRequest) {
   try {
+
     const formData = await request.formData();
     const file = formData.get("file") as File;
 
@@ -47,7 +48,7 @@ export async function POST(request: NextRequest) {
       Key: fileName,
       Body: buffer,
       ContentType: file.type,
-      ACL: "public-read", // Hacer la imagen públicamente accesible
+      // Removido ACL ya que el bucket no soporta ACLs
     });
 
     await s3Client.send(uploadCommand);
