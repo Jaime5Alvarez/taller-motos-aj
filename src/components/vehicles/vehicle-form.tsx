@@ -409,7 +409,9 @@ export function VehicleForm({
                 <FormItem>
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
-                      <FormLabel className="text-lg font-medium">Imágenes</FormLabel>
+                      <FormLabel className="text-lg font-medium">
+                        Imágenes
+                      </FormLabel>
                       <div className="relative">
                         <input
                           type="file"
@@ -432,54 +434,54 @@ export function VehicleForm({
                       </div>
                     </div>
 
-              {/* Grid de imágenes */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {(form.watch("images") || []).map((imageUrl) => (
-                  <div key={imageUrl} className="relative group">
-                    <Image
-                      src={imageUrl}
-                      alt="Imagen del vehículo"
-                      width={96}
-                      height={96}
-                      className="w-full h-24 object-cover rounded-lg border"
-                    />
-                    <Button
-                      type="button"
-                      variant="destructive"
-                      size="icon"
-                      className="absolute -top-2 -right-2 h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity"
-                      onClick={() => removeImage(imageUrl)}
-                    >
-                      <X className="h-3 w-3" />
-                    </Button>
-                  </div>
-                ))}
+                    {/* Grid de imágenes */}
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                      {(form.watch("images") || []).map((imageUrl) => (
+                        <div key={imageUrl} className="relative group">
+                          <Image
+                            src={imageUrl}
+                            alt="Imagen del vehículo"
+                            width={96}
+                            height={96}
+                            className="w-full h-24 object-cover rounded-lg border"
+                          />
+                          <Button
+                            type="button"
+                            variant="destructive"
+                            size="icon"
+                            className="absolute -top-2 -right-2 h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity"
+                            onClick={() => removeImage(imageUrl)}
+                          >
+                            <X className="h-3 w-3" />
+                          </Button>
+                        </div>
+                      ))}
 
-                {uploadingImages.map((fileName) => (
-                  <div
-                    key={fileName}
-                    className="w-full h-24 bg-muted rounded-lg border flex items-center justify-center"
-                  >
-                    <div className="text-center">
-                      <Upload className="h-6 w-6 mx-auto mb-1 animate-pulse" />
-                      <p className="text-xs text-muted-foreground">
-                        Subiendo...
-                      </p>
+                      {uploadingImages.map((fileName) => (
+                        <div
+                          key={fileName}
+                          className="w-full h-24 bg-muted rounded-lg border flex items-center justify-center"
+                        >
+                          <div className="text-center">
+                            <Upload className="h-6 w-6 mx-auto mb-1 animate-pulse" />
+                            <p className="text-xs text-muted-foreground">
+                              Subiendo...
+                            </p>
+                          </div>
+                        </div>
+                      ))}
                     </div>
-                  </div>
-                ))}
-              </div>
 
-              {(form.watch("images") || []).length === 0 &&
-                uploadingImages.length === 0 && (
-                  <div className="text-center py-8 text-muted-foreground border-2 border-dashed rounded-lg">
-                    <ImageIcon className="h-12 w-12 mx-auto mb-2 opacity-50" />
-                    <p>No hay imágenes agregadas</p>
-                    <p className="text-sm">
-                      Haz clic en "Subir Imágenes" para agregar fotos
-                    </p>
-                  </div>
-                )}
+                    {(form.watch("images") || []).length === 0 &&
+                      uploadingImages.length === 0 && (
+                        <div className="text-center py-8 text-muted-foreground border-2 border-dashed rounded-lg">
+                          <ImageIcon className="h-12 w-12 mx-auto mb-2 opacity-50" />
+                          <p>No hay imágenes agregadas</p>
+                          <p className="text-sm">
+                            Haz clic en "Subir Imágenes" para agregar fotos
+                          </p>
+                        </div>
+                      )}
                   </div>
                   <FormMessage />
                 </FormItem>
