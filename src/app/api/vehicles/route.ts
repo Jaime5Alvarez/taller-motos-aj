@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { badResponsePrintable } from "@/lib/server-errors";
 import { zVehicleSchema } from "@/lib/validations/vehicle";
 import { VehicleService } from "@/modules/vehicles/application/services/vehicle-service";
@@ -30,6 +31,9 @@ export async function POST(request: Request) {
       images,
     );
 
+    // Revalidar la página principal para mostrar el nuevo vehículo
+    revalidatePath('/');
+    
     return NextResponse.json(vehicle, { status: 201 });
   } catch (error) {
     console.error("Error in POST /api/vehicles:", error);

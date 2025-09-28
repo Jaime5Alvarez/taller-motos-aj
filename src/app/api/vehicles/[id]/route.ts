@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { badResponsePrintable } from "@/lib/server-errors";
 import { zVehicleSchema } from "@/lib/validations/vehicle";
 import { VehicleService } from "@/modules/vehicles/application/services/vehicle-service";
@@ -39,6 +40,9 @@ export async function PUT(
       return NextResponse.json({ error: "Vehicle not found" }, { status: 404 });
     }
 
+    // Revalidar la página principal para mostrar los cambios
+    revalidatePath('/');
+    
     return NextResponse.json(vehicle);
   } catch (error) {
     console.error("Error in PUT /api/vehicles/[id]:", error);
@@ -62,6 +66,9 @@ export async function DELETE(
       return NextResponse.json({ error: "Vehicle not found" }, { status: 404 });
     }
 
+    // Revalidar la página principal para remover el vehículo eliminado
+    revalidatePath('/');
+    
     return NextResponse.json({
       success: true,
       message: "Vehicle deleted successfully",
