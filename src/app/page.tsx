@@ -5,8 +5,8 @@ import { VehicleImageCarousel } from "@/components/vehicle-image-carousel";
 import { VehicleService } from "@/modules/vehicles/application/services/vehicle-service";
 
 // Configuraciones para mantener los vehículos siempre actualizados
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
+// export const dynamic = "force-dynamic";
+// export const revalidate = 0;
 
 async function getVehiclesForSale() {
   const vehicleService = new VehicleService();
