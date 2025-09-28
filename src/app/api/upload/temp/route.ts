@@ -7,9 +7,14 @@ export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
     const file = formData.get("file") as File;
+    const sessionId = formData.get("sessionId") as string;
 
     if (!file) {
       return badResponsePrintable("No se proporcionó un archivo");
+    }
+
+    if (!sessionId) {
+      return badResponsePrintable("No se proporcionó un sessionId");
     }
 
     // Validar tipo de archivo
@@ -30,23 +35,30 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Generar nombre único para el archivo
+    // Generar nombre único para el archivo temporal
     const timestamp = Date.now();
     const randomString = Math.random().toString(36).substring(2);
     const fileExtension = file.name.split(".").pop();
-    const fileName = `vehicles/${timestamp}-${randomString}.${fileExtension}`;
+    const fileName = `temp/${sessionId}/${timestamp}-${randomString}.${fileExtension}`;
 
     // Convertir archivo a buffer
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
 
-    // Subir a S3
+    // Subir a S3 en carpeta temporal
     const uploadCommand = new PutObjectCommand({
       Bucket: AWS_CONFIG.bucketName,
       Key: fileName,
       Body: buffer,
       ContentType: file.type,
-      // Removido ACL ya que el bucket no soporta ACLs
+      // Hacer la imagen temporalmente pública para preview
+      CacheControl: "max-age=86400", // 24 horas
+      // Agregar metadata para limpieza automática
+      Metadata: {
+        uploadedAt: new Date().toISOString(),
+        sessionId: sessionId,
+        temporary: "true",
+      },
     });
 
     await s3Client.send(uploadCommand);
@@ -58,11 +70,13 @@ export async function POST(request: NextRequest) {
       success: true,
       imageUrl,
       fileName,
+      temporary: true,
+      sessionId,
     });
   } catch (error) {
-    console.error("Error uploading image:", error);
+    console.error("Error uploading temporary image:", error);
     return NextResponse.json(
-      { error: "Failed to upload image" },
+      { error: "Failed to upload temporary image" },
       { status: 500 },
     );
   }

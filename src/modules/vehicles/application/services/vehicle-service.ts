@@ -1,6 +1,7 @@
 import { DeleteObjectCommand } from "@aws-sdk/client-s3";
 import { eq } from "drizzle-orm";
 import { AWS_CONFIG, s3Client } from "@/lib/aws-config";
+import { moveImageFromTempToPermanent } from "@/lib/s3-utils";
 import { CreateDBClient } from "@/modules/shared/database/factories/CreateDBClient";
 import {
   vehicles,
@@ -159,23 +160,39 @@ export class VehicleService {
         }
       }
 
-      // Crear las imágenes si existen
+      // Crear las imágenes si existen (mover de temporal a permanente)
       const vehicleImagesList: VehicleImage[] = [];
       if (images && images.length > 0) {
-        const imageValues = images
-          .filter((img) => img.url.trim() !== "")
-          .map((image) => ({
-            id: crypto.randomUUID(),
-            vehiculeId: vehicleId,
-            imageUrl: image.url.trim(),
-            order: image.order,
-            createdAt: new Date(),
-          }));
+        const permanentImages = [];
+        
+        // Mover cada imagen de temporal a permanente
+        for (const image of images.filter((img) => img.url.trim() !== "")) {
+          try {
+            let permanentUrl = image.url.trim();
+            
+            // Si es una imagen temporal, moverla a permanente
+            if (permanentUrl.includes('/temp/')) {
+              permanentUrl = await moveImageFromTempToPermanent(permanentUrl);
+              console.log(`Moved temp image to permanent: ${image.url} -> ${permanentUrl}`);
+            }
+            
+            permanentImages.push({
+              id: crypto.randomUUID(),
+              vehiculeId: vehicleId,
+              imageUrl: permanentUrl,
+              order: image.order,
+              createdAt: new Date(),
+            });
+          } catch (error) {
+            console.error(`Failed to move image ${image.url}:`, error);
+            // Continuar con las demás imágenes, no fallar toda la creación
+          }
+        }
 
-        if (imageValues.length > 0) {
+        if (permanentImages.length > 0) {
           const imageResults = await this.db
             .insert(vehiculeImages)
-            .values(imageValues)
+            .values(permanentImages)
             .returning();
 
           vehicleImagesList.push(...imageResults);
@@ -260,20 +277,36 @@ export class VehicleService {
           .delete(vehiculeImages)
           .where(eq(vehiculeImages.vehiculeId, id));
 
-        // Crear nuevas imágenes
+        // Crear nuevas imágenes (mover de temporal a permanente si es necesario)
         if (images.length > 0) {
-          const imageValues = images
-            .filter((img) => img.url.trim() !== "")
-            .map((image) => ({
-              id: crypto.randomUUID(),
-              vehiculeId: id,
-              imageUrl: image.url.trim(),
-              order: image.order,
-              createdAt: new Date(),
-            }));
+          const permanentImages = [];
+          
+          // Procesar cada imagen (mover de temporal a permanente si es necesario)
+          for (const image of images.filter((img) => img.url.trim() !== "")) {
+            try {
+              let permanentUrl = image.url.trim();
+              
+              // Si es una imagen temporal, moverla a permanente
+              if (permanentUrl.includes('/temp/')) {
+                permanentUrl = await moveImageFromTempToPermanent(permanentUrl);
+                console.log(`Moved temp image to permanent: ${image.url} -> ${permanentUrl}`);
+              }
+              
+              permanentImages.push({
+                id: crypto.randomUUID(),
+                vehiculeId: id,
+                imageUrl: permanentUrl,
+                order: image.order,
+                createdAt: new Date(),
+              });
+            } catch (error) {
+              console.error(`Failed to move image ${image.url}:`, error);
+              // Continuar con las demás imágenes, no fallar toda la actualización
+            }
+          }
 
-          if (imageValues.length > 0) {
-            await this.db.insert(vehiculeImages).values(imageValues);
+          if (permanentImages.length > 0) {
+            await this.db.insert(vehiculeImages).values(permanentImages);
           }
         }
       }
@@ -288,10 +321,20 @@ export class VehicleService {
 
   private async deleteImageFromS3(imageUrl: string): Promise<void> {
     try {
-      // Extraer la key del archivo de la URL
-      // URL format: https://bucket-name.s3.region.amazonaws.com/vehicles/filename.ext
-      const url = new URL(imageUrl);
-      const key = url.pathname.substring(1); // Remover el '/' inicial
+      let key: string;
+      
+      // Manejar tanto URLs de proxy como URLs directas de S3
+      if (imageUrl.startsWith('/api/image/')) {
+        // URL de proxy: /api/image/vehicles/filename.ext
+        key = imageUrl.replace('/api/image/', '');
+      } else if (imageUrl.startsWith('http')) {
+        // URL directa de S3: https://bucket-name.s3.region.amazonaws.com/vehicles/filename.ext
+        const url = new URL(imageUrl);
+        key = url.pathname.substring(1); // Remover el '/' inicial
+      } else {
+        // Asumir que ya es una key
+        key = imageUrl;
+      }
 
       const deleteCommand = new DeleteObjectCommand({
         Bucket: AWS_CONFIG.bucketName,

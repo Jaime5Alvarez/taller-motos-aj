@@ -72,6 +72,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { apiClient } from "@/lib/interceptor";
+import { generateSessionId } from "@/lib/s3-utils";
 import { type VehicleSchema, zVehicleSchema } from "@/lib/validations/vehicle";
 import type { Vehicle } from "@/types/vehicle";
 
@@ -161,8 +162,11 @@ export function VehicleForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const [uploadingImages, setUploadingImages] = useState<string[]>([]);
+  const [sessionId] = useState(() => generateSessionId());
 
   const isEditing = !!vehicle;
+  
+  console.log('VehicleForm Debug:', { vehicle, isEditing, sessionId });
 
   const form = useForm<VehicleSchema>({
     resolver: zodResolver(zVehicleSchema),
@@ -205,12 +209,17 @@ export function VehicleForm({
     for (const file of Array.from(files)) {
       const formData = new FormData();
       formData.append("file", file);
+      
+      // Siempre usar API temporal para evitar imágenes huérfanas
+      formData.append("sessionId", sessionId);
 
       try {
         setUploadingImages((prev) => [...prev, file.name]);
 
+        console.log(`Uploading to: /api/upload/temp, sessionId: ${sessionId}`);
+        
         const response = await apiClient.post(
-          "/api/upload/image",
+          "/api/upload/temp",
           formData,
           {},
         );
