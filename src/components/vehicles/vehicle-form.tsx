@@ -28,6 +28,7 @@ import {
   GripVertical,
   Image as ImageIcon,
   Plus,
+  Shield,
   Trash2,
   Upload,
   X,
@@ -168,7 +169,7 @@ export function VehicleForm({
 
   console.log("VehicleForm Debug:", { vehicle, isEditing, sessionId });
 
-  const form = useForm<VehicleSchema>({
+  const form = useForm({
     resolver: zodResolver(zVehicleSchema),
     defaultValues: {
       name: vehicle?.name ?? "",
@@ -179,6 +180,7 @@ export function VehicleForm({
       fuel:
         (vehicle?.fuel as "gasolina" | "diesel" | "eléctrico" | "híbrido") ??
         "gasolina",
+      status: (vehicle?.status as "available" | "sold") ?? "available",
       features: initialFeatures.map((f) => ({ feature: f })),
       images: initialImages.map((img, index) => ({
         url: typeof img === "string" ? img : img.url,
@@ -514,6 +516,42 @@ export function VehicleForm({
                           <SelectItem value="diesel">Diésel</SelectItem>
                           <SelectItem value="eléctrico">Eléctrico</SelectItem>
                           <SelectItem value="híbrido">Híbrido</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="status"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Estado del Vehículo</FormLabel>
+                      <Select
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                      >
+                        <FormControl>
+                          <div className="relative">
+                            <Shield className="absolute left-3 top-3 h-4 w-4 text-muted-foreground z-10" />
+                            <SelectTrigger className="pl-10">
+                              <SelectValue placeholder="Selecciona el estado" />
+                            </SelectTrigger>
+                          </div>
+                        </FormControl>
+                        <SelectContent>
+                          <SelectItem value="available">
+                            <div className="flex items-center gap-2">
+                              Disponible
+                            </div>
+                          </SelectItem>
+                          <SelectItem value="sold">
+                            <div className="flex items-center gap-2">
+                              Vendido
+                            </div>
+                          </SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />

@@ -579,8 +579,8 @@ export default async function Home() {
                   <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60 z-10"></div>
 
                   {/* Carrusel de imágenes del vehículo */}
-                  <VehicleImageCarousel 
-                    images={vehicle.images || []} 
+                  <VehicleImageCarousel
+                    images={vehicle.images || []}
                     vehicleName={vehicle.name}
                     status={vehicle.status}
                   />
@@ -638,7 +638,7 @@ export default async function Home() {
                         </>
                       )}
                     </div>
-{/* 
+                    {/* 
                     <button
                       type="button"
                       className="w-full bg-yellow-500 hover:bg-yellow-400 text-black py-2 px-4 font-bold text-sm tracking-wider transition-all duration-300"

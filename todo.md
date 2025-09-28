@@ -1,4 +1,4 @@
-- [] Poner checkbox de vendido en coches
+- [x] Poner checkbox de vendido en coches
 - [] Autenticar api routes
 - [x] Dashboard
 - [] Validar imagenes en el front

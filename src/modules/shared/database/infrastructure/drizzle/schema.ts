@@ -74,7 +74,9 @@ export const vehicles = pgTable("vehicles", {
   mileage: integer("mileage").notNull(),
   year: integer("year").notNull(),
   fuel: text("fuel").notNull(),
-  status: text("status", { enum: ["available", "sold"] }).notNull().default("available"),
+  status: text("status", { enum: ["available", "sold"] })
+    .notNull()
+    .default("available"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
