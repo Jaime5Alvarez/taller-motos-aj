@@ -107,21 +107,23 @@ export default async function Home() {
                 </span>
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button
-                  type="button"
-                  className="bg-yellow-500 text-black px-8 py-3 font-bold tracking-wider hover:bg-yellow-400 transition-all duration-300 transform hover:scale-105 relative overflow-hidden group"
+                <a
+                  href="https://wa.me/34614154659?text=Hola,%20me%20gustaría%20pedir%20cita%20previa%20para%20mi%20moto"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-yellow-500 text-black px-8 py-3 font-bold tracking-wider hover:bg-yellow-400 transition-all duration-300 transform hover:scale-105 relative overflow-hidden group inline-block text-center"
                 >
                   <span className="relative z-10">PEDIR CITA</span>
                   <div className="absolute inset-0 bg-gradient-to-r from-yellow-600 to-yellow-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
-                </button>
-                <button
-                  type="button"
-                  className="border-2 border-yellow-500 text-yellow-500 px-8 py-3 font-bold tracking-wider hover:bg-yellow-500 hover:text-black transition-all duration-300 relative overflow-hidden group"
+                </a>
+                <a
+                  href="#taller"
+                  className="border-2 border-yellow-500 text-yellow-500 px-8 py-3 font-bold tracking-wider hover:bg-yellow-500 hover:text-black transition-all duration-300 relative overflow-hidden group inline-block text-center"
                 >
                   <span className="relative z-10">VER SERVICIOS</span>
                   <div className="absolute top-0 left-0 w-2 h-2 bg-yellow-500 transform rotate-45 group-hover:scale-150 transition-transform duration-300"></div>
                   <div className="absolute bottom-0 right-0 w-2 h-2 bg-yellow-500 transform rotate-45 group-hover:scale-150 transition-transform duration-300"></div>
-                </button>
+                </a>
               </div>
             </div>
             <div className="relative">
@@ -638,13 +640,14 @@ export default async function Home() {
                         </>
                       )}
                     </div>
-                    {/* 
-                    <button
-                      type="button"
-                      className="w-full bg-yellow-500 hover:bg-yellow-400 text-black py-2 px-4 font-bold text-sm tracking-wider transition-all duration-300"
+                    <a
+                      href={`https://wa.me/34614154659?text=Hola,%20me%20gustaría%20más%20información%20sobre%20${encodeURIComponent(vehicle.name)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full bg-yellow-500 hover:bg-yellow-400 text-black py-2 px-4 font-bold text-sm tracking-wider transition-all duration-300 inline-block text-center"
                     >
                       VER DETALLES
-                    </button> */}
+                    </a>
                   </div>
                 </div>
               ))
