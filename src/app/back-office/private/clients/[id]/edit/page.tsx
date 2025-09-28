@@ -3,7 +3,7 @@ import { ClientFormClient } from "@/components/clients/client-form-client";
 import { ClientService } from "@/modules/clients/application/services/client-service";
 
 interface EditClientPageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 async function getClientWithVehicles(id: string) {
@@ -21,7 +21,8 @@ async function getClientWithVehicles(id: string) {
 }
 
 export default async function EditClientPage({ params }: EditClientPageProps) {
-  const data = await getClientWithVehicles(params.id);
+  const { id } = await params;
+  const data = await getClientWithVehicles(id);
 
   if (!data) {
     notFound();

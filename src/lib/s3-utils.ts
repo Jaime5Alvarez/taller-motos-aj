@@ -1,5 +1,5 @@
 import { CopyObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3";
-import { AWS_CONFIG, s3Client, getS3DirectUrl } from "@/lib/aws-config";
+import { AWS_CONFIG, getS3DirectUrl, s3Client } from "@/lib/aws-config";
 
 /**
  * Mueve una imagen de la carpeta temporal a la carpeta permanente

@@ -1,6 +1,6 @@
 import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { type NextRequest, NextResponse } from "next/server";
-import { AWS_CONFIG, s3Client, getS3DirectUrl } from "@/lib/aws-config";
+import { AWS_CONFIG, getS3DirectUrl, s3Client } from "@/lib/aws-config";
 import { badResponsePrintable } from "@/lib/server-errors";
 
 export async function POST(request: NextRequest) {

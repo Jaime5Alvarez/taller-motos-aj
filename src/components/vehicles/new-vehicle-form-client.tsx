@@ -61,17 +61,21 @@ export function NewVehicleFormClient({
 
   return (
     <Card>
-      <VehicleForm onSubmit={handleSubmit} vehicle={{
-        id: "",
-        name: "",
-        description: "",
-        price: 0,
-        mileage: 0,
-        year: 0,
-        fuel: "",
-        status: "available",
-        createdAt: new Date(),
-      }} isEditing={false} />
+      <VehicleForm
+        onSubmit={handleSubmit}
+        vehicle={{
+          id: "",
+          name: "",
+          description: "",
+          price: 0,
+          mileage: 0,
+          year: 0,
+          fuel: "",
+          status: "available",
+          createdAt: new Date(),
+        }}
+        isEditing={false}
+      />
     </Card>
   );
 }

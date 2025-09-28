@@ -167,8 +167,6 @@ export function VehicleForm({
   const [uploadingImages, setUploadingImages] = useState<string[]>([]);
   const [sessionId] = useState(() => generateSessionId());
 
-
-
   const form = useForm({
     resolver: zodResolver(zVehicleSchema),
     defaultValues: {
@@ -365,7 +363,7 @@ export function VehicleForm({
       <CardContent className="space-y-6">
         <Form {...form}>
           <form
-            onSubmit={form.handleSubmit(onSubmitForm, (errors)=>{
+            onSubmit={form.handleSubmit(onSubmitForm, (errors) => {
               console.log("errors", errors);
               console.log("form", form.getValues());
             })}
