@@ -28,6 +28,46 @@ export class VehicleService {
     }
   }
 
+  async getAvailableVehicles(): Promise<Vehicle[]> {
+    try {
+      const result = await this.db
+        .select()
+        .from(vehicles)
+        .where(eq(vehicles.status, "available"));
+      return result as Vehicle[];
+    } catch (error) {
+      console.error("Error fetching available vehicles:", error);
+      throw new Error("Failed to fetch available vehicles");
+    }
+  }
+
+  async getAvailableVehiclesWithDetails(): Promise<VehicleWithDetails[]> {
+    try {
+      const vehiclesList = await this.db
+        .select()
+        .from(vehicles)
+        .where(eq(vehicles.status, "available"));
+
+      const vehiclesWithDetails = await Promise.all(
+        (vehiclesList as Vehicle[]).map(async (vehicle) => {
+          const features = await this.getVehicleFeatures(vehicle.id);
+          const images = await this.getVehicleImages(vehicle.id);
+
+          return {
+            ...vehicle,
+            features,
+            images,
+          };
+        }),
+      );
+
+      return vehiclesWithDetails;
+    } catch (error) {
+      console.error("Error fetching available vehicles with details:", error);
+      throw new Error("Failed to fetch available vehicles with details");
+    }
+  }
+
   async getAllVehiclesWithDetails(): Promise<VehicleWithDetails[]> {
     try {
       const vehiclesList = await this.db.select().from(vehicles);

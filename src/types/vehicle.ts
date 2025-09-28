@@ -1,3 +1,5 @@
+export type VehicleStatus = "available" | "sold";
+
 export interface Vehicle {
   id: string;
   name: string;
@@ -6,6 +8,7 @@ export interface Vehicle {
   mileage: number;
   year: number;
   fuel: string;
+  status: VehicleStatus;
   createdAt: Date;
 }
 

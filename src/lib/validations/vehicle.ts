@@ -31,6 +31,9 @@ export const zVehicleSchema = z.object({
   fuel: z.enum(["gasolina", "diesel", "eléctrico", "híbrido"], {
     message: "Selecciona un tipo de combustible válido",
   }),
+  status: z.enum(["available", "sold"], {
+    message: "Selecciona un estado válido",
+  }).default("available"),
   features: z.array(featureSchema).optional(),
   images: z
     .array(

@@ -1,0 +1,1 @@
+ALTER TABLE "vehicles" ADD COLUMN "status" text DEFAULT 'available' NOT NULL;

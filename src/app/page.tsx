@@ -7,8 +7,8 @@ import { VehicleService } from "@/modules/vehicles/application/services/vehicle-
 async function getVehiclesForSale() {
   const vehicleService = new VehicleService();
   try {
-    const vehicles = await vehicleService.getAllVehiclesWithDetails();
-    // Mostrar todos los vehículos disponibles
+    const vehicles = await vehicleService.getAvailableVehiclesWithDetails();
+    // Mostrar solo los vehículos disponibles (no vendidos)
     return vehicles;
   } catch (error) {
     console.error("Error fetching vehicles for sale:", error);
@@ -579,9 +579,10 @@ export default async function Home() {
                   <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60 z-10"></div>
 
                   {/* Carrusel de imágenes del vehículo */}
-                  <VehicleImageCarousel
-                    images={vehicle.images || []}
+                  <VehicleImageCarousel 
+                    images={vehicle.images || []} 
                     vehicleName={vehicle.name}
+                    status={vehicle.status}
                   />
 
                   <div className="p-6">
