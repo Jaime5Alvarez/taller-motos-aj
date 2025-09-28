@@ -638,13 +638,13 @@ export default async function Home() {
                         </>
                       )}
                     </div>
-
+{/* 
                     <button
                       type="button"
                       className="w-full bg-yellow-500 hover:bg-yellow-400 text-black py-2 px-4 font-bold text-sm tracking-wider transition-all duration-300"
                     >
                       VER DETALLES
-                    </button>
+                    </button> */}
                   </div>
                 </div>
               ))
