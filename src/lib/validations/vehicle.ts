@@ -32,7 +32,9 @@ export const zVehicleSchema = z.object({
     message: "Selecciona un tipo de combustible válido",
   }),
   features: z.array(featureSchema).optional(),
-  images: z.array(z.url("URL de imagen inválida")).optional(),
+  images: z
+    .array(z.url("URL de imagen inválida"))
+    .min(1, "Debe agregar al menos una imagen"),
 });
 
 export type VehicleSchema = z.infer<typeof zVehicleSchema>;

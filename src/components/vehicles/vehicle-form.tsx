@@ -402,30 +402,35 @@ export function VehicleForm({
             </div>
 
             {/* Imágenes */}
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <h3 className="text-lg font-medium">Imágenes</h3>
-                <div className="relative">
-                  <input
-                    type="file"
-                    multiple
-                    accept="image/jpeg, image/png, image/webp"
-                    onChange={handleImageUpload}
-                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                  />
-                  <Button
-                    type="button"
-                    variant="outline"
-                    size="sm"
-                    disabled={uploadingImages.length > 0}
-                  >
-                    <Upload className="h-4 w-4 mr-2" />
-                    {uploadingImages.length > 0
-                      ? "Subiendo..."
-                      : "Subir Imágenes"}
-                  </Button>
-                </div>
-              </div>
+            <FormField
+              control={form.control}
+              name="images"
+              render={({ field }) => (
+                <FormItem>
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <FormLabel className="text-lg font-medium">Imágenes</FormLabel>
+                      <div className="relative">
+                        <input
+                          type="file"
+                          multiple
+                          accept="image/jpeg, image/png, image/webp"
+                          onChange={handleImageUpload}
+                          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                        />
+                        <Button
+                          type="button"
+                          variant="outline"
+                          size="sm"
+                          disabled={uploadingImages.length > 0}
+                        >
+                          <Upload className="h-4 w-4 mr-2" />
+                          {uploadingImages.length > 0
+                            ? "Subiendo..."
+                            : "Subir Imágenes"}
+                        </Button>
+                      </div>
+                    </div>
 
               {/* Grid de imágenes */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -475,7 +480,11 @@ export function VehicleForm({
                     </p>
                   </div>
                 )}
-            </div>
+                  </div>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
             <div className="flex justify-end pt-4">
               <Button
