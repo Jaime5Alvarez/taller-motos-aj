@@ -1,8 +1,23 @@
 import { Clock, Mail, MapPin, Phone, Shield, Star, Wrench } from "lucide-react";
 import Image from "next/image";
 import { Header } from "@/components/header";
+import { VehicleService } from "@/modules/vehicles/application/services/vehicle-service";
 
-export default function Home() {
+async function getVehiclesForSale() {
+  const vehicleService = new VehicleService();
+  try {
+    const vehicles = await vehicleService.getAllVehiclesWithDetails();
+    // Limitar a 6 vehículos para la página principal
+    return vehicles.slice(0, 6);
+  } catch (error) {
+    console.error("Error fetching vehicles for sale:", error);
+    return [];
+  }
+}
+
+export default async function Home() {
+  const vehiclesForSale = await getVehiclesForSale();
+  
   return (
     <div className="min-h-screen bg-gradient-dark">
       <Header />
@@ -550,460 +565,104 @@ export default function Home() {
 
           {/* Vehículos disponibles */}
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
-            {/* Honda CB650R 2021 */}
-            <div className="bg-black/60 border-2 border-gray-700 hover:border-yellow-500 transition-all duration-300 relative group overflow-hidden">
-              {/* Esquinas tácticas */}
-              <div className="absolute top-2 left-2 w-4 h-4 border-l-2 border-t-2 border-yellow-500 opacity-60 z-10"></div>
-              <div className="absolute top-2 right-2 w-4 h-4 border-r-2 border-t-2 border-yellow-500 opacity-60 z-10"></div>
-              <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-yellow-500 opacity-60 z-10"></div>
-              <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60 z-10"></div>
-
-              {/* Imagen del vehículo */}
-              <div className="relative h-48 overflow-hidden">
-                <Image
-                  src="/photo-1591637333184-19aa84b3e01f.avif"
-                  alt="Honda CB650R 2021"
-                  width={400}
-                  height={200}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                <div className="absolute top-4 right-4 bg-yellow-500 text-black px-3 py-1 font-bold text-sm">
-                  DISPONIBLE
-                </div>
-              </div>
-
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <h4 className="text-xl font-bold text-white tracking-wide">
-                    HONDA CB650R
-                  </h4>
-                  <span className="text-yellow-500 font-mono text-sm">
-                    2021
-                  </span>
-                </div>
-
-                <div className="mb-4">
-                  <div className="text-2xl font-bold text-yellow-500 mb-1">
-                    8.900€
-                  </div>
-                  <div className="text-sm text-gray-400 font-mono">
-                    24.500 KM
-                  </div>
-                </div>
-
-                <p className="text-gray-300 text-sm mb-4 leading-relaxed">
-                  Naked deportiva de 649cc, excelente estado. Revisiones al día,
-                  <span className="text-yellow-500">
-                    {" "}
-                    ideal para ciudad y carretera
-                  </span>
-                  .
-                </p>
-
-                <div className="grid grid-cols-2 gap-4 mb-4 text-xs font-mono">
-                  <div className="flex items-center">
-                    <span className="text-yellow-500 mr-2">■</span>
-                    <span className="text-gray-400">649cc</span>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="text-yellow-500 mr-2">■</span>
-                    <span className="text-gray-400">95 CV</span>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="text-yellow-500 mr-2">■</span>
-                    <span className="text-gray-400">ABS</span>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="text-yellow-500 mr-2">■</span>
-                    <span className="text-gray-400">1 Propietario</span>
-                  </div>
-                </div>
-
-                <button
-                  type="button"
-                  className="w-full bg-yellow-500 hover:bg-yellow-400 text-black py-2 px-4 font-bold text-sm tracking-wider transition-all duration-300"
+            {vehiclesForSale.length > 0 ? (
+              vehiclesForSale.map((vehicle) => (
+                <div
+                  key={vehicle.id}
+                  className="bg-black/60 border-2 border-gray-700 hover:border-yellow-500 transition-all duration-300 relative group overflow-hidden"
                 >
-                  VER DETALLES
-                </button>
-              </div>
-            </div>
+                  {/* Esquinas tácticas */}
+                  <div className="absolute top-2 left-2 w-4 h-4 border-l-2 border-t-2 border-yellow-500 opacity-60 z-10"></div>
+                  <div className="absolute top-2 right-2 w-4 h-4 border-r-2 border-t-2 border-yellow-500 opacity-60 z-10"></div>
+                  <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-yellow-500 opacity-60 z-10"></div>
+                  <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60 z-10"></div>
 
-            {/* Yamaha MT-07 2020 */}
-            <div className="bg-black/60 border-2 border-gray-700 hover:border-yellow-500 transition-all duration-300 relative group overflow-hidden">
-              {/* Esquinas tácticas */}
-              <div className="absolute top-2 left-2 w-4 h-4 border-l-2 border-t-2 border-yellow-500 opacity-60 z-10"></div>
-              <div className="absolute top-2 right-2 w-4 h-4 border-r-2 border-t-2 border-yellow-500 opacity-60 z-10"></div>
-              <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-yellow-500 opacity-60 z-10"></div>
-              <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60 z-10"></div>
-
-              {/* Imagen del vehículo */}
-              <div className="relative h-48 overflow-hidden">
-                <Image
-                  src="/photo-1604260324056-45f7c778754a.avif"
-                  alt="Yamaha MT-07 2020"
-                  width={400}
-                  height={200}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                <div className="absolute top-4 right-4 bg-yellow-500 text-black px-3 py-1 font-bold text-sm">
-                  DISPONIBLE
-                </div>
-              </div>
-
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <h4 className="text-xl font-bold text-white tracking-wide">
-                    YAMAHA MT-07
-                  </h4>
-                  <span className="text-yellow-500 font-mono text-sm">
-                    2020
-                  </span>
-                </div>
-
-                <div className="mb-4">
-                  <div className="text-2xl font-bold text-yellow-500 mb-1">
-                    7.200€
+                  {/* Imagen del vehículo */}
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={
+                        vehicle.images && vehicle.images.length > 0
+                          ? vehicle.images[0].imageUrl
+                          : "/photo-1591637333184-19aa84b3e01f.avif"
+                      }
+                      alt={vehicle.name}
+                      width={400}
+                      height={200}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                    <div className="absolute top-4 right-4 bg-yellow-500 text-black px-3 py-1 font-bold text-sm">
+                      DISPONIBLE
+                    </div>
                   </div>
-                  <div className="text-sm text-gray-400 font-mono">
-                    18.900 KM
+
+                  <div className="p-6">
+                    <div className="flex items-center justify-between mb-3">
+                      <h4 className="text-xl font-bold text-white tracking-wide uppercase">
+                        {vehicle.name}
+                      </h4>
+                      <span className="text-yellow-500 font-mono text-sm">
+                        {vehicle.year}
+                      </span>
+                    </div>
+
+                    <div className="mb-4">
+                      <div className="text-2xl font-bold text-yellow-500 mb-1">
+                        {vehicle.price.toLocaleString("es-ES")}€
+                      </div>
+                      <div className="text-sm text-gray-400 font-mono">
+                        {vehicle.mileage.toLocaleString("es-ES")} KM
+                      </div>
+                    </div>
+
+                    <p className="text-gray-300 text-sm mb-4 leading-relaxed">
+                      {vehicle.description}
+                    </p>
+
+                    <div className="grid grid-cols-2 gap-4 mb-4 text-xs font-mono">
+                      <div className="flex items-center">
+                        <span className="text-yellow-500 mr-2">■</span>
+                        <span className="text-gray-400 capitalize">{vehicle.fuel}</span>
+                      </div>
+                      <div className="flex items-center">
+                        <span className="text-yellow-500 mr-2">■</span>
+                        <span className="text-gray-400">{vehicle.year}</span>
+                      </div>
+                      {vehicle.features && vehicle.features.length > 0 && (
+                        <>
+                          <div className="flex items-center">
+                            <span className="text-yellow-500 mr-2">■</span>
+                            <span className="text-gray-400">{vehicle.features[0].feature}</span>
+                          </div>
+                          {vehicle.features[1] && (
+                            <div className="flex items-center">
+                              <span className="text-yellow-500 mr-2">■</span>
+                              <span className="text-gray-400">{vehicle.features[1].feature}</span>
+                            </div>
+                          )}
+                        </>
+                      )}
+                    </div>
+
+                    <button
+                      type="button"
+                      className="w-full bg-yellow-500 hover:bg-yellow-400 text-black py-2 px-4 font-bold text-sm tracking-wider transition-all duration-300"
+                    >
+                      VER DETALLES
+                    </button>
                   </div>
                 </div>
-
-                <p className="text-gray-300 text-sm mb-4 leading-relaxed">
-                  Bicilíndrica de 689cc, perfecta para principiantes y expertos.
-                  <span className="text-yellow-500"> Motor CP2 de Yamaha</span>.
+              ))
+            ) : (
+              <div className="col-span-full text-center py-12">
+                <p className="text-gray-400 text-lg">
+                  No hay vehículos disponibles en este momento.
                 </p>
-
-                <div className="grid grid-cols-2 gap-4 mb-4 text-xs font-mono">
-                  <div className="flex items-center">
-                    <span className="text-yellow-500 mr-2">■</span>
-                    <span className="text-gray-400">689cc</span>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="text-yellow-500 mr-2">■</span>
-                    <span className="text-gray-400">75 CV</span>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="text-yellow-500 mr-2">■</span>
-                    <span className="text-gray-400">ABS</span>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="text-yellow-500 mr-2">■</span>
-                    <span className="text-gray-400">2 Propietarios</span>
-                  </div>
-                </div>
-
-                <button
-                  type="button"
-                  className="w-full bg-yellow-500 hover:bg-yellow-400 text-black py-2 px-4 font-bold text-sm tracking-wider transition-all duration-300"
-                >
-                  VER DETALLES
-                </button>
-              </div>
-            </div>
-
-            {/* BMW X3 2019 */}
-            <div className="bg-black/60 border-2 border-gray-700 hover:border-yellow-500 transition-all duration-300 relative group overflow-hidden">
-              {/* Esquinas tácticas */}
-              <div className="absolute top-2 left-2 w-4 h-4 border-l-2 border-t-2 border-yellow-500 opacity-60 z-10"></div>
-              <div className="absolute top-2 right-2 w-4 h-4 border-r-2 border-t-2 border-yellow-500 opacity-60 z-10"></div>
-              <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-yellow-500 opacity-60 z-10"></div>
-              <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60 z-10"></div>
-
-              {/* Imagen del vehículo */}
-              <div className="relative h-48 overflow-hidden">
-                <Image
-                  src="/photo-1636761358772-798789548d25.avif"
-                  alt="BMW X3 2019"
-                  width={400}
-                  height={200}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                <div className="absolute top-4 right-4 bg-yellow-500 text-black px-3 py-1 font-bold text-sm">
-                  DISPONIBLE
-                </div>
-              </div>
-
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <h4 className="text-xl font-bold text-white tracking-wide">
-                    BMW X3
-                  </h4>
-                  <span className="text-yellow-500 font-mono text-sm">
-                    2019
-                  </span>
-                </div>
-
-                <div className="mb-4">
-                  <div className="text-2xl font-bold text-yellow-500 mb-1">
-                    32.900€
-                  </div>
-                  <div className="text-sm text-gray-400 font-mono">
-                    85.200 KM
-                  </div>
-                </div>
-
-                <p className="text-gray-300 text-sm mb-4 leading-relaxed">
-                  SUV premium con motor diésel 2.0L. Equipamiento completo,
-                  <span className="text-yellow-500"> tracción xDrive</span>.
+                <p className="text-gray-500 text-sm mt-2">
+                  Vuelve pronto para ver nuestras últimas ofertas.
                 </p>
-
-                <div className="grid grid-cols-2 gap-4 mb-4 text-xs font-mono">
-                  <div className="flex items-center">
-                    <span className="text-yellow-500 mr-2">■</span>
-                    <span className="text-gray-400">2.0 TDI</span>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="text-yellow-500 mr-2">■</span>
-                    <span className="text-gray-400">190 CV</span>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="text-yellow-500 mr-2">■</span>
-                    <span className="text-gray-400">xDrive</span>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="text-yellow-500 mr-2">■</span>
-                    <span className="text-gray-400">Automático</span>
-                  </div>
-                </div>
-
-                <button
-                  type="button"
-                  className="w-full bg-yellow-500 hover:bg-yellow-400 text-black py-2 px-4 font-bold text-sm tracking-wider transition-all duration-300"
-                >
-                  VER DETALLES
-                </button>
               </div>
-            </div>
-
-            {/* Kawasaki Ninja 400 2022 */}
-            <div className="bg-black/60 border-2 border-gray-700 hover:border-yellow-500 transition-all duration-300 relative group overflow-hidden">
-              {/* Esquinas tácticas */}
-              <div className="absolute top-2 left-2 w-4 h-4 border-l-2 border-t-2 border-yellow-500 opacity-60 z-10"></div>
-              <div className="absolute top-2 right-2 w-4 h-4 border-r-2 border-t-2 border-yellow-500 opacity-60 z-10"></div>
-              <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-yellow-500 opacity-60 z-10"></div>
-              <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60 z-10"></div>
-
-              {/* Imagen del vehículo */}
-              <div className="relative h-48 overflow-hidden">
-                <Image
-                  src="/photo-1591637333184-19aa84b3e01f.avif"
-                  alt="Kawasaki Ninja 400 2022"
-                  width={400}
-                  height={200}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                <div className="absolute top-4 right-4 bg-green-500 text-black px-3 py-1 font-bold text-sm">
-                  NUEVO
-                </div>
-              </div>
-
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <h4 className="text-xl font-bold text-white tracking-wide">
-                    KAWASAKI NINJA 400
-                  </h4>
-                  <span className="text-yellow-500 font-mono text-sm">
-                    2022
-                  </span>
-                </div>
-
-                <div className="mb-4">
-                  <div className="text-2xl font-bold text-yellow-500 mb-1">
-                    5.900€
-                  </div>
-                  <div className="text-sm text-gray-400 font-mono">
-                    8.500 KM
-                  </div>
-                </div>
-
-                <p className="text-gray-300 text-sm mb-4 leading-relaxed">
-                  Deportiva perfecta para iniciarse. Motor bicilíndrico de
-                  399cc,
-                  <span className="text-yellow-500"> como nueva</span>.
-                </p>
-
-                <div className="grid grid-cols-2 gap-4 mb-4 text-xs font-mono">
-                  <div className="flex items-center">
-                    <span className="text-yellow-500 mr-2">■</span>
-                    <span className="text-gray-400">399cc</span>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="text-yellow-500 mr-2">■</span>
-                    <span className="text-gray-400">45 CV</span>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="text-yellow-500 mr-2">■</span>
-                    <span className="text-gray-400">ABS</span>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="text-yellow-500 mr-2">■</span>
-                    <span className="text-gray-400">1 Propietario</span>
-                  </div>
-                </div>
-
-                <button
-                  type="button"
-                  className="w-full bg-yellow-500 hover:bg-yellow-400 text-black py-2 px-4 font-bold text-sm tracking-wider transition-all duration-300"
-                >
-                  VER DETALLES
-                </button>
-              </div>
-            </div>
-
-            {/* Volkswagen Golf 2020 */}
-            <div className="bg-black/60 border-2 border-gray-700 hover:border-yellow-500 transition-all duration-300 relative group overflow-hidden">
-              {/* Esquinas tácticas */}
-              <div className="absolute top-2 left-2 w-4 h-4 border-l-2 border-t-2 border-yellow-500 opacity-60 z-10"></div>
-              <div className="absolute top-2 right-2 w-4 h-4 border-r-2 border-t-2 border-yellow-500 opacity-60 z-10"></div>
-              <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-yellow-500 opacity-60 z-10"></div>
-              <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60 z-10"></div>
-
-              {/* Imagen del vehículo */}
-              <div className="relative h-48 overflow-hidden">
-                <Image
-                  src="/photo-1636761358772-798789548d25.avif"
-                  alt="Volkswagen Golf 2020"
-                  width={400}
-                  height={200}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                <div className="absolute top-4 right-4 bg-yellow-500 text-black px-3 py-1 font-bold text-sm">
-                  DISPONIBLE
-                </div>
-              </div>
-
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <h4 className="text-xl font-bold text-white tracking-wide">
-                    VOLKSWAGEN GOLF
-                  </h4>
-                  <span className="text-yellow-500 font-mono text-sm">
-                    2020
-                  </span>
-                </div>
-
-                <div className="mb-4">
-                  <div className="text-2xl font-bold text-yellow-500 mb-1">
-                    18.500€
-                  </div>
-                  <div className="text-sm text-gray-400 font-mono">
-                    45.800 KM
-                  </div>
-                </div>
-
-                <p className="text-gray-300 text-sm mb-4 leading-relaxed">
-                  Compacto fiable con motor 1.5 TSI. Equipamiento Life,
-                  <span className="text-yellow-500"> bajo consumo</span>.
-                </p>
-
-                <div className="grid grid-cols-2 gap-4 mb-4 text-xs font-mono">
-                  <div className="flex items-center">
-                    <span className="text-yellow-500 mr-2">■</span>
-                    <span className="text-gray-400">1.5 TSI</span>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="text-yellow-500 mr-2">■</span>
-                    <span className="text-gray-400">130 CV</span>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="text-yellow-500 mr-2">■</span>
-                    <span className="text-gray-400">Manual</span>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="text-yellow-500 mr-2">■</span>
-                    <span className="text-gray-400">1 Propietario</span>
-                  </div>
-                </div>
-
-                <button
-                  type="button"
-                  className="w-full bg-yellow-500 hover:bg-yellow-400 text-black py-2 px-4 font-bold text-sm tracking-wider transition-all duration-300"
-                >
-                  VER DETALLES
-                </button>
-              </div>
-            </div>
-
-            {/* Vespa GTS 300 2021 */}
-            <div className="bg-black/60 border-2 border-gray-700 hover:border-yellow-500 transition-all duration-300 relative group overflow-hidden">
-              {/* Esquinas tácticas */}
-              <div className="absolute top-2 left-2 w-4 h-4 border-l-2 border-t-2 border-yellow-500 opacity-60 z-10"></div>
-              <div className="absolute top-2 right-2 w-4 h-4 border-r-2 border-t-2 border-yellow-500 opacity-60 z-10"></div>
-              <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-yellow-500 opacity-60 z-10"></div>
-              <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60 z-10"></div>
-
-              {/* Imagen del vehículo */}
-              <div className="relative h-48 overflow-hidden">
-                <Image
-                  src="/photo-1604260324056-45f7c778754a.avif"
-                  alt="Vespa GTS 300 2021"
-                  width={400}
-                  height={200}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                <div className="absolute top-4 right-4 bg-yellow-500 text-black px-3 py-1 font-bold text-sm">
-                  DISPONIBLE
-                </div>
-              </div>
-
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <h4 className="text-xl font-bold text-white tracking-wide">
-                    VESPA GTS 300
-                  </h4>
-                  <span className="text-yellow-500 font-mono text-sm">
-                    2021
-                  </span>
-                </div>
-
-                <div className="mb-4">
-                  <div className="text-2xl font-bold text-yellow-500 mb-1">
-                    4.800€
-                  </div>
-                  <div className="text-sm text-gray-400 font-mono">
-                    12.300 KM
-                  </div>
-                </div>
-
-                <p className="text-gray-300 text-sm mb-4 leading-relaxed">
-                  Scooter premium italiano. Motor 278cc monocilíndrico,
-                  <span className="text-yellow-500"> estilo clásico</span>.
-                </p>
-
-                <div className="grid grid-cols-2 gap-4 mb-4 text-xs font-mono">
-                  <div className="flex items-center">
-                    <span className="text-yellow-500 mr-2">■</span>
-                    <span className="text-gray-400">278cc</span>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="text-yellow-500 mr-2">■</span>
-                    <span className="text-gray-400">23 CV</span>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="text-yellow-500 mr-2">■</span>
-                    <span className="text-gray-400">ABS</span>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="text-yellow-500 mr-2">■</span>
-                    <span className="text-gray-400">1 Propietario</span>
-                  </div>
-                </div>
-
-                <button
-                  type="button"
-                  className="w-full bg-yellow-500 hover:bg-yellow-400 text-black py-2 px-4 font-bold text-sm tracking-wider transition-all duration-300"
-                >
-                  VER DETALLES
-                </button>
-              </div>
-            </div>
+            )}
           </div>
 
           {/* Botón para ver más vehículos */}
