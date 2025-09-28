@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { badResponsePrintable } from "@/lib/server-errors";
 import { zVehicleSchema } from "@/lib/validations/vehicle";
 import { VehicleService } from "@/modules/vehicles/application/services/vehicle-service";
 
@@ -15,12 +16,9 @@ export async function PUT(
     // Validar datos
     const validationResult = zVehicleSchema.safeParse(body);
     if (!validationResult.success) {
-      return NextResponse.json(
-        {
-          error: "Invalid data",
-          details: validationResult.error.issues,
-        },
-        { status: 400 },
+      return badResponsePrintable(
+        "Datos inválidos",
+        validationResult.error.issues.map((issue) => issue.message),
       );
     }
 

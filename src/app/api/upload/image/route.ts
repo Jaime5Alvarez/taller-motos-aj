@@ -1,15 +1,15 @@
 import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { type NextRequest, NextResponse } from "next/server";
 import { AWS_CONFIG, s3Client } from "@/lib/aws-config";
+import { badResponsePrintable } from "@/lib/server-errors";
 
 export async function POST(request: NextRequest) {
   try {
-
     const formData = await request.formData();
     const file = formData.get("file") as File;
 
     if (!file) {
-      return NextResponse.json({ error: "No file provided" }, { status: 400 });
+      return badResponsePrintable("No se proporcionó un archivo");
     }
 
     // Validar tipo de archivo
@@ -18,17 +18,15 @@ export async function POST(request: NextRequest) {
         file.type as (typeof AWS_CONFIG.allowedTypes)[number],
       )
     ) {
-      return NextResponse.json(
-        { error: "Invalid file type. Only JPEG, PNG and WebP are allowed." },
-        { status: 400 },
+      return badResponsePrintable(
+        "Tipo de archivo inválido. Solo se permiten JPEG, PNG y WebP",
       );
     }
 
     // Validar tamaño
     if (file.size > AWS_CONFIG.maxFileSize) {
-      return NextResponse.json(
-        { error: "File too large. Maximum size is 5MB." },
-        { status: 400 },
+      return badResponsePrintable(
+        "Archivo demasiado grande. El tamaño máximo es 5MB",
       );
     }
 

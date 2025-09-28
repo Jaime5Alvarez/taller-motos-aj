@@ -3,6 +3,7 @@
 import { useRouter } from "nextjs-toploader/app";
 import { Card } from "@/components/ui/card";
 import { useSetHeaderBreadcrumbs } from "@/hooks/use-set-header-breadcrumbs";
+import { apiClient } from "@/lib/interceptor";
 import type { VehicleSchema } from "@/lib/validations/vehicle";
 import { VehicleForm } from "./vehicle-form";
 
@@ -26,16 +27,19 @@ export function NewVehicleFormClient({
     data: VehicleSchema,
   ): Promise<{ error?: string }> => {
     try {
-      const response = await fetch("/api/vehicles", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
+      const response = await apiClient.post("/api/vehicles", {
+        name: data.name,
+        description: data.description,
+        price: data.price,
+        mileage: data.mileage,
+        year: data.year,
+        fuel: data.fuel,
+        features: data.features,
+        images: data.images,
       });
 
-      if (!response.ok) {
-        const errorData = await response.json();
+      if (!response.data) {
+        const errorData = await response.data;
         throw new Error(errorData.error || "Failed to create vehicle");
       }
 

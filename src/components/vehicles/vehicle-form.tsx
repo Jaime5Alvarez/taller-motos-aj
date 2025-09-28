@@ -42,6 +42,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { apiClient } from "@/lib/interceptor";
 import { type VehicleSchema, zVehicleSchema } from "@/lib/validations/vehicle";
 import type { Vehicle } from "@/types/vehicle";
 
@@ -111,16 +112,17 @@ export function VehicleForm({
       try {
         setUploadingImages((prev) => [...prev, file.name]);
 
-        const response = await fetch("/api/upload/image", {
-          method: "POST",
-          body: formData,
-        });
+        const response = await apiClient.post(
+          "/api/upload/image",
+          formData,
+          {},
+        );
 
-        if (!response.ok) {
+        if (!response.data) {
           throw new Error("Failed to upload image");
         }
 
-        const result = await response.json();
+        const result = await response.data;
 
         // Agregar la nueva URL a las imágenes
         form.setValue("images", [...currentImages, result.imageUrl]);
