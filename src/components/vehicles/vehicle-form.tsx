@@ -120,8 +120,8 @@ function SortableImage({ id, imageUrl, index, onRemove }: SortableImageProps) {
       <Image
         src={imageUrl}
         alt="Imagen del vehículo"
-        width={200}
-        height={200}
+        width={500}
+        height={500}
         className="w-full h-24 object-cover rounded-lg"
       />
       
@@ -190,8 +190,6 @@ export function VehicleForm({
     const files = event.target.files;
     if (!files) return;
 
-    const currentImages = form.getValues("images") || [];
-
     for (const file of Array.from(files)) {
       const formData = new FormData();
       formData.append("file", file);
@@ -211,6 +209,9 @@ export function VehicleForm({
 
         const result = await response.data;
 
+        // Obtener las imágenes actuales en cada iteración
+        const currentImages = form.getValues("images") || [];
+        
         // Agregar la nueva imagen con el siguiente orden disponible
         const nextOrder = currentImages.length > 0 
           ? Math.max(...currentImages.map(img => img.order)) + 1 
