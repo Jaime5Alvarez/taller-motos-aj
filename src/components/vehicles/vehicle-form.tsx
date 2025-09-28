@@ -407,7 +407,7 @@ export function VehicleForm({
                   <input
                     type="file"
                     multiple
-                    accept="image/*"
+                    accept="image/jpeg, image/png, image/webp"
                     onChange={handleImageUpload}
                     className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                   />

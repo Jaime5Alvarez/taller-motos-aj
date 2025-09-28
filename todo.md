@@ -9,3 +9,4 @@
 - [] Añadir favicon
 - [] Comprobar que todo el seo está bien
 - [] Cambiar dominio
+- [] Hacer bucket temporal para subir imagenes y luego pasar a bucket con persistencia
