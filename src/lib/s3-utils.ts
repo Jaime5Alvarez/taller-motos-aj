@@ -35,6 +35,7 @@ export async function moveImageFromTempToPermanent(
         movedAt: new Date().toISOString(),
         temporary: "false",
       },
+      CacheControl: "max-age=31536000", // 1 año
     });
 
     await s3Client.send(copyCommand);
