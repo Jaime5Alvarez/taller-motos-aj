@@ -88,7 +88,7 @@ export function Header() {
             <div className="hidden sm:flex items-center space-x-2 text-sm bg-yellow-500 text-black px-4 py-2 font-bold tracking-wider hover:bg-yellow-400 transition-all duration-300 transform hover:scale-105 relative overflow-hidden group">
               <div className="relative z-10 flex items-center space-x-2">
                 <Phone className="h-4 w-4" />
-                <span className="font-mono">941 13 XX XX</span>
+                <span className="font-mono">614 15 46 59</span>
               </div>
               <div className="absolute inset-0 bg-gradient-to-r from-yellow-600 to-yellow-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
             </div>
@@ -145,7 +145,7 @@ export function Header() {
             <div className="flex items-center space-x-2 text-sm py-2 px-4 bg-yellow-500/10 border border-yellow-500/30 mx-4 mt-4">
               <Phone className="h-4 w-4 text-yellow-500" />
               <span className="text-white font-mono font-bold">
-                941 13 XX XX
+                614 15 46 59
               </span>
             </div>
           </nav>
