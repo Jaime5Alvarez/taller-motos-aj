@@ -304,10 +304,6 @@ export function VehicleForm({
     try {
       const result = await onSubmit(data);
 
-      if (result.error) {
-        setErrorMessage(result.error);
-        setShowError(true);
-      }
       // Si no hay error, el componente padre manejará la navegación
     } catch (error) {
       console.error("Error submitting vehicle form:", error);
