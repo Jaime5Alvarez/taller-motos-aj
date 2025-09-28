@@ -709,7 +709,7 @@ export function VehicleForm({
               )}
             />
 
-            <div className="flex justify-between pt-4">
+            <div className="flex justify-end pt-4">
               {/* Botón de eliminar (solo en modo edición) */}
               {isEditing && onDelete && (
                 <AlertDialog>
