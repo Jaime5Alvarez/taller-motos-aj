@@ -164,18 +164,20 @@ export class VehicleService {
       const vehicleImagesList: VehicleImage[] = [];
       if (images && images.length > 0) {
         const permanentImages = [];
-        
+
         // Mover cada imagen de temporal a permanente
         for (const image of images.filter((img) => img.url.trim() !== "")) {
           try {
             let permanentUrl = image.url.trim();
-            
+
             // Si es una imagen temporal, moverla a permanente
-            if (permanentUrl.includes('/temp/')) {
+            if (permanentUrl.includes("/temp/")) {
               permanentUrl = await moveImageFromTempToPermanent(permanentUrl);
-              console.log(`Moved temp image to permanent: ${image.url} -> ${permanentUrl}`);
+              console.log(
+                `Moved temp image to permanent: ${image.url} -> ${permanentUrl}`,
+              );
             }
-            
+
             permanentImages.push({
               id: crypto.randomUUID(),
               vehiculeId: vehicleId,
@@ -280,18 +282,20 @@ export class VehicleService {
         // Crear nuevas imágenes (mover de temporal a permanente si es necesario)
         if (images.length > 0) {
           const permanentImages = [];
-          
+
           // Procesar cada imagen (mover de temporal a permanente si es necesario)
           for (const image of images.filter((img) => img.url.trim() !== "")) {
             try {
               let permanentUrl = image.url.trim();
-              
+
               // Si es una imagen temporal, moverla a permanente
-              if (permanentUrl.includes('/temp/')) {
+              if (permanentUrl.includes("/temp/")) {
                 permanentUrl = await moveImageFromTempToPermanent(permanentUrl);
-                console.log(`Moved temp image to permanent: ${image.url} -> ${permanentUrl}`);
+                console.log(
+                  `Moved temp image to permanent: ${image.url} -> ${permanentUrl}`,
+                );
               }
-              
+
               permanentImages.push({
                 id: crypto.randomUUID(),
                 vehiculeId: id,
@@ -322,12 +326,12 @@ export class VehicleService {
   private async deleteImageFromS3(imageUrl: string): Promise<void> {
     try {
       let key: string;
-      
+
       // Manejar tanto URLs de proxy como URLs directas de S3
-      if (imageUrl.startsWith('/api/image/')) {
+      if (imageUrl.startsWith("/api/image/")) {
         // URL de proxy: /api/image/vehicles/filename.ext
-        key = imageUrl.replace('/api/image/', '');
-      } else if (imageUrl.startsWith('http')) {
+        key = imageUrl.replace("/api/image/", "");
+      } else if (imageUrl.startsWith("http")) {
         // URL directa de S3: https://bucket-name.s3.region.amazonaws.com/vehicles/filename.ext
         const url = new URL(imageUrl);
         key = url.pathname.substring(1); // Remover el '/' inicial

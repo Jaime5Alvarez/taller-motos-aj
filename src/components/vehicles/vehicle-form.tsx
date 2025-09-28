@@ -165,8 +165,8 @@ export function VehicleForm({
   const [sessionId] = useState(() => generateSessionId());
 
   const isEditing = !!vehicle;
-  
-  console.log('VehicleForm Debug:', { vehicle, isEditing, sessionId });
+
+  console.log("VehicleForm Debug:", { vehicle, isEditing, sessionId });
 
   const form = useForm<VehicleSchema>({
     resolver: zodResolver(zVehicleSchema),
@@ -209,7 +209,7 @@ export function VehicleForm({
     for (const file of Array.from(files)) {
       const formData = new FormData();
       formData.append("file", file);
-      
+
       // Siempre usar API temporal para evitar imágenes huérfanas
       formData.append("sessionId", sessionId);
 
@@ -217,12 +217,8 @@ export function VehicleForm({
         setUploadingImages((prev) => [...prev, file.name]);
 
         console.log(`Uploading to: /api/upload/temp, sessionId: ${sessionId}`);
-        
-        const response = await apiClient.post(
-          "/api/upload/temp",
-          formData,
-          {},
-        );
+
+        const response = await apiClient.post("/api/upload/temp", formData, {});
 
         if (!response.data) {
           throw new Error("Failed to upload image");

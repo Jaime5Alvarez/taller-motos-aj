@@ -25,7 +25,7 @@ export async function PUT(
 }
 
 export async function DELETE(
-  request: Request,
+  _request: Request,
   { params }: { params: Promise<{ id: string }> },
 ) {
   try {
@@ -37,7 +37,10 @@ export async function DELETE(
       return NextResponse.json({ error: "Client not found" }, { status: 404 });
     }
 
-    return NextResponse.json({ success: true, message: "Client deleted successfully" });
+    return NextResponse.json({
+      success: true,
+      message: "Client deleted successfully",
+    });
   } catch (error) {
     console.error("Error in DELETE /api/clients/[id]:", error);
     return NextResponse.json(

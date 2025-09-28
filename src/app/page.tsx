@@ -1,6 +1,7 @@
 import { Clock, Mail, MapPin, Phone, Shield, Star, Wrench } from "lucide-react";
 import Image from "next/image";
 import { Header } from "@/components/header";
+import { VehicleImageCarousel } from "@/components/vehicle-image-carousel";
 import { VehicleService } from "@/modules/vehicles/application/services/vehicle-service";
 
 async function getVehiclesForSale() {
@@ -17,7 +18,7 @@ async function getVehiclesForSale() {
 
 export default async function Home() {
   const vehiclesForSale = await getVehiclesForSale();
-  
+
   return (
     <div className="min-h-screen bg-gradient-dark">
       <Header />
@@ -577,24 +578,11 @@ export default async function Home() {
                   <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-yellow-500 opacity-60 z-10"></div>
                   <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60 z-10"></div>
 
-                  {/* Imagen del vehículo */}
-                  <div className="relative h-48 overflow-hidden">
-                    <Image
-                      src={
-                        vehicle.images && vehicle.images.length > 0
-                          ? vehicle.images[0].imageUrl
-                          : "/photo-1591637333184-19aa84b3e01f.avif"
-                      }
-                      alt={vehicle.name}
-                      width={400}
-                      height={200}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                    <div className="absolute top-4 right-4 bg-yellow-500 text-black px-3 py-1 font-bold text-sm">
-                      DISPONIBLE
-                    </div>
-                  </div>
+                  {/* Carrusel de imágenes del vehículo */}
+                  <VehicleImageCarousel
+                    images={vehicle.images || []}
+                    vehicleName={vehicle.name}
+                  />
 
                   <div className="p-6">
                     <div className="flex items-center justify-between mb-3">
@@ -622,7 +610,9 @@ export default async function Home() {
                     <div className="grid grid-cols-2 gap-4 mb-4 text-xs font-mono">
                       <div className="flex items-center">
                         <span className="text-yellow-500 mr-2">■</span>
-                        <span className="text-gray-400 capitalize">{vehicle.fuel}</span>
+                        <span className="text-gray-400 capitalize">
+                          {vehicle.fuel}
+                        </span>
                       </div>
                       <div className="flex items-center">
                         <span className="text-yellow-500 mr-2">■</span>
@@ -632,12 +622,16 @@ export default async function Home() {
                         <>
                           <div className="flex items-center">
                             <span className="text-yellow-500 mr-2">■</span>
-                            <span className="text-gray-400">{vehicle.features[0].feature}</span>
+                            <span className="text-gray-400">
+                              {vehicle.features[0].feature}
+                            </span>
                           </div>
                           {vehicle.features[1] && (
                             <div className="flex items-center">
                               <span className="text-yellow-500 mr-2">■</span>
-                              <span className="text-gray-400">{vehicle.features[1].feature}</span>
+                              <span className="text-gray-400">
+                                {vehicle.features[1].feature}
+                              </span>
                             </div>
                           )}
                         </>

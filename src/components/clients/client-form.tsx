@@ -13,6 +13,17 @@ import {
 import { useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import {
   CardContent,
@@ -29,17 +40,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
 import { type ClientSchema, zClientSchema } from "@/lib/validations/client";
 import type { Client } from "@/types/client";
 
@@ -305,8 +305,9 @@ export function ClientForm({
                     <AlertDialogHeader>
                       <AlertDialogTitle>¿Estás seguro?</AlertDialogTitle>
                       <AlertDialogDescription>
-                        Esta acción no se puede deshacer. El cliente será eliminado permanentemente
-                        junto con todos sus vehículos asociados.
+                        Esta acción no se puede deshacer. El cliente será
+                        eliminado permanentemente junto con todos sus vehículos
+                        asociados.
                       </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
@@ -326,8 +327,8 @@ export function ClientForm({
               )}
 
               {/* Botón de guardar/crear */}
-              <Button 
-                type="submit" 
+              <Button
+                type="submit"
                 disabled={isSubmitting || isDeleting || isLoading}
               >
                 {isSubmitting
