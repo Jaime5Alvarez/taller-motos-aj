@@ -8,6 +8,7 @@ import {
   Euro,
   Fuel,
   Gauge,
+  GripVertical,
   Image as ImageIcon,
   Plus,
   Trash2,
@@ -17,6 +18,25 @@ import {
 import Image from "next/image";
 import { useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
+import {
+  DndContext,
+  closestCenter,
+  KeyboardSensor,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  type DragEndEvent,
+} from "@dnd-kit/core";
+import {
+  arrayMove,
+  SortableContext,
+  sortableKeyboardCoordinates,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
+import {
+  useSortable,
+} from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import {
@@ -50,8 +70,72 @@ interface VehicleFormProps {
   vehicle?: Vehicle; // Si existe, estamos editando
   onSubmit: (data: VehicleSchema) => Promise<{ error?: string }>;
   initialFeatures?: string[];
-  initialImages?: string[];
+  initialImages?: Array<{ url: string; order: number }>;
   isLoading?: boolean;
+}
+
+interface SortableImageProps {
+  id: string;
+  imageUrl: string;
+  index: number;
+  onRemove: (imageUrl: string) => void;
+}
+
+function SortableImage({ id, imageUrl, index, onRemove }: SortableImageProps) {
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({ id });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    opacity: isDragging ? 0.5 : 1,
+  };
+
+  return (
+    <div
+      ref={setNodeRef}
+      style={style}
+      className="relative group bg-white rounded-lg border shadow-sm"
+    >
+      {/* Drag handle */}
+      <div
+        {...attributes}
+        {...listeners}
+        className="absolute top-1 left-1 z-10 p-1 bg-white/80 rounded cursor-grab active:cursor-grabbing opacity-0 group-hover:opacity-100 transition-opacity"
+      >
+        <GripVertical className="h-3 w-3 text-gray-500" />
+      </div>
+      
+      {/* Order indicator */}
+      <div className="absolute top-1 right-8 z-10 bg-primary text-white text-xs px-1.5 py-0.5 rounded-full font-medium">
+        {index + 1}
+      </div>
+      
+      <Image
+        src={imageUrl}
+        alt="Imagen del vehículo"
+        width={200}
+        height={200}
+        className="w-full h-24 object-cover rounded-lg"
+      />
+      
+      <Button
+        type="button"
+        variant="destructive"
+        size="icon"
+        className="absolute -top-2 -right-2 h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity"
+        onClick={() => onRemove(imageUrl)}
+      >
+        <X className="h-3 w-3" />
+      </Button>
+    </div>
+  );
 }
 
 export function VehicleForm({
@@ -80,7 +164,10 @@ export function VehicleForm({
         (vehicle?.fuel as "gasolina" | "diesel" | "eléctrico" | "híbrido") ??
         "gasolina",
       features: initialFeatures.map((f) => ({ feature: f })),
-      images: initialImages,
+      images: initialImages.map((img, index) => ({
+        url: typeof img === 'string' ? img : img.url,
+        order: typeof img === 'string' ? index : img.order,
+      })),
     },
   });
 
@@ -124,8 +211,15 @@ export function VehicleForm({
 
         const result = await response.data;
 
-        // Agregar la nueva URL a las imágenes
-        form.setValue("images", [...currentImages, result.imageUrl]);
+        // Agregar la nueva imagen con el siguiente orden disponible
+        const nextOrder = currentImages.length > 0 
+          ? Math.max(...currentImages.map(img => img.order)) + 1 
+          : 0;
+        
+        form.setValue("images", [...currentImages, {
+          url: result.imageUrl,
+          order: nextOrder
+        }]);
       } catch (error) {
         console.error("Error uploading image:", error);
         setErrorMessage(
@@ -143,8 +237,39 @@ export function VehicleForm({
 
   const removeImage = (imageUrl: string) => {
     const currentImages = form.getValues("images") || [];
-    const newImages = currentImages.filter((url) => url !== imageUrl);
-    form.setValue("images", newImages);
+    const newImages = currentImages.filter((img) => img.url !== imageUrl);
+    // Reordenar las imágenes restantes
+    const reorderedImages = newImages.map((img, index) => ({
+      ...img,
+      order: index
+    }));
+    form.setValue("images", reorderedImages);
+  };
+
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    })
+  );
+
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event;
+
+    if (over && active.id !== over.id) {
+      const currentImages = form.getValues("images") || [];
+      const oldIndex = currentImages.findIndex((img) => img.url === active.id);
+      const newIndex = currentImages.findIndex((img) => img.url === over.id);
+
+      const reorderedImages = arrayMove(currentImages, oldIndex, newIndex);
+      // Actualizar los órdenes
+      const updatedImages = reorderedImages.map((img, index) => ({
+        ...img,
+        order: index
+      }));
+      
+      form.setValue("images", updatedImages);
+    }
   };
 
   const onSubmitForm = async (data: VehicleSchema) => {
@@ -434,43 +559,45 @@ export function VehicleForm({
                       </div>
                     </div>
 
-                    {/* Grid de imágenes */}
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                      {(form.watch("images") || []).map((imageUrl) => (
-                        <div key={imageUrl} className="relative group">
-                          <Image
-                            src={imageUrl}
-                            alt="Imagen del vehículo"
-                            width={200}
-                            height={200}
-                            className="w-full h-24 object-cover rounded-lg border"
-                          />
-                          <Button
-                            type="button"
-                            variant="destructive"
-                            size="icon"
-                            className="absolute -top-2 -right-2 h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity"
-                            onClick={() => removeImage(imageUrl)}
-                          >
-                            <X className="h-3 w-3" />
-                          </Button>
-                        </div>
-                      ))}
+                    {/* Grid de imágenes con drag & drop */}
+                    <DndContext
+                      sensors={sensors}
+                      collisionDetection={closestCenter}
+                      onDragEnd={handleDragEnd}
+                    >
+                      <SortableContext
+                        items={(form.watch("images") || []).map(img => img.url)}
+                        strategy={verticalListSortingStrategy}
+                      >
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                          {(form.watch("images") || [])
+                            .sort((a, b) => a.order - b.order)
+                            .map((image, index) => (
+                              <SortableImage
+                                key={image.url}
+                                id={image.url}
+                                imageUrl={image.url}
+                                index={index}
+                                onRemove={removeImage}
+                              />
+                            ))}
 
-                      {uploadingImages.map((fileName) => (
-                        <div
-                          key={fileName}
-                          className="w-full h-24 bg-muted rounded-lg border flex items-center justify-center"
-                        >
-                          <div className="text-center">
-                            <Upload className="h-6 w-6 mx-auto mb-1 animate-pulse" />
-                            <p className="text-xs text-muted-foreground">
-                              Subiendo...
-                            </p>
-                          </div>
+                          {uploadingImages.map((fileName) => (
+                            <div
+                              key={fileName}
+                              className="w-full h-24 bg-muted rounded-lg border flex items-center justify-center"
+                            >
+                              <div className="text-center">
+                                <Upload className="h-6 w-6 mx-auto mb-1 animate-pulse" />
+                                <p className="text-xs text-muted-foreground">
+                                  Subiendo...
+                                </p>
+                              </div>
+                            </div>
+                          ))}
                         </div>
-                      ))}
-                    </div>
+                      </SortableContext>
+                    </DndContext>
 
                     {(form.watch("images") || []).length === 0 &&
                       uploadingImages.length === 0 && (
@@ -479,6 +606,9 @@ export function VehicleForm({
                           <p>No hay imágenes agregadas</p>
                           <p className="text-sm">
                             Haz clic en "Subir Imágenes" para agregar fotos
+                          </p>
+                          <p className="text-xs mt-2 text-muted-foreground">
+                            💡 Puedes arrastrar las imágenes para cambiar su orden
                           </p>
                         </div>
                       )}

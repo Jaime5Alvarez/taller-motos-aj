@@ -32,7 +32,7 @@ export default async function EditVehiclePage({
       <VehicleFormClient
         vehicle={vehicleData}
         features={vehicleData.features.map((f) => f.feature)}
-        images={vehicleData.images.map((i) => i.imageUrl)}
+        images={vehicleData.images.map((i) => ({ url: i.imageUrl, order: i.order }))}
         breadcrumbs={[
           { label: "Dashboard", href: "/back-office/private" },
           {

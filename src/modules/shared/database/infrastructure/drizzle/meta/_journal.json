@@ -15,6 +15,13 @@
       "when": 1758906771098,
       "tag": "0001_milky_quentin_quire",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1759052610144,
+      "tag": "0002_chilly_toad_men",
+      "breakpoints": true
     }
   ]
 }

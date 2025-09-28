@@ -20,6 +20,7 @@ export interface VehicleImage {
   id: string;
   vehiculeId: string;
   imageUrl: string;
+  order: number;
   createdAt: Date;
 }
 

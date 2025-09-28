@@ -104,7 +104,8 @@ export class VehicleService {
       const result = await this.db
         .select()
         .from(vehiculeImages)
-        .where(eq(vehiculeImages.vehiculeId, vehicleId));
+        .where(eq(vehiculeImages.vehiculeId, vehicleId))
+        .orderBy(vehiculeImages.order);
 
       return result;
     } catch (error) {
@@ -116,7 +117,7 @@ export class VehicleService {
   async createVehicle(
     vehicleData: Omit<Vehicle, "id" | "createdAt">,
     features?: string[],
-    imageUrls?: string[],
+    images?: Array<{ url: string; order: number }>,
   ): Promise<VehicleWithDetails> {
     try {
       const vehicleId = crypto.randomUUID();
@@ -158,13 +159,14 @@ export class VehicleService {
 
       // Crear las imágenes si existen
       const vehicleImagesList: VehicleImage[] = [];
-      if (imageUrls && imageUrls.length > 0) {
-        const imageValues = imageUrls
-          .filter((url) => url.trim() !== "")
-          .map((imageUrl) => ({
+      if (images && images.length > 0) {
+        const imageValues = images
+          .filter((img) => img.url.trim() !== "")
+          .map((image) => ({
             id: crypto.randomUUID(),
             vehiculeId: vehicleId,
-            imageUrl: imageUrl.trim(),
+            imageUrl: image.url.trim(),
+            order: image.order,
             createdAt: new Date(),
           }));
 
@@ -193,7 +195,7 @@ export class VehicleService {
     id: string,
     vehicleData: Partial<Omit<Vehicle, "id" | "createdAt">>,
     features?: string[],
-    imageUrls?: string[],
+    images?: Array<{ url: string; order: number }>,
   ): Promise<VehicleWithDetails | null> {
     try {
       // Actualizar el vehículo
@@ -230,20 +232,21 @@ export class VehicleService {
       }
 
       // Si se proporcionan imágenes, reemplazar todas
-      if (imageUrls !== undefined) {
+      if (images !== undefined) {
         // Eliminar imágenes existentes
         await this.db
           .delete(vehiculeImages)
           .where(eq(vehiculeImages.vehiculeId, id));
 
         // Crear nuevas imágenes
-        if (imageUrls.length > 0) {
-          const imageValues = imageUrls
-            .filter((url) => url.trim() !== "")
-            .map((imageUrl) => ({
+        if (images.length > 0) {
+          const imageValues = images
+            .filter((img) => img.url.trim() !== "")
+            .map((image) => ({
               id: crypto.randomUUID(),
               vehiculeId: id,
-              imageUrl: imageUrl.trim(),
+              imageUrl: image.url.trim(),
+              order: image.order,
               createdAt: new Date(),
             }));
 

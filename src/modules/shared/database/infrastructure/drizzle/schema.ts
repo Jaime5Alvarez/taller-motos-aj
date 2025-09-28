@@ -92,6 +92,7 @@ export const vehiculeImages = pgTable("vehicule_images", {
     .notNull()
     .references(() => vehicles.id, { onDelete: "cascade" }),
   imageUrl: text("image_url").notNull(),
+  order: integer("order").notNull().default(0),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 

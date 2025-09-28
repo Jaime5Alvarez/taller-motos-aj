@@ -16,7 +16,7 @@ interface BreadcrumbItem {
 interface VehicleFormClientProps {
   vehicle: VehicleWithDetails;
   features: string[];
-  images: string[];
+  images: Array<{ url: string; order: number }>;
   breadcrumbs: BreadcrumbItem[];
 }
 
