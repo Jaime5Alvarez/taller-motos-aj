@@ -1,5 +1,22 @@
 "use client";
 
+import {
+  DndContext,
+  type DragEndEvent,
+  KeyboardSensor,
+  PointerSensor,
+  rectIntersection,
+  useSensor,
+  useSensors,
+} from "@dnd-kit/core";
+import {
+  arrayMove,
+  rectSortingStrategy,
+  SortableContext,
+  sortableKeyboardCoordinates,
+  useSortable,
+} from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   AlertCircle,
@@ -18,27 +35,18 @@ import {
 import Image from "next/image";
 import { useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
-import {
-  DndContext,
-  closestCenter,
-  KeyboardSensor,
-  PointerSensor,
-  useSensor,
-  useSensors,
-  type DragEndEvent,
-  rectIntersection,
-} from "@dnd-kit/core";
-import {
-  arrayMove,
-  SortableContext,
-  sortableKeyboardCoordinates,
-  rectSortingStrategy,
-} from "@dnd-kit/sortable";
-import {
-  useSortable,
-} from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import {
   CardContent,
@@ -70,6 +78,7 @@ import type { Vehicle } from "@/types/vehicle";
 interface VehicleFormProps {
   vehicle?: Vehicle; // Si existe, estamos editando
   onSubmit: (data: VehicleSchema) => Promise<{ error?: string }>;
+  onDelete?: () => Promise<{ error?: string }>;
   initialFeatures?: string[];
   initialImages?: Array<{ url: string; order: number }>;
   isLoading?: boolean;
@@ -112,12 +121,12 @@ function SortableImage({ id, imageUrl, index, onRemove }: SortableImageProps) {
       >
         <GripVertical className="h-3 w-3 text-gray-500" />
       </div>
-      
+
       {/* Order indicator */}
       <div className="absolute top-1 right-8 z-10 bg-primary text-white text-xs px-1.5 py-0.5 rounded-full font-medium">
         {index + 1}
       </div>
-      
+
       <Image
         src={imageUrl}
         alt="Imagen del vehículo"
@@ -125,7 +134,7 @@ function SortableImage({ id, imageUrl, index, onRemove }: SortableImageProps) {
         height={500}
         className="w-full h-24 object-cover rounded-lg"
       />
-      
+
       <Button
         type="button"
         variant="destructive"
@@ -142,6 +151,7 @@ function SortableImage({ id, imageUrl, index, onRemove }: SortableImageProps) {
 export function VehicleForm({
   vehicle,
   onSubmit,
+  onDelete,
   initialFeatures = [],
   initialImages = [],
   isLoading = false,
@@ -149,6 +159,7 @@ export function VehicleForm({
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
   const [uploadingImages, setUploadingImages] = useState<string[]>([]);
 
   const isEditing = !!vehicle;
@@ -166,8 +177,8 @@ export function VehicleForm({
         "gasolina",
       features: initialFeatures.map((f) => ({ feature: f })),
       images: initialImages.map((img, index) => ({
-        url: typeof img === 'string' ? img : img.url,
-        order: typeof img === 'string' ? index : img.order,
+        url: typeof img === "string" ? img : img.url,
+        order: typeof img === "string" ? index : img.order,
       })),
     },
   });
@@ -212,16 +223,20 @@ export function VehicleForm({
 
         // Obtener las imágenes actuales en cada iteración
         const currentImages = form.getValues("images") || [];
-        
+
         // Agregar la nueva imagen con el siguiente orden disponible
-        const nextOrder = currentImages.length > 0 
-          ? Math.max(...currentImages.map(img => img.order)) + 1 
-          : 0;
-        
-        form.setValue("images", [...currentImages, {
-          url: result.imageUrl,
-          order: nextOrder
-        }]);
+        const nextOrder =
+          currentImages.length > 0
+            ? Math.max(...currentImages.map((img) => img.order)) + 1
+            : 0;
+
+        form.setValue("images", [
+          ...currentImages,
+          {
+            url: result.imageUrl,
+            order: nextOrder,
+          },
+        ]);
       } catch (error) {
         console.error("Error uploading image:", error);
         setErrorMessage(
@@ -243,7 +258,7 @@ export function VehicleForm({
     // Reordenar las imágenes restantes
     const reorderedImages = newImages.map((img, index) => ({
       ...img,
-      order: index
+      order: index,
     }));
     form.setValue("images", reorderedImages);
   };
@@ -256,7 +271,7 @@ export function VehicleForm({
     }),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
-    })
+    }),
   );
 
   const handleDragEnd = (event: DragEndEvent) => {
@@ -271,9 +286,9 @@ export function VehicleForm({
       // Actualizar los órdenes
       const updatedImages = reorderedImages.map((img, index) => ({
         ...img,
-        order: index
+        order: index,
       }));
-      
+
       form.setValue("images", updatedImages);
     }
   };
@@ -299,6 +314,32 @@ export function VehicleForm({
       setShowError(true);
     } finally {
       setIsSubmitting(false);
+    }
+  };
+
+  const handleDelete = async () => {
+    if (!onDelete) return;
+
+    setIsDeleting(true);
+    setShowError(false);
+    setErrorMessage("");
+
+    try {
+      const result = await onDelete();
+
+      if (result.error) {
+        setErrorMessage(result.error);
+        setShowError(true);
+      }
+      // Si no hay error, el componente padre manejará la navegación
+    } catch (error) {
+      console.error("Error deleting vehicle:", error);
+      setErrorMessage(
+        "Ha ocurrido un error al eliminar el vehículo. Por favor, inténtalo de nuevo.",
+      );
+      setShowError(true);
+    } finally {
+      setIsDeleting(false);
     }
   };
 
@@ -536,7 +577,7 @@ export function VehicleForm({
             <FormField
               control={form.control}
               name="images"
-              render={({ field }) => (
+              render={() => (
                 <FormItem>
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
@@ -572,7 +613,9 @@ export function VehicleForm({
                       onDragEnd={handleDragEnd}
                     >
                       <SortableContext
-                        items={(form.watch("images") || []).map(img => img.url)}
+                        items={(form.watch("images") || []).map(
+                          (img) => img.url,
+                        )}
                         strategy={rectSortingStrategy}
                       >
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -614,7 +657,8 @@ export function VehicleForm({
                             Haz clic en "Subir Imágenes" para agregar fotos
                           </p>
                           <p className="text-xs mt-2 text-muted-foreground">
-                            💡 Puedes arrastrar las imágenes para cambiar su orden
+                            💡 Puedes arrastrar las imágenes para cambiar su
+                            orden
                           </p>
                         </div>
                       )}
@@ -624,11 +668,53 @@ export function VehicleForm({
               )}
             />
 
-            <div className="flex justify-end pt-4">
+            <div className="flex justify-between pt-4">
+              {/* Botón de eliminar (solo en modo edición) */}
+              {isEditing && onDelete && (
+                <AlertDialog>
+                  <AlertDialogTrigger asChild>
+                    <Button
+                      type="button"
+                      variant="destructive"
+                      disabled={isSubmitting || isDeleting || isLoading}
+                    >
+                      <Trash2 className="h-4 w-4 mr-2" />
+                      {isDeleting ? "Eliminando..." : "Eliminar Vehículo"}
+                    </Button>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>¿Estás seguro?</AlertDialogTitle>
+                      <AlertDialogDescription>
+                        Esta acción no se puede deshacer. El vehículo será
+                        eliminado permanentemente junto con todas sus imágenes y
+                        características.
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                      <AlertDialogCancel disabled={isDeleting}>
+                        Cancelar
+                      </AlertDialogCancel>
+                      <AlertDialogAction
+                        onClick={handleDelete}
+                        disabled={isDeleting}
+                        className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                      >
+                        {isDeleting ? "Eliminando..." : "Sí, eliminar"}
+                      </AlertDialogAction>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
+              )}
+
+              {/* Botón de guardar/crear */}
               <Button
                 type="submit"
                 disabled={
-                  isSubmitting || isLoading || uploadingImages.length > 0
+                  isSubmitting ||
+                  isDeleting ||
+                  isLoading ||
+                  uploadingImages.length > 0
                 }
               >
                 {isSubmitting

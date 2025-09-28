@@ -66,11 +66,37 @@ export function VehicleFormClient({
     }
   };
 
+  const handleDelete = async (): Promise<{ error?: string }> => {
+    try {
+      const response = await apiClient.delete(`/api/vehicles/${vehicle.id}`);
+
+      if (!response.data) {
+        const errorData = await response.data;
+        throw new Error(errorData.error || "Failed to delete vehicle");
+      }
+
+      // Redirigir a la lista de vehículos después de eliminar
+      router.push("/back-office/private/vehicules");
+      router.refresh();
+
+      return {};
+    } catch (error) {
+      console.error("Error deleting vehicle:", error);
+      return {
+        error:
+          error instanceof Error
+            ? error.message
+            : "Error al eliminar el vehículo. Por favor, inténtalo de nuevo.",
+      };
+    }
+  };
+
   return (
     <Card>
       <VehicleForm
         vehicle={vehicle}
         onSubmit={handleSubmit}
+        onDelete={handleDelete}
         initialFeatures={features}
         initialImages={images}
       />

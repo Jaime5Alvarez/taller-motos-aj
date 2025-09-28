@@ -48,3 +48,29 @@ export async function PUT(
     );
   }
 }
+
+export async function DELETE(
+  _request: Request,
+  { params }: { params: Promise<{ id: string }> },
+) {
+  try {
+    const { id } = await params;
+
+    const success = await vehicleService.deleteVehicle(id);
+
+    if (!success) {
+      return NextResponse.json({ error: "Vehicle not found" }, { status: 404 });
+    }
+
+    return NextResponse.json({
+      success: true,
+      message: "Vehicle deleted successfully",
+    });
+  } catch (error) {
+    console.error("Error in DELETE /api/vehicles/[id]:", error);
+    return NextResponse.json(
+      { error: "Failed to delete vehicle" },
+      { status: 500 },
+    );
+  }
+}

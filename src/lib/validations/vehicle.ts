@@ -37,7 +37,7 @@ export const zVehicleSchema = z.object({
       z.object({
         url: z.url("URL de imagen inválida"),
         order: z.number().min(0, "El orden debe ser mayor o igual a 0"),
-      })
+      }),
     )
     .min(1, "Debe agregar al menos una imagen"),
 });

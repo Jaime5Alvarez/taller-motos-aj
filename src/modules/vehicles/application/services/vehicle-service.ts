@@ -1,4 +1,6 @@
+import { DeleteObjectCommand } from "@aws-sdk/client-s3";
 import { eq } from "drizzle-orm";
+import { AWS_CONFIG, s3Client } from "@/lib/aws-config";
 import { CreateDBClient } from "@/modules/shared/database/factories/CreateDBClient";
 import {
   vehicles,
@@ -233,7 +235,27 @@ export class VehicleService {
 
       // Si se proporcionan imágenes, reemplazar todas
       if (images !== undefined) {
-        // Eliminar imágenes existentes
+        // Obtener imágenes existentes antes de eliminarlas
+        const existingImages = await this.getVehicleImages(id);
+
+        // Identificar qué imágenes se van a eliminar (las que no están en la nueva lista)
+        const newImageUrls = images.map((img) => img.url);
+        const imagesToDelete = existingImages.filter(
+          (existingImg) => !newImageUrls.includes(existingImg.imageUrl),
+        );
+
+        // Eliminar imágenes de S3 que ya no se necesitan
+        if (imagesToDelete.length > 0) {
+          const deletePromises = imagesToDelete.map((image) =>
+            this.deleteImageFromS3(image.imageUrl),
+          );
+          await Promise.allSettled(deletePromises);
+          console.log(
+            `Attempted to delete ${imagesToDelete.length} unused images from S3`,
+          );
+        }
+
+        // Eliminar imágenes existentes de la base de datos
         await this.db
           .delete(vehiculeImages)
           .where(eq(vehiculeImages.vehiculeId, id));
@@ -264,14 +286,56 @@ export class VehicleService {
     }
   }
 
+  private async deleteImageFromS3(imageUrl: string): Promise<void> {
+    try {
+      // Extraer la key del archivo de la URL
+      // URL format: https://bucket-name.s3.region.amazonaws.com/vehicles/filename.ext
+      const url = new URL(imageUrl);
+      const key = url.pathname.substring(1); // Remover el '/' inicial
+
+      const deleteCommand = new DeleteObjectCommand({
+        Bucket: AWS_CONFIG.bucketName,
+        Key: key,
+      });
+
+      await s3Client.send(deleteCommand);
+      console.log(`Image deleted from S3: ${key}`);
+    } catch (error) {
+      console.error(`Error deleting image from S3: ${imageUrl}`, error);
+      // No lanzamos error aquí para no fallar toda la eliminación por una imagen
+    }
+  }
+
   async deleteVehicle(id: string): Promise<boolean> {
     try {
+      // Primero obtener todas las imágenes del vehículo antes de eliminarlo
+      const vehicleImages = await this.getVehicleImages(id);
+
+      // Eliminar el vehículo de la base de datos primero (las imágenes y características se eliminan por CASCADE)
       const result = await this.db
         .delete(vehicles)
         .where(eq(vehicles.id, id))
         .returning();
 
-      return result.length > 0;
+      if (result.length === 0) {
+        throw new Error("Vehicle not found");
+      }
+
+      // Después eliminar las imágenes de S3 en paralelo (si las hay)
+      if (vehicleImages.length > 0) {
+        const deletePromises = vehicleImages.map((image) =>
+          this.deleteImageFromS3(image.imageUrl),
+        );
+
+        // Ejecutar todas las eliminaciones en paralelo
+        // Usamos Promise.allSettled para que no falle si alguna imagen no se puede eliminar
+        await Promise.allSettled(deletePromises);
+        console.log(
+          `Attempted to delete ${vehicleImages.length} images from S3 after vehicle deletion`,
+        );
+      }
+
+      return true;
     } catch (error) {
       console.error("Error deleting vehicle:", error);
       throw new Error("Failed to delete vehicle");
