@@ -37,7 +37,7 @@ export function NewVehicleFormClient({
         features: data.features,
         images: data.images,
         status: data.status,
-      });
+      } satisfies VehicleSchema);
 
       if (!response.data) {
         const errorData = await response.data;
