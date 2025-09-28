@@ -287,7 +287,7 @@ export function ClientForm({
               )}
             </div>
 
-            <div className="flex justify-between pt-4">
+            <div className="flex justify-end pt-4 gap-2">
               {/* Botón de eliminar (solo en modo edición) */}
               {isEditing && onDelete && (
                 <AlertDialog>
