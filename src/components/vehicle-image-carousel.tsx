@@ -87,7 +87,7 @@ export function VehicleImageCarousel({
         </CarouselContent>
 
         {/* Controles de navegación estilo militar - solo aparecen en hover */}
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="absolute inset-0 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/80 border-yellow-500/50 text-yellow-500 hover:text-yellow-400 size-8 transition-all duration-200 hover:scale-110 hover:border-yellow-400" />
           <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/80 border-yellow-500/50 text-yellow-500 hover:text-yellow-400 size-8 transition-all duration-200 hover:scale-110 hover:border-yellow-400" />
         </div>
