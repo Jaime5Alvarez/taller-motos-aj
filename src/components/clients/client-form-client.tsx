@@ -70,6 +70,31 @@ export function ClientFormClient({
     }
   };
 
+  const handleDelete = async (): Promise<{ error?: string }> => {
+    try {
+      const response = await apiClient.delete(`/api/clients/${client.id}`);
+
+      if (!response.data) {
+        const errorData = await response.data;
+        throw new Error(errorData.error || "Failed to delete client");
+      }
+
+      // Redirigir a la lista de clientes después de eliminar
+      router.push("/back-office/private/clients");
+      router.refresh();
+
+      return {};
+    } catch (error) {
+      console.error("Error deleting client:", error);
+      return {
+        error:
+          error instanceof Error
+            ? error.message
+            : "Error al eliminar el cliente. Por favor, inténtalo de nuevo.",
+      };
+    }
+  };
+
   // Convertir los vehículos del cliente al formato esperado por el formulario
   const initialVehicles = vehicles.map((v) => ({
     carName: v.carName,
@@ -82,6 +107,7 @@ export function ClientFormClient({
         client={client}
         initialVehicles={initialVehicles}
         onSubmit={handleSubmit}
+        onDelete={handleDelete}
       />
     </Card>
   );

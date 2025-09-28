@@ -23,3 +23,26 @@ export async function PUT(
     );
   }
 }
+
+export async function DELETE(
+  request: Request,
+  { params }: { params: Promise<{ id: string }> },
+) {
+  try {
+    const { id } = await params;
+
+    const success = await clientService.deleteClient(id);
+
+    if (!success) {
+      return NextResponse.json({ error: "Client not found" }, { status: 404 });
+    }
+
+    return NextResponse.json({ success: true, message: "Client deleted successfully" });
+  } catch (error) {
+    console.error("Error in DELETE /api/clients/[id]:", error);
+    return NextResponse.json(
+      { error: "Failed to delete client" },
+      { status: 500 },
+    );
+  }
+}

@@ -29,12 +29,24 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { type ClientSchema, zClientSchema } from "@/lib/validations/client";
 import type { Client } from "@/types/client";
 
 interface ClientFormProps {
   client?: Client; // Si existe, estamos editando; si no, estamos creando
   onSubmit: (data: ClientSchema) => Promise<{ error?: string }>;
+  onDelete?: () => Promise<{ error?: string }>;
   initialVehicles?: { carName: string; licensePlate: string }[]; // Vehículos iniciales
   isLoading?: boolean;
 }
@@ -42,12 +54,14 @@ interface ClientFormProps {
 export function ClientForm({
   client,
   onSubmit,
+  onDelete,
   initialVehicles = [],
   isLoading = false,
 }: ClientFormProps) {
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const isEditing = !!client;
 
@@ -91,6 +105,32 @@ export function ClientForm({
       setShowError(true);
     } finally {
       setIsSubmitting(false);
+    }
+  };
+
+  const handleDelete = async () => {
+    if (!onDelete) return;
+
+    setIsDeleting(true);
+    setShowError(false);
+    setErrorMessage("");
+
+    try {
+      const result = await onDelete();
+
+      if (result.error) {
+        setErrorMessage(result.error);
+        setShowError(true);
+      }
+      // Si no hay error, el componente padre manejará la navegación
+    } catch (error) {
+      console.error("Error deleting client:", error);
+      setErrorMessage(
+        "Ha ocurrido un error al eliminar el cliente. Por favor, inténtalo de nuevo.",
+      );
+      setShowError(true);
+    } finally {
+      setIsDeleting(false);
     }
   };
 
@@ -247,8 +287,49 @@ export function ClientForm({
               )}
             </div>
 
-            <div className="flex justify-end pt-4">
-              <Button type="submit" disabled={isSubmitting || isLoading}>
+            <div className="flex justify-between pt-4">
+              {/* Botón de eliminar (solo en modo edición) */}
+              {isEditing && onDelete && (
+                <AlertDialog>
+                  <AlertDialogTrigger asChild>
+                    <Button
+                      type="button"
+                      variant="destructive"
+                      disabled={isSubmitting || isDeleting || isLoading}
+                    >
+                      <Trash2 className="h-4 w-4 mr-2" />
+                      {isDeleting ? "Eliminando..." : "Eliminar Cliente"}
+                    </Button>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>¿Estás seguro?</AlertDialogTitle>
+                      <AlertDialogDescription>
+                        Esta acción no se puede deshacer. El cliente será eliminado permanentemente
+                        junto con todos sus vehículos asociados.
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                      <AlertDialogCancel disabled={isDeleting}>
+                        Cancelar
+                      </AlertDialogCancel>
+                      <AlertDialogAction
+                        onClick={handleDelete}
+                        disabled={isDeleting}
+                        className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                      >
+                        {isDeleting ? "Eliminando..." : "Sí, eliminar"}
+                      </AlertDialogAction>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
+              )}
+
+              {/* Botón de guardar/crear */}
+              <Button 
+                type="submit" 
+                disabled={isSubmitting || isDeleting || isLoading}
+              >
                 {isSubmitting
                   ? isEditing
                     ? "Actualizando..."
