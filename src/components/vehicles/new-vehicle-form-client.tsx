@@ -36,6 +36,7 @@ export function NewVehicleFormClient({
         fuel: data.fuel,
         features: data.features,
         images: data.images,
+        status: data.status,
       });
 
       if (!response.data) {
