@@ -97,8 +97,14 @@ export function VehicleImageCarousel({
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
 
       {/* Badge disponible */}
-      <div className="absolute top-4 right-4 bg-yellow-500 text-black px-3 py-1 font-bold text-sm z-10">
-        DISPONIBLE
+      <div
+        className={`absolute top-4 right-4 px-3 py-1 font-bold text-sm ${
+          status === "available"
+            ? "bg-yellow-500 text-black"
+            : "bg-red-500 text-white"
+        } z-10`}
+      >
+        {status === "available" ? "DISPONIBLE" : "VENDIDO"}
       </div>
 
       {/* Indicadores de puntos estilo militar */}

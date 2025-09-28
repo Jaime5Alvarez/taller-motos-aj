@@ -43,10 +43,7 @@ export class VehicleService {
 
   async getAvailableVehiclesWithDetails(): Promise<VehicleWithDetails[]> {
     try {
-      const vehiclesList = await this.db
-        .select()
-        .from(vehicles)
-        .where(eq(vehicles.status, "available"));
+      const vehiclesList = await this.db.select().from(vehicles);
 
       const vehiclesWithDetails = await Promise.all(
         (vehiclesList as Vehicle[]).map(async (vehicle) => {
