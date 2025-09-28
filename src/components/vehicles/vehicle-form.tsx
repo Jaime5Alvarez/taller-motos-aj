@@ -26,12 +26,13 @@ import {
   useSensor,
   useSensors,
   type DragEndEvent,
+  rectIntersection,
 } from "@dnd-kit/core";
 import {
   arrayMove,
   SortableContext,
   sortableKeyboardCoordinates,
-  verticalListSortingStrategy,
+  rectSortingStrategy,
 } from "@dnd-kit/sortable";
 import {
   useSortable,
@@ -248,7 +249,11 @@ export function VehicleForm({
   };
 
   const sensors = useSensors(
-    useSensor(PointerSensor),
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 8, // Requiere mover 8px antes de activar el drag
+      },
+    }),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
     })
@@ -563,12 +568,12 @@ export function VehicleForm({
                     {/* Grid de imágenes con drag & drop */}
                     <DndContext
                       sensors={sensors}
-                      collisionDetection={closestCenter}
+                      collisionDetection={rectIntersection}
                       onDragEnd={handleDragEnd}
                     >
                       <SortableContext
                         items={(form.watch("images") || []).map(img => img.url)}
-                        strategy={verticalListSortingStrategy}
+                        strategy={rectSortingStrategy}
                       >
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                           {(form.watch("images") || [])
