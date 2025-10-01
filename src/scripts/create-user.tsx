@@ -1,32 +1,18 @@
-import { parseArgs } from "node:util";
 import { auth } from "@/lib/auth";
 
 // Parsear argumentos de línea de comandos
-const { values } = parseArgs({
-  args: Bun.argv,
-  options: {
-    name: {
-      type: "string",
-    },
-    email: {
-      type: "string",
-    },
-    password: {
-      type: "string",
-    },
-  },
-  strict: true,
-  allowPositionals: true,
-});
+const name = process.argv[2];
+const email = process.argv[3];
+const password = process.argv[4];
 
 // Validar argumentos requeridos
-if (!values.name || !values.email || !values.password) {
+if (!name || !email || !password) {
   console.error(
     "❌ Error: Los argumentos --name, --email y --password son requeridos",
   );
   console.log("\n📝 Uso:");
   console.log(
-    "bun run src/scripts/create-user.tsx --name 'Juan Pérez' --email juan@example.com --password miPassword123 [--image url] [--callbackURL url]",
+    "bun run src/scripts/create-user.tsx 'Juan Pérez' juan@example.com miPassword123",
   );
   console.log("\n📝 Uso con flags cortos:");
   console.log(
@@ -36,15 +22,15 @@ if (!values.name || !values.email || !values.password) {
 }
 
 console.log("🚀 Creando usuario con los siguientes datos:");
-console.log(`👤 Nombre: ${values.name}`);
-console.log(`📧 Email: ${values.email}`);
-console.log(`🔒 Password: ${"*".repeat(values.password.length)}`);
+console.log(`👤 Nombre: ${name}`);
+console.log(`📧 Email: ${email}`);
+console.log(`🔒 Password: ${"*".repeat(password.length)}`);
 
 const data = await auth.api.signUpEmail({
   body: {
-    name: values.name,
-    email: values.email,
-    password: values.password,
+    name: name,
+    email: email,
+    password: password,
   },
 });
 
