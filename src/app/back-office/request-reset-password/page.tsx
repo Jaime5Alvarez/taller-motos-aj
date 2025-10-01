@@ -1,29 +1,20 @@
 "use client";
 
-import { Link, Loader2 } from "lucide-react";
+import { Card, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { CardDescription } from "@/components/ui/card";
+import { CardContent } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Loader2 } from "lucide-react";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { authClient } from "@/lib/auth-client";
-import { cn } from "@/lib/utils";
-import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
-import { useRouter } from "nextjs-toploader/app";
+import { toast } from "sonner";
 
-export function LoginForm({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
-  const router = useRouter();
+export default function ResetPasswordPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [showError, setShowError] = useState(false);
 
@@ -33,28 +24,31 @@ export function LoginForm({
       setShowError(false);
       e.preventDefault();
       const formData = new FormData(e.target as HTMLFormElement);
-      console.log(e);
       const email = formData.get("email") as string;
-      const password = formData.get("password") as string;
-      console.log(email, password);
-
-      const response = await authClient.signIn.email({
+      const response = await authClient.requestPasswordReset({
         email,
-        password,
-        callbackURL: "/back-office/private",
+        redirectTo: "/back-office/reset-password",
       });
+
       if (response.error) {
         setShowError(true);
       }
-    } catch (_error) {
+
+      toast.success("Se ha enviado un correo para restaurar la contraseña");
+    } catch (error) {
       setShowError(true);
     } finally {
       setIsLoading(false);
     }
   };
+
   return (
-    <div className={cn("flex flex-col gap-6", className)} {...props}>
-      <Card>
+    <div
+      className={cn(
+        "flex flex-col gap-6 min-h-svh w-full items-center justify-center p-6 md:p-10",
+      )}
+    >
+      <Card className="max-w-sm w-full mx-auto">
         <CardHeader className="text-center">
           <div className="flex justify-center mb-4">
             <Image
@@ -65,9 +59,9 @@ export function LoginForm({
               className="rounded-lg"
             />
           </div>
-          <CardTitle>Iniciar sesión</CardTitle>
+          <CardTitle>Restaurar contraseña</CardTitle>
           <CardDescription>
-            Ingrese su email y contraseña para iniciar sesión
+            Ingrese su email para restaurar su contraseña
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -83,18 +77,9 @@ export function LoginForm({
                   required
                 />
               </div>
-              <div className="grid gap-3">
-                <Input
-                  id="password"
-                  name="password"
-                  type="password"
-                  required
-                  placeholder="Contraseña"
-                />
-              </div>
               <div className="flex flex-col gap-3">
                 <Button type="submit" className="w-full" disabled={isLoading}>
-                  Login{" "}
+                  Solicitar restauración de contraseña{" "}
                   {isLoading && (
                     <Loader2 className="w-4 h-4 ml-2 animate-spin" />
                   )}
@@ -104,18 +89,11 @@ export function LoginForm({
           </form>
         </CardContent>
         <CardFooter>
-          <Button
-            variant="link"
-            className="w-full text-muted-foreground"
-            onClick={() => router.push("/back-office/request-reset-password")}
-          >
-            Olvidé mi contraseña
-          </Button>
           {showError && (
             <Alert variant="destructive">
               <AlertTitle>Error</AlertTitle>
               <AlertDescription>
-                Las credenciales son incorrectas
+                Ha ocurrido un error al restaurar la contraseña
               </AlertDescription>
             </Alert>
           )}

@@ -1,31 +1,38 @@
 "use client";
 
-import { Link, Loader2 } from "lucide-react";
-import Image from "next/image";
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import {
   Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
+  CardContent,
+  CardFooter,
   CardTitle,
+  CardDescription,
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+import Image from "next/image";
 import { Label } from "@/components/ui/label";
-import { authClient } from "@/lib/auth-client";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Loader2 } from "lucide-react";
+import { Alert } from "@/components/ui/alert";
 import { cn } from "@/lib/utils";
-import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
-import { useRouter } from "nextjs-toploader/app";
+import { useState } from "react";
+import { AlertTitle } from "@/components/ui/alert";
+import { AlertDescription } from "@/components/ui/alert";
+import { authClient } from "@/lib/auth-client";
+import { redirect, useRouter, useSearchParams } from "next/navigation";
+import { toast } from "sonner";
 
-export function LoginForm({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
-  const router = useRouter();
+export default function ResetPasswordPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [showError, setShowError] = useState(false);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const token = searchParams.get("token");
+
+  if (!token) {
+    redirect("/back-office/request-reset-password");
+  }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     try {
@@ -33,27 +40,32 @@ export function LoginForm({
       setShowError(false);
       e.preventDefault();
       const formData = new FormData(e.target as HTMLFormElement);
-      console.log(e);
-      const email = formData.get("email") as string;
       const password = formData.get("password") as string;
-      console.log(email, password);
-
-      const response = await authClient.signIn.email({
-        email,
-        password,
-        callbackURL: "/back-office/private",
+      const response = await authClient.resetPassword({
+        newPassword: password,
+        token,
       });
       if (response.error) {
         setShowError(true);
       }
-    } catch (_error) {
+      toast.success("Contraseña creada correctamente");
+      await Promise.resolve(
+        setTimeout(() => {
+          router.push("/back-office/login");
+        }, 1000),
+      );
+    } catch (error) {
       setShowError(true);
     } finally {
       setIsLoading(false);
     }
   };
   return (
-    <div className={cn("flex flex-col gap-6", className)} {...props}>
+    <div
+      className={cn(
+        "flex flex-col gap-6 min-h-svh w-full items-center justify-center p-6 md:p-10",
+      )}
+    >
       <Card>
         <CardHeader className="text-center">
           <div className="flex justify-center mb-4">
@@ -65,36 +77,25 @@ export function LoginForm({
               className="rounded-lg"
             />
           </div>
-          <CardTitle>Iniciar sesión</CardTitle>
-          <CardDescription>
-            Ingrese su email y contraseña para iniciar sesión
-          </CardDescription>
+          <CardTitle>Crea tu nueva contraseña</CardTitle>
+          <CardDescription>Ingrese su nueva contraseña</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit}>
             <div className="flex flex-col gap-6">
               <div className="grid gap-3">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">Nueva contraseña</Label>
                 <Input
                   id="email"
-                  name="email"
-                  type="email"
-                  placeholder="m@example.com"
-                  required
-                />
-              </div>
-              <div className="grid gap-3">
-                <Input
-                  id="password"
                   name="password"
                   type="password"
+                  placeholder="********"
                   required
-                  placeholder="Contraseña"
                 />
               </div>
               <div className="flex flex-col gap-3">
                 <Button type="submit" className="w-full" disabled={isLoading}>
-                  Login{" "}
+                  Crear nueva contraseña{" "}
                   {isLoading && (
                     <Loader2 className="w-4 h-4 ml-2 animate-spin" />
                   )}
@@ -104,18 +105,11 @@ export function LoginForm({
           </form>
         </CardContent>
         <CardFooter>
-          <Button
-            variant="link"
-            className="w-full text-muted-foreground"
-            onClick={() => router.push("/back-office/request-reset-password")}
-          >
-            Olvidé mi contraseña
-          </Button>
           {showError && (
             <Alert variant="destructive">
               <AlertTitle>Error</AlertTitle>
               <AlertDescription>
-                Las credenciales son incorrectas
+                Ha ocurrido un error al restaurar la contraseña
               </AlertDescription>
             </Alert>
           )}
