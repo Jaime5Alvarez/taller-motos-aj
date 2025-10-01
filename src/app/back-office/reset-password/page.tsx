@@ -66,7 +66,7 @@ export default function ResetPasswordPage() {
         "flex flex-col gap-6 min-h-svh w-full items-center justify-center p-6 md:p-10",
       )}
     >
-      <Card>
+      <Card className="max-w-sm w-full mx-auto">
         <CardHeader className="text-center">
           <div className="flex justify-center mb-4">
             <Image
