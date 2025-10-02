@@ -1179,7 +1179,7 @@ export default async function Home() {
                 UBICACIÓN DEL TALLER
               </h4>
               <div className="text-gray-300 font-mono space-y-1">
-                <p className="text-yellow-500">Calle Principal, 123</p>
+                <p className="text-yellow-500">Av. Achútegui de Blas, 22</p>
                 <p>26500 Calahorra</p>
                 <p>
                   La Rioja, <span className="text-yellow-500">ESP</span>
@@ -1236,7 +1236,7 @@ export default async function Home() {
                 </div>
                 <div className="flex items-center justify-center gap-2">
                   <Mail className="h-4 w-4 text-yellow-500" />
-                  <span className="text-gray-300">info@ajmotorbikes.com</span>
+                  <span className="text-gray-300">ajmotorbikeslr@gmail.com</span>
                 </div>
               </div>
             </div>
@@ -1364,7 +1364,7 @@ export default async function Home() {
                 </li>
                 <li className="flex items-center">
                   <span className="text-yellow-500 mr-2">■</span>{" "}
-                  info@ajmotorbikes.com
+                  ajmotorbikeslr@gmail.com
                 </li>
               </ul>
             </div>
