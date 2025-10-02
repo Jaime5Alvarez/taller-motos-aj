@@ -120,7 +120,7 @@ export default async function Home() {
                 <span className="text-yellow-500 font-mono">
                   TALLER DE MOTOS
                 </span>{" "}
-                con pasión por las motocicletas desde hace decadas.
+                con pasión por las motocicletas desde hace décadas.
                 <br />
                 <span className="text-gray-400">Calahorra, La Rioja</span> -{" "}
                 <span className="text-yellow-500">
