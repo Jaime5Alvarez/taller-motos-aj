@@ -3,7 +3,7 @@
 import { Loader2 } from "lucide-react";
 import Image from "next/image";
 import { redirect, useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { toast } from "sonner";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
@@ -20,7 +20,7 @@ import { Label } from "@/components/ui/label";
 import { authClient } from "@/lib/auth-client";
 import { cn } from "@/lib/utils";
 
-export default function ResetPasswordPage() {
+function ResetPasswordContent() {
   const [isLoading, setIsLoading] = useState(false);
   const [showError, setShowError] = useState(false);
   const router = useRouter();
@@ -114,5 +114,19 @@ export default function ResetPasswordPage() {
         </CardFooter>
       </Card>
     </div>
+  );
+}
+
+export default function ResetPasswordPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex min-h-svh w-full items-center justify-center">
+          <Loader2 className="w-8 h-8 animate-spin text-muted-foreground" />
+        </div>
+      }
+    >
+      <ResetPasswordContent />
+    </Suspense>
   );
 }

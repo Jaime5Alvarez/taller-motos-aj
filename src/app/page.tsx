@@ -1,4 +1,21 @@
-import { Clock, Mail, MapPin, Phone, Shield, Star, Wrench, Settings, Package, Zap, CircleDot, Cog, ClipboardCheck } from "lucide-react";
+import {
+  Bike,
+  CircleDot,
+  ClipboardCheck,
+  Clock,
+  Cog,
+  Gem,
+  Mail,
+  MapPin,
+  Package,
+  Phone,
+  Settings,
+  Shield,
+  Star,
+  Tag,
+  Wrench,
+  Zap,
+} from "lucide-react";
 import Image from "next/image";
 import { Header } from "@/components/header";
 import { VehicleImageCarousel } from "@/components/vehicle-image-carousel";
@@ -321,7 +338,7 @@ export default async function Home() {
         </div>
       </div>
 
-      {/* Taller - Estilo Militar */}
+      {/* Taller - Valores y Servicios - Estilo Militar */}
       <section
         id="taller"
         className="py-20 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden"
@@ -350,7 +367,107 @@ export default async function Home() {
           <div className="absolute top-20 right-10 w-12 h-0.5 bg-gradient-to-r from-transparent via-yellow-500 to-transparent"></div>
           <div className="absolute bottom-24 left-16 w-16 h-0.5 bg-gradient-to-l from-transparent via-yellow-500 to-transparent transform rotate-45"></div>
         </div>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Por qué elegirnos - Valores del taller */}
+          <div className="text-center mb-16">
+            {/* Línea táctica superior */}
+            <div className="w-24 h-0.5 bg-yellow-500 mx-auto mb-6"></div>
+
+            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-wider">
+              <span className="text-gray-300">POR QUÉ</span>{" "}
+              <span className="text-yellow-500">ELEGIRNOS</span>
+            </h3>
+
+            <div className="text-yellow-500 font-mono text-sm tracking-widest mb-4 opacity-80">
+              NUESTRO COMPROMISO CONTIGO
+            </div>
+
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto font-medium">
+              <span className="text-yellow-500">
+                Tres pilares fundamentales
+              </span>{" "}
+              que nos definen como
+              <span className="text-white"> tu mejor opción</span> en Calahorra
+            </p>
+
+            {/* Línea táctica inferior */}
+            <div className="w-16 h-0.5 bg-yellow-500 mx-auto mt-6"></div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-20">
+            {/* LOS MEJORES PRECIOS */}
+            <div className="bg-black/60 border-2 border-gray-700 p-8 hover:border-yellow-500 transition-all duration-300 relative group text-center">
+              {/* Esquinas tácticas */}
+              <div className="absolute top-2 left-2 w-4 h-4 border-l-2 border-t-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute top-2 right-2 w-4 h-4 border-r-2 border-t-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60"></div>
+
+              <Tag className="h-16 w-16 text-yellow-500 mx-auto mb-6" />
+              <h4 className="text-2xl font-bold mb-3 text-white tracking-wide">
+                LOS MEJORES PRECIOS
+              </h4>
+              <div className="text-yellow-500 font-mono text-sm tracking-wider mb-4">
+                NEGOCIAMOS CADA DÍA
+              </div>
+              <p className="text-gray-300 font-medium leading-relaxed">
+                Hablamos con nuestros proveedores pensando en conseguir el mejor
+                precio para nuestros clientes
+              </p>
+            </div>
+
+            {/* EXPERTOS EN MOTOS */}
+            <div className="bg-black/60 border-2 border-gray-700 p-8 hover:border-yellow-500 transition-all duration-300 relative group text-center">
+              {/* Esquinas tácticas */}
+              <div className="absolute top-2 left-2 w-4 h-4 border-l-2 border-t-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute top-2 right-2 w-4 h-4 border-r-2 border-t-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60"></div>
+
+              <Bike className="h-16 w-16 text-yellow-500 mx-auto mb-6" />
+              <h4 className="text-2xl font-bold mb-3 text-white tracking-wide">
+                EXPERTOS EN MOTOS
+              </h4>
+              <div className="text-yellow-500 font-mono text-sm tracking-wider mb-4">
+                ESTÁS EN BUENAS MANOS
+              </div>
+              <p className="text-gray-300 font-medium leading-relaxed">
+                Después de 20 años dedicados a la moto podemos decir que somos
+                expertos y que nos encanta nuestro trabajo.
+              </p>
+            </div>
+
+            {/* LA MEJOR CALIDAD */}
+            <div className="bg-black/60 border-2 border-gray-700 p-8 hover:border-yellow-500 transition-all duration-300 relative group text-center">
+              {/* Esquinas tácticas */}
+              <div className="absolute top-2 left-2 w-4 h-4 border-l-2 border-t-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute top-2 right-2 w-4 h-4 border-r-2 border-t-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60"></div>
+
+              <Gem className="h-16 w-16 text-yellow-500 mx-auto mb-6" />
+              <h4 className="text-2xl font-bold mb-3 text-white tracking-wide">
+                LA MEJOR CALIDAD
+              </h4>
+              <div className="text-yellow-500 font-mono text-sm tracking-wider mb-4">
+                NOS GUSTA QUE NOS TRATEN BIEN
+              </div>
+              <p className="text-gray-300 font-medium leading-relaxed">
+                Ponemos exclusivamente los materiales que pondríamos en nuestra
+                propia moto. No podía ser de otra manera.
+              </p>
+            </div>
+          </div>
+
+          {/* Separador táctico */}
+          <div className="flex items-center mb-20">
+            <div className="flex-1 h-0.5 bg-gradient-to-r from-transparent via-yellow-500/50 to-transparent"></div>
+            <div className="mx-4 w-2 h-2 bg-yellow-500 rotate-45"></div>
+            <div className="flex-1 h-0.5 bg-gradient-to-r from-transparent via-yellow-500/50 to-transparent"></div>
+          </div>
+
+          {/* Servicios para motos */}
           <div className="text-center mb-16">
             {/* Línea táctica superior */}
             <div className="w-24 h-0.5 bg-yellow-500 mx-auto mb-6"></div>
