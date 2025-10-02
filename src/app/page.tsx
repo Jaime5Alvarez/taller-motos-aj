@@ -1,4 +1,4 @@
-import { Clock, Mail, MapPin, Phone, Shield, Star, Wrench } from "lucide-react";
+import { Clock, Mail, MapPin, Phone, Shield, Star, Wrench, Settings, Package, Zap, CircleDot, Cog, ClipboardCheck } from "lucide-react";
 import Image from "next/image";
 import { Header } from "@/components/header";
 import { VehicleImageCarousel } from "@/components/vehicle-image-carousel";
@@ -380,6 +380,7 @@ export default async function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* TALLER MULTIMARCA */}
             <div className="bg-black/60 border-2 border-gray-700 p-8 hover:border-yellow-500 transition-all duration-300 relative group">
               {/* Esquinas tácticas */}
               <div className="absolute top-2 left-2 w-4 h-4 border-l-2 border-t-2 border-yellow-500 opacity-60"></div>
@@ -387,39 +388,16 @@ export default async function Home() {
               <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-yellow-500 opacity-60"></div>
               <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60"></div>
 
-              <Wrench className="h-12 w-12 text-yellow-500 mb-4" />
+              <Settings className="h-12 w-12 text-yellow-500 mb-4" />
               <h4 className="text-xl font-bold mb-3 text-white tracking-wide">
-                MANTENIMIENTO PROFESIONAL
+                TALLER MULTIMARCA
               </h4>
-              <p className="text-gray-300 mb-4 font-medium">
-                <span className="text-yellow-500">Servicios preventivos</span>{" "}
-                para mantener tu moto en
-                <span className="text-white">
-                  {" "}
-                  condiciones óptimas de funcionamiento
-                </span>
-                .
+              <p className="text-gray-300 font-medium">
+                Reparación y mantenimiento de motos de todas las marcas
               </p>
-              <ul className="text-sm text-gray-400 space-y-2 font-mono">
-                <li className="flex items-center">
-                  <span className="text-yellow-500 mr-2">■</span> Cambio de
-                  aceite y filtros
-                </li>
-                <li className="flex items-center">
-                  <span className="text-yellow-500 mr-2">■</span> Revisión de
-                  frenos
-                </li>
-                <li className="flex items-center">
-                  <span className="text-yellow-500 mr-2">■</span> Ajuste de
-                  cadena
-                </li>
-                <li className="flex items-center">
-                  <span className="text-yellow-500 mr-2">■</span> Revisión
-                  general
-                </li>
-              </ul>
             </div>
 
+            {/* RECAMBIOS */}
             <div className="bg-black/60 border-2 border-gray-700 p-8 hover:border-yellow-500 transition-all duration-300 relative group">
               {/* Esquinas tácticas */}
               <div className="absolute top-2 left-2 w-4 h-4 border-l-2 border-t-2 border-yellow-500 opacity-60"></div>
@@ -427,34 +405,16 @@ export default async function Home() {
               <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-yellow-500 opacity-60"></div>
               <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60"></div>
 
-              <Shield className="h-12 w-12 text-yellow-500 mb-4" />
+              <Package className="h-12 w-12 text-yellow-500 mb-4" />
               <h4 className="text-xl font-bold mb-3 text-white tracking-wide">
-                REPARACIONES ESPECIALIZADAS
+                RECAMBIOS
               </h4>
-              <p className="text-gray-300 mb-4 font-medium">
-                <span className="text-yellow-500">Diagnóstico avanzado</span> y
-                reparación de averías complejas con
-                <span className="text-white"> garantía profesional</span>.
+              <p className="text-gray-300 font-medium">
+                Recambios originales y compatibles, nuevos o de ocasión
               </p>
-              <ul className="text-sm text-gray-400 space-y-2 font-mono">
-                <li className="flex items-center">
-                  <span className="text-yellow-500 mr-2">■</span> Reparación de
-                  motor
-                </li>
-                <li className="flex items-center">
-                  <span className="text-yellow-500 mr-2">■</span> Sistema
-                  eléctrico
-                </li>
-                <li className="flex items-center">
-                  <span className="text-yellow-500 mr-2">■</span> Transmisión
-                </li>
-                <li className="flex items-center">
-                  <span className="text-yellow-500 mr-2">■</span> Diagnóstico
-                  por ordenador
-                </li>
-              </ul>
             </div>
 
+            {/* ELECTRICIDAD */}
             <div className="bg-black/60 border-2 border-gray-700 p-8 hover:border-yellow-500 transition-all duration-300 relative group">
               {/* Esquinas tácticas */}
               <div className="absolute top-2 left-2 w-4 h-4 border-l-2 border-t-2 border-yellow-500 opacity-60"></div>
@@ -462,31 +422,64 @@ export default async function Home() {
               <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-yellow-500 opacity-60"></div>
               <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60"></div>
 
-              <Star className="h-12 w-12 text-yellow-500 mb-4" />
+              <Zap className="h-12 w-12 text-yellow-500 mb-4" />
               <h4 className="text-xl font-bold mb-3 text-white tracking-wide">
-                MODIFICACIONES PERSONALIZADAS
+                ELECTRICIDAD
               </h4>
-              <p className="text-gray-300 mb-4 font-medium">
-                <span className="text-yellow-500">Upgrades especializados</span>{" "}
-                para hacer tu moto única y
-                <span className="text-white"> adaptada a tus necesidades</span>.
+              <p className="text-gray-300 font-medium">
+                Diagnóstico y solución de fallos eléctricos
               </p>
-              <ul className="text-sm text-gray-400 space-y-2 font-mono">
-                <li className="flex items-center">
-                  <span className="text-yellow-500 mr-2">■</span> Escape
-                  deportivo
-                </li>
-                <li className="flex items-center">
-                  <span className="text-yellow-500 mr-2">■</span> Suspensiones
-                </li>
-                <li className="flex items-center">
-                  <span className="text-yellow-500 mr-2">■</span> Accesorios
-                </li>
-                <li className="flex items-center">
-                  <span className="text-yellow-500 mr-2">■</span> Pintura
-                  personalizada
-                </li>
-              </ul>
+            </div>
+
+            {/* NEUMÁTICOS */}
+            <div className="bg-black/60 border-2 border-gray-700 p-8 hover:border-yellow-500 transition-all duration-300 relative group">
+              {/* Esquinas tácticas */}
+              <div className="absolute top-2 left-2 w-4 h-4 border-l-2 border-t-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute top-2 right-2 w-4 h-4 border-r-2 border-t-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60"></div>
+
+              <CircleDot className="h-12 w-12 text-yellow-500 mb-4" />
+              <h4 className="text-xl font-bold mb-3 text-white tracking-wide">
+                NEUMÁTICOS
+              </h4>
+              <p className="text-gray-300 font-medium">
+                Venta, montaje y equilibrado de neumáticos
+              </p>
+            </div>
+
+            {/* MECÁNICA */}
+            <div className="bg-black/60 border-2 border-gray-700 p-8 hover:border-yellow-500 transition-all duration-300 relative group">
+              {/* Esquinas tácticas */}
+              <div className="absolute top-2 left-2 w-4 h-4 border-l-2 border-t-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute top-2 right-2 w-4 h-4 border-r-2 border-t-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60"></div>
+
+              <Cog className="h-12 w-12 text-yellow-500 mb-4" />
+              <h4 className="text-xl font-bold mb-3 text-white tracking-wide">
+                MECÁNICA
+              </h4>
+              <p className="text-gray-300 font-medium">
+                Servicio completo de mecánica general y reparaciones
+              </p>
+            </div>
+
+            {/* REVISIÓN PRE-ITV */}
+            <div className="bg-black/60 border-2 border-gray-700 p-8 hover:border-yellow-500 transition-all duration-300 relative group">
+              {/* Esquinas tácticas */}
+              <div className="absolute top-2 left-2 w-4 h-4 border-l-2 border-t-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute top-2 right-2 w-4 h-4 border-r-2 border-t-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-yellow-500 opacity-60"></div>
+              <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60"></div>
+
+              <ClipboardCheck className="h-12 w-12 text-yellow-500 mb-4" />
+              <h4 className="text-xl font-bold mb-3 text-white tracking-wide">
+                REVISIÓN PRE-ITV
+              </h4>
+              <p className="text-gray-300 font-medium">
+                Comprobación de todos los puntos clave antes de la ITV
+              </p>
             </div>
           </div>
 
