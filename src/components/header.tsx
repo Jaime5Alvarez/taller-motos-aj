@@ -67,7 +67,8 @@ export function Header() {
               { id: "inicio", label: "Inicio" },
               { id: "taller", label: "Taller" },
               { id: "vehiculos", label: "Vehículos en venta" },
-              { id: "tasacion", label: "Tasación y recambios" },
+              { id: "tasacion", label: "Tasación" },
+              { id: "recambios", label: "Recambio y accesorios" },
               { id: "contacto", label: "Contacto" },
             ].map((item) => (
               <button
@@ -139,8 +140,9 @@ export function Header() {
               { id: "inicio", label: "INICIO", code: "[01]" },
               { id: "taller", label: "TALLER", code: "[02]" },
               { id: "vehiculos", label: "VEHÍCULOS EN VENTA", code: "[03]" },
-              { id: "tasacion", label: "TASACIÓN Y RECAMBIOS", code: "[04]" },
-              { id: "contacto", label: "CONTACTO", code: "[05]" },
+              { id: "tasacion", label: "TASACIÓN", code: "[04]" },
+              { id: "recambios", label: "RECAMBIO Y ACCESORIOS", code: "[05]" },
+              { id: "contacto", label: "CONTACTO", code: "[06]" },
             ].map((item) => (
               <button
                 type="button"

@@ -1,7 +1,8 @@
 "use client";
 
-import { Link, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "nextjs-toploader/app";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -17,7 +18,6 @@ import { Label } from "@/components/ui/label";
 import { authClient } from "@/lib/auth-client";
 import { cn } from "@/lib/utils";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
-import { useRouter } from "nextjs-toploader/app";
 
 export function LoginForm({
   className,

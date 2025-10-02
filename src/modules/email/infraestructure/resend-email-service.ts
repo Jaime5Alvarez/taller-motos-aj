@@ -1,5 +1,5 @@
-import { IEmailService } from "@/modules/email/domain/interfaces";
 import { Resend } from "resend";
+import type { IEmailService } from "@/modules/email/domain/interfaces";
 
 export class ResendEmailService implements IEmailService {
   private readonly client: Resend;

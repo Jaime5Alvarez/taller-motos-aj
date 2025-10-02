@@ -1,26 +1,24 @@
 "use client";
 
+import { Loader2 } from "lucide-react";
+import Image from "next/image";
+import { redirect, useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
+import { toast } from "sonner";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
 import {
   Card,
-  CardHeader,
   CardContent,
-  CardFooter,
-  CardTitle,
   CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
 } from "@/components/ui/card";
-import Image from "next/image";
-import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { Alert } from "@/components/ui/alert";
-import { cn } from "@/lib/utils";
-import { useState } from "react";
-import { AlertTitle } from "@/components/ui/alert";
-import { AlertDescription } from "@/components/ui/alert";
+import { Label } from "@/components/ui/label";
 import { authClient } from "@/lib/auth-client";
-import { redirect, useRouter, useSearchParams } from "next/navigation";
-import { toast } from "sonner";
+import { cn } from "@/lib/utils";
 
 export default function ResetPasswordPage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -54,7 +52,7 @@ export default function ResetPasswordPage() {
           router.push("/back-office/login");
         }, 1000),
       );
-    } catch (error) {
+    } catch (_error) {
       setShowError(true);
     } finally {
       setIsLoading(false);

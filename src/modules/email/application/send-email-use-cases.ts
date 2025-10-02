@@ -1,4 +1,4 @@
-import { IEmailService } from "@/modules/email/domain/interfaces";
+import type { IEmailService } from "@/modules/email/domain/interfaces";
 import { ResendEmailService } from "@/modules/email/infraestructure/resend-email-service";
 
 class SendEmailUseCase {

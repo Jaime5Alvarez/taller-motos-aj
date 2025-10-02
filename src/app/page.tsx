@@ -699,7 +699,7 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Tasación y Recambios - Estilo Militar */}
+      {/* Tasación - Estilo Militar */}
       <section
         id="tasacion"
         className="py-20 bg-gradient-to-b from-gray-900 via-black to-gray-900 relative overflow-hidden"
@@ -731,32 +731,31 @@ export default async function Home() {
             <div className="w-24 h-0.5 bg-yellow-500 mx-auto mb-6"></div>
 
             <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-wider">
-              <span className="text-gray-300">TASACIÓN Y</span>{" "}
-              <span className="text-yellow-500">RECAMBIOS</span>
+              <span className="text-gray-300">TASACIÓN</span>{" "}
+              <span className="text-yellow-500">PROFESIONAL</span>
             </h3>
 
             <div className="text-yellow-500 font-mono text-sm tracking-widest mb-4 opacity-80">
-              TE COMPRAMOS TU MOTO - RECAMBIOS Y EQUIPACIÓN
+              TE COMPRAMOS TU MOTO AL MEJOR PRECIO
             </div>
 
             <p className="text-lg text-gray-300 max-w-2xl mx-auto font-medium">
               <span className="text-yellow-500">
                 Tasación gratuita de tu moto
               </span>{" "}
-              y
+              con
               <span className="text-white">
                 {" "}
-                amplio catálogo de recambios y equipación
-              </span>{" "}
-              para todas las marcas
+                evaluación completa y pago inmediato
+              </span>
             </p>
 
             {/* Línea táctica inferior */}
             <div className="w-16 h-0.5 bg-yellow-500 mx-auto mt-6"></div>
           </div>
 
-          {/* Primera parte: Tasación */}
-          <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
+          {/* Contenido de Tasación */}
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative">
               {/* Marco táctico para imagen */}
               <div className="absolute -top-4 -left-4 w-8 h-8 border-l-2 border-t-2 border-yellow-500 z-20"></div>
