@@ -103,7 +103,8 @@ export function LoginForm({
             </div>
           </form>
         </CardContent>
-        <CardFooter>
+        <CardFooter className="flex flex-col gap-3">
+          
           <Button
             variant="link"
             className="w-full text-muted-foreground"
