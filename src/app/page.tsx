@@ -1236,7 +1236,9 @@ export default async function Home() {
                 </div>
                 <div className="flex items-center justify-center gap-2">
                   <Mail className="h-4 w-4 text-yellow-500" />
-                  <span className="text-gray-300">ajmotorbikeslr@gmail.com</span>
+                  <span className="text-gray-300">
+                    ajmotorbikeslr@gmail.com
+                  </span>
                 </div>
               </div>
             </div>
@@ -1352,8 +1354,8 @@ export default async function Home() {
               </div>
               <ul className="space-y-2 text-gray-300 font-mono">
                 <li className="flex items-center">
-                  <span className="text-yellow-500 mr-2">■</span> Calle
-                  Principal, 123
+                  <span className="text-yellow-500 mr-2">■</span> Av. Achútegui
+                  de Blas, 22
                 </li>
                 <li className="flex items-center">
                   <span className="text-yellow-500 mr-2">■</span> 26500

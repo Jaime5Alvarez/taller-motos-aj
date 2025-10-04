@@ -81,7 +81,8 @@ export function StructuredData() {
           itemOffered: {
             "@type": "Service",
             name: "Neumáticos",
-            description: "Venta, montaje y equilibrado de neumáticos para motos",
+            description:
+              "Venta, montaje y equilibrado de neumáticos para motos",
           },
         },
         {
@@ -133,4 +134,3 @@ export function StructuredData() {
     />
   );
 }
-

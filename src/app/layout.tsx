@@ -17,7 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AJ Motorbikes - Taller de Motos en Calahorra | Reparación y Mantenimiento",
+  title:
+    "AJ Motorbikes - Taller de Motos en Calahorra | Reparación y Mantenimiento",
   description:
     "Taller especializado en mantenimiento y reparación de motocicletas en Calahorra, La Rioja. Más de 20 años de experiencia. Taller multimarca, recambios, neumáticos y tasación. ¡Pide cita previa!",
   keywords: [
@@ -49,7 +50,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_ES",
     url: "https://www.ajmotorbikes.com",
-    title: "AJ Motorbikes - Taller de Motos en Calahorra | Reparación y Mantenimiento",
+    title:
+      "AJ Motorbikes - Taller de Motos en Calahorra | Reparación y Mantenimiento",
     description:
       "Taller especializado en mantenimiento y reparación de motocicletas en Calahorra, La Rioja. Más de 20 años de experiencia. Taller multimarca, recambios, neumáticos y tasación.",
     siteName: "AJ Motorbikes",

@@ -7,7 +7,11 @@ export const auth = betterAuth({
   database: drizzleAdapter(FactoryDatabaseService(), {
     provider: "pg", // or "mysql", "sqlite"
   }),
-  trustedOrigins: ["http://localhost:3000", "https://www.ajmotorbikes.com", "https://ajmotorbikes.com"],
+  trustedOrigins: [
+    "http://localhost:3000",
+    "https://www.ajmotorbikes.com",
+    "https://ajmotorbikes.com",
+  ],
   emailAndPassword: {
     enabled: true,
     sendResetPassword: async ({ user, url }, _request) => {
