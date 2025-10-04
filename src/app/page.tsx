@@ -975,7 +975,7 @@ export default async function Home() {
           </div>
 
           {/* Segunda parte: Recambios y accesorios */}
-          <div className="text-center mb-16">
+          <div id="recambios" className="text-center mb-16">
             <h4 className="text-2xl font-bold text-white mb-4 tracking-wider">
               <span className="text-gray-300">RECAMBIOS Y</span>{" "}
               <span className="text-yellow-500">EQUIPACIÓN</span>
