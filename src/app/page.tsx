@@ -86,7 +86,7 @@ export default async function Home() {
               <div className="absolute -top-8 -right-4 w-80 h-80 opacity-80 pointer-events-none">
                 <Image
                   src="/lightb_car.webp"
-                  alt="Efecto de luz en título"
+                  alt="Taller de motos AJ Motorbikes en Calahorra - Especialistas en reparación y mantenimiento"
                   width={320}
                   height={320}
                   className="w-full h-full object-contain mix-blend-screen"
@@ -102,12 +102,12 @@ export default async function Home() {
               {/* Línea decorativa superior */}
               <div className="w-16 h-0.5 bg-yellow-500 mb-4"></div>
 
-              <h2 className="text-4xl md:text-6xl font-bold text-white mb-2 relative z-10 tracking-wider">
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-2 relative z-10 tracking-wider">
                 <span className="text-gray-300">TALLER</span>
                 <span className="text-yellow-500 block font-black">
                   AJ MOTORBIKES
                 </span>
-              </h2>
+              </h1>
 
               {/* Subtítulo militar */}
               <div className="text-yellow-500 font-mono text-sm tracking-widest mb-4 opacity-80">
@@ -152,7 +152,7 @@ export default async function Home() {
               <div className="relative ">
                 <Image
                   src="/photo-1604260324056-45f7c778754a.avif"
-                  alt="Taller de motocicletas AJ"
+                  alt="Taller mecánico de motocicletas en Calahorra - AJ Motorbikes servicio profesional"
                   width={600}
                   height={400}
                   className="object-cover w-full h-[400px] transform hover:scale-105 transition-transform duration-700"
@@ -180,7 +180,7 @@ export default async function Home() {
               <div className="absolute -bottom-12 -left-16 w-48 h-48 opacity-90 transform rotate-x-180">
                 <Image
                   src="/lighta_car.webp"
-                  alt="Efecto de luz"
+                  alt="Servicios de taller de motos multimarca en La Rioja"
                   width={192}
                   height={192}
                   className="w-full h-full object-contain mix-blend-screen"
@@ -248,7 +248,7 @@ export default async function Home() {
               <div className="relative overflow-hidden">
                 <Image
                   src="/photo-1591637333184-19aa84b3e01f.avif"
-                  alt="Operaciones tácticas motocicletas"
+                  alt="Expertos en reparación de motocicletas con más de 20 años de experiencia en Calahorra"
                   width={600}
                   height={400}
                   className="object-cover w-full h-[400px] grayscale-[0.4] contrast-110"
@@ -272,10 +272,10 @@ export default async function Home() {
               {/* Línea táctica superior */}
               <div className="w-20 h-0.5 bg-yellow-500 mb-6"></div>
 
-              <h3 className="text-3xl md:text-4xl font-bold text-white mb-2 tracking-wider">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-2 tracking-wider">
                 <span className="text-gray-300">EXPERTOS</span>{" "}
                 <span className="text-yellow-500">EN MOTOCICLETAS</span>
-              </h3>
+              </h2>
 
               <div className="text-yellow-500 font-mono text-sm tracking-widest mb-6 opacity-80">
                 TECNOLOGÍA AVANZADA - SERVICIO PROFESIONAL
@@ -374,10 +374,10 @@ export default async function Home() {
             {/* Línea táctica superior */}
             <div className="w-24 h-0.5 bg-yellow-500 mx-auto mb-6"></div>
 
-            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-wider">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-wider">
               <span className="text-gray-300">POR QUÉ</span>{" "}
               <span className="text-yellow-500">ELEGIRNOS</span>
-            </h3>
+            </h2>
 
             <div className="text-yellow-500 font-mono text-sm tracking-widest mb-4 opacity-80">
               NUESTRO COMPROMISO CONTIGO
@@ -472,10 +472,10 @@ export default async function Home() {
             {/* Línea táctica superior */}
             <div className="w-24 h-0.5 bg-yellow-500 mx-auto mb-6"></div>
 
-            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-wider">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-wider">
               <span className="text-gray-300">SERVICIOS</span>{" "}
               <span className="text-yellow-500">PARA MOTOS</span>
-            </h3>
+            </h2>
 
             <div className="text-yellow-500 font-mono text-sm tracking-widest mb-4 opacity-80">
               SERVICIOS ESPECIALIZADOS PARA MOTOCICLETAS
@@ -506,9 +506,9 @@ export default async function Home() {
               <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60"></div>
 
               <Settings className="h-12 w-12 text-yellow-500 mb-4" />
-              <h4 className="text-xl font-bold mb-3 text-white tracking-wide">
+              <h3 className="text-xl font-bold mb-3 text-white tracking-wide">
                 TALLER MULTIMARCA
-              </h4>
+              </h3>
               <p className="text-gray-300 font-medium">
                 Reparación y mantenimiento de motos de todas las marcas
               </p>
@@ -523,9 +523,9 @@ export default async function Home() {
               <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60"></div>
 
               <Package className="h-12 w-12 text-yellow-500 mb-4" />
-              <h4 className="text-xl font-bold mb-3 text-white tracking-wide">
+              <h3 className="text-xl font-bold mb-3 text-white tracking-wide">
                 RECAMBIOS
-              </h4>
+              </h3>
               <p className="text-gray-300 font-medium">
                 Recambios originales y compatibles, nuevos o de ocasión
               </p>
@@ -540,9 +540,9 @@ export default async function Home() {
               <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60"></div>
 
               <Zap className="h-12 w-12 text-yellow-500 mb-4" />
-              <h4 className="text-xl font-bold mb-3 text-white tracking-wide">
+              <h3 className="text-xl font-bold mb-3 text-white tracking-wide">
                 ELECTRICIDAD
-              </h4>
+              </h3>
               <p className="text-gray-300 font-medium">
                 Diagnóstico y solución de fallos eléctricos
               </p>
@@ -557,9 +557,9 @@ export default async function Home() {
               <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60"></div>
 
               <CircleDot className="h-12 w-12 text-yellow-500 mb-4" />
-              <h4 className="text-xl font-bold mb-3 text-white tracking-wide">
+              <h3 className="text-xl font-bold mb-3 text-white tracking-wide">
                 NEUMÁTICOS
-              </h4>
+              </h3>
               <p className="text-gray-300 font-medium">
                 Venta, montaje y equilibrado de neumáticos
               </p>
@@ -574,9 +574,9 @@ export default async function Home() {
               <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60"></div>
 
               <Cog className="h-12 w-12 text-yellow-500 mb-4" />
-              <h4 className="text-xl font-bold mb-3 text-white tracking-wide">
+              <h3 className="text-xl font-bold mb-3 text-white tracking-wide">
                 MECÁNICA
-              </h4>
+              </h3>
               <p className="text-gray-300 font-medium">
                 Servicio completo de mecánica general y reparaciones
               </p>
@@ -591,9 +591,9 @@ export default async function Home() {
               <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-500 opacity-60"></div>
 
               <ClipboardCheck className="h-12 w-12 text-yellow-500 mb-4" />
-              <h4 className="text-xl font-bold mb-3 text-white tracking-wide">
+              <h3 className="text-xl font-bold mb-3 text-white tracking-wide">
                 REVISIÓN PRE-ITV
-              </h4>
+              </h3>
               <p className="text-gray-300 font-medium">
                 Comprobación de todos los puntos clave antes de la ITV
               </p>
@@ -666,10 +666,10 @@ export default async function Home() {
             {/* Línea táctica superior */}
             <div className="w-24 h-0.5 bg-yellow-500 mx-auto mb-6"></div>
 
-            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-wider">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-wider">
               <span className="text-gray-300">VEHÍCULOS</span>{" "}
               <span className="text-yellow-500">EN VENTA</span>
-            </h3>
+            </h2>
 
             <div className="text-yellow-500 font-mono text-sm tracking-widest mb-4 opacity-80">
               MOTOS Y COCHES DE OCASIÓN SELECCIONADOS
@@ -840,10 +840,10 @@ export default async function Home() {
             {/* Línea táctica superior */}
             <div className="w-24 h-0.5 bg-yellow-500 mx-auto mb-6"></div>
 
-            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-wider">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-wider">
               <span className="text-gray-300">TASACIÓN</span>{" "}
               <span className="text-yellow-500">PROFESIONAL</span>
-            </h3>
+            </h2>
 
             <div className="text-yellow-500 font-mono text-sm tracking-widest mb-4 opacity-80">
               TE COMPRAMOS TU MOTO AL MEJOR PRECIO
@@ -877,7 +877,7 @@ export default async function Home() {
               <div className="relative overflow-hidden">
                 <Image
                   src="/photo-1636761358772-798789548d25.avif"
-                  alt="Tasación profesional de motocicletas"
+                  alt="Tasación y compra de motos de ocasión en Calahorra - AJ Motorbikes"
                   width={600}
                   height={400}
                   className="object-cover w-full h-[400px]"
@@ -1141,10 +1141,10 @@ export default async function Home() {
             {/* Línea táctica superior */}
             <div className="w-24 h-0.5 bg-yellow-500 mx-auto mb-6"></div>
 
-            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-wider">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-wider">
               <span className="text-gray-300">NUESTRO</span>{" "}
               <span className="text-yellow-500">TALLER</span>
-            </h3>
+            </h2>
 
             <div className="text-yellow-500 font-mono text-sm tracking-widest mb-4 opacity-80">
               CALAHORRA - LA RIOJA
@@ -1282,7 +1282,7 @@ export default async function Home() {
                 <div className="relative">
                   <Image
                     src="/aj-logo.webp"
-                    alt="AJ Motorbikes Tactical Logo"
+                    alt="Logo AJ Motorbikes - Taller de motos en Calahorra La Rioja"
                     width={40}
                     height={40}
                     className="rounded-full border-2 border-yellow-500/50"
