@@ -251,7 +251,7 @@ export default async function Home() {
                   alt="Expertos en reparación de motocicletas con más de 20 años de experiencia en Calahorra"
                   width={600}
                   height={400}
-                  className="object-cover w-full h-[400px] grayscale-[0.4] contrast-110"
+                  className="object-cover w-full h-[400px] grayscale-[0.4] contrast-110 animate-fade-in animate-delay-500 animate-duration-1000"
                   style={{
                     maskImage:
                       "linear-gradient(45deg, black 0%, black 65%, rgba(0,0,0,0.7) 80%, transparent 100%)",
