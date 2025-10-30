@@ -81,9 +81,9 @@ export default async function Home() {
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="relative">
+            <div className="relative animate-fade-in animate-duration-1000">
               {/* Efecto de rayo detrás del título */}
-              <div className="absolute -top-8 -right-4 w-80 h-80 opacity-80 pointer-events-none">
+              <div className="absolute -top-8 -right-4 w-80 h-80 opacity-80 pointer-events-none animate-fade-in animate-delay-500">
                 <Image
                   src="/lightb_car.webp"
                   alt="Taller de motos AJ Motorbikes en Calahorra - Especialistas en reparación y mantenimiento"
@@ -100,9 +100,9 @@ export default async function Home() {
               </div>
 
               {/* Línea decorativa superior */}
-              <div className="w-16 h-0.5 bg-yellow-500 mb-4"></div>
+              <div className="w-16 h-0.5 bg-yellow-500 mb-4 animate-fade-in animate-delay-300"></div>
 
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-2 relative z-10 tracking-wider">
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-2 relative z-10 tracking-wider animate-fade-in animate-delay-500">
                 <span className="text-gray-300">TALLER</span>
                 <span className="text-yellow-500 block font-black">
                   AJ MOTORBIKES
@@ -110,13 +110,13 @@ export default async function Home() {
               </h1>
 
               {/* Subtítulo militar */}
-              <div className="text-yellow-500 font-mono text-sm tracking-widest mb-4 opacity-80">
+              <div className="text-yellow-500 font-mono text-sm tracking-widest mb-4 opacity-80 animate-fade-in animate-delay-700">
                 ESPECIALISTAS EN MOTOCICLETAS
               </div>
 
               {/* Línea decorativa inferior */}
-              <div className="w-24 h-0.5 bg-yellow-500 mb-6"></div>
-              <p className="text-lg text-gray-300 mb-8 font-medium leading-relaxed">
+              <div className="w-24 h-0.5 bg-yellow-500 mb-6 animate-fade-in animate-delay-700"></div>
+              <p className="text-lg text-gray-300 mb-8 font-medium leading-relaxed animate-fade-in animate-delay-1000">
                 <span className="text-yellow-500 font-mono">
                   TALLER DE MOTOS
                 </span>{" "}
@@ -127,7 +127,7 @@ export default async function Home() {
                   Especialistas en todas las marcas
                 </span>
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-4 animate-slide-in-bottom animate-delay-1000 animate-duration-700">
                 <a
                   href="https://wa.me/34614154659?text=Hola,%20me%20gustaría%20pedir%20cita%20previa%20para%20mi%20moto"
                   target="_blank"
@@ -147,7 +147,7 @@ export default async function Home() {
                 </a>
               </div>
             </div>
-            <div className="relative">
+            <div className="relative animate-fade-in animate-delay-500 animate-duration-1000">
               {/* Imagen principal del taller con mask espectacular */}
               <div className="relative ">
                 <Image
