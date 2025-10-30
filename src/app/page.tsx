@@ -247,7 +247,7 @@ export default async function Home() {
               {/* Imagen con mask militar */}
               <div className="relative overflow-hidden">
                 <Image
-                  src="/photo-1591637333184-19aa84b3e01f.avif"
+                  src="/motos-taller.webp"
                   alt="Expertos en reparación de motocicletas con más de 20 años de experiencia en Calahorra"
                   width={600}
                   height={400}
