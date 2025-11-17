@@ -15,7 +15,7 @@ export function StructuredData() {
     description:
       "Taller especializado en mantenimiento y reparación de motocicletas en Calahorra, La Rioja. Más de 20 años de experiencia. Servicios de mecánica, electricidad, neumáticos, recambios y tasación.",
     url: "https://www.ajmotorbikes.com",
-    telephone: "+34614154659",
+    telephone: "+34646 64 05 11",
     email: "ajmotorbikeslr@gmail.com",
     address: {
       "@type": "PostalAddress",

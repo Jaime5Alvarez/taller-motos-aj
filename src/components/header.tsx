@@ -87,7 +87,7 @@ export function Header() {
           <div className="flex items-center space-x-4">
             {/* Teléfono táctico (redirige a WhatsApp) */}
             <a
-              href="https://wa.me/34614154659?text=Hola,%20me%20gustaría%20pedir%20cita%20previa%20para%20mi%20moto"
+              href="https://wa.me/34646640511?text=Hola,%20me%20gustaría%20pedir%20cita%20previa%20para%20mi%20moto"
               target="_blank"
               rel="noopener noreferrer"
               className="hidden sm:flex items-center space-x-2 text-sm bg-yellow-500 text-black px-4 py-2 font-bold tracking-wider hover:bg-yellow-400 transition-all duration-300 transform hover:scale-105 relative overflow-hidden group"
@@ -103,7 +103,7 @@ export function Header() {
                   <title>WhatsApp</title>
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.031-.967-.273-.099-.472-.148-.67.15-.197.297-.767.967-.94 1.164-.173.198-.347.223-.644.075-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51-.173-.007-.372-.009-.571-.009-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.099 3.205 5.077 4.372.71.306 1.263.489 1.695.626.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.288.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.617h-.001a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.999-3.648-.235-.374A9.86 9.86 0 012.1 12.045c0-5.444 4.425-9.87 9.87-9.87 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.882 6.972c-.003 5.444-4.428 9.869-9.872 9.869zm8.413-18.282A11.815 11.815 0 0011.97 0C5.373 0 0 5.373 0 12c0 2.122.553 4.198 1.601 6.032L.057 24l6.134-1.635A11.93 11.93 0 0011.969 24C18.627 24 24 18.627 24 12c0-2.539-.78-4.998-2.336-7.283z" />
                 </svg>
-                <span className="font-mono">614 15 46 59</span>
+                <span className="font-mono">646 64 05 11</span>
               </div>
               <div className="absolute inset-0 bg-gradient-to-r from-yellow-600 to-yellow-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
             </a>
@@ -161,7 +161,7 @@ export function Header() {
             <div className="flex items-center space-x-2 text-sm py-2 px-4 bg-yellow-500/10 border border-yellow-500/30 mx-4 mt-4">
               <Phone className="h-4 w-4 text-yellow-500" />
               <span className="text-white font-mono font-bold">
-                614 15 46 59
+                646 64 05 11
               </span>
             </div>
           </nav>

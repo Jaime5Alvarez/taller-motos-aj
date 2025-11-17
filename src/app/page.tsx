@@ -129,7 +129,7 @@ export default async function Home() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 animate-slide-in-bottom animate-delay-1000 animate-duration-700">
                 <a
-                  href="https://wa.me/34614154659?text=Hola,%20me%20gustaría%20pedir%20cita%20previa%20para%20mi%20moto"
+                  href="https://wa.me/3464664011?text=Hola,%20me%20gustaría%20pedir%20cita%20previa%20para%20mi%20moto"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-yellow-500 text-black px-8 py-3 font-bold tracking-wider hover:bg-yellow-400 transition-all duration-300 transform hover:scale-105 relative overflow-hidden group inline-block text-center"
@@ -612,7 +612,7 @@ export default async function Home() {
               para programar el mantenimiento o reparación de tu moto
             </p>
             <a
-              href="https://wa.me/34614154659?text=Hola,%20me%20gustaría%20pedir%20cita%20previa%20para%20mi%20moto"
+              href="https://wa.me/34646640511?text=Hola,%20me%20gustaría%20pedir%20cita%20previa%20para%20mi%20moto"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-yellow-500 text-black px-8 py-3 font-bold tracking-wider hover:bg-yellow-400 transition-all duration-300 transform hover:scale-105 relative overflow-hidden group text-center"
@@ -768,7 +768,7 @@ export default async function Home() {
                       )}
                     </div>
                     <a
-                      href={`https://wa.me/34614154659?text=Hola,%20me%20gustaría%20más%20información%20sobre%20${encodeURIComponent(vehicle.name)}`}
+                      href={`https://wa.me/34646640511?text=Hola,%20me%20gustaría%20más%20información%20sobre%20${encodeURIComponent(vehicle.name)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full bg-yellow-500 hover:bg-yellow-400 text-black py-2 px-4 font-bold text-sm tracking-wider transition-all duration-300 inline-block text-center"
@@ -794,7 +794,7 @@ export default async function Home() {
           <div className="text-center mt-12">
             <div className="w-24 h-0.5 bg-yellow-500 mx-auto mb-8"></div>
             <a
-              href="https://wa.me/34614154659?text=Hola,%20me%20gustaría%20información%20sobre%20los%20vehículos%20en%20venta"
+              href="https://wa.me/34646640511?text=Hola,%20me%20gustaría%20información%20sobre%20los%20vehículos%20en%20venta"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-yellow-500 hover:bg-yellow-400 text-black px-8 py-4 font-bold tracking-wider transition-all duration-300 transform hover:scale-105 relative overflow-hidden group"
@@ -952,7 +952,7 @@ export default async function Home() {
               {/* Botón de contacto para tasación */}
               <div className="mb-6">
                 <a
-                  href="https://wa.me/34614154659?text=Hola,%20me%20gustaría%20solicitar%20una%20tasación%20para%20mi%20moto"
+                  href="https://wa.me/34646640511?text=Hola,%20me%20gustaría%20solicitar%20una%20tasación%20para%20mi%20moto"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block bg-yellow-500 hover:bg-yellow-400 text-black px-6 py-3 font-bold tracking-wider transition-all duration-300 transform hover:scale-105 relative overflow-hidden group"
@@ -1228,7 +1228,7 @@ export default async function Home() {
               <div className="text-gray-300 font-mono space-y-3">
                 <div className="flex items-center justify-center gap-2">
                   <Phone className="h-4 w-4 text-yellow-500" />
-                  <span className="text-yellow-500">614 15 46 59</span>
+                  <span className="text-yellow-500">646 64 05 11</span>
                 </div>
                 <div className="flex items-center justify-center gap-2">
                   <Mail className="h-4 w-4 text-yellow-500" />
@@ -1358,7 +1358,7 @@ export default async function Home() {
                   Calahorra, La Rioja
                 </li>
                 <li className="flex items-center">
-                  <span className="text-yellow-500 mr-2">■</span> 614 15 46 59
+                  <span className="text-yellow-500 mr-2">■</span> 646 64 05 11
                 </li>
                 <li className="flex items-center">
                   <span className="text-yellow-500 mr-2">■</span>{" "}
