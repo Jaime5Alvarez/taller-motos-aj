@@ -47,7 +47,7 @@ export function Header() {
         <div className="flex justify-between items-center py-4">
           {/* Logo y nombre */}
           <div className="flex items-center space-x-3">
-            <button 
+            <button
               type="button"
               onClick={() => scrollToSection("inicio")}
               className="relative cursor-pointer"

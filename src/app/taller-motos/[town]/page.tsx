@@ -15,7 +15,7 @@ import {
   Tag,
   Wrench,
   Zap,
-  Navigation
+  Navigation,
 } from "lucide-react";
 import Image from "next/image";
 import { Header } from "@/components/header";
@@ -35,55 +35,62 @@ interface TownData {
 
 // Datos específicos para cada pueblo (esto hace el contenido único)
 const towns: Record<string, TownData> = {
-  "arnedo": {
+  arnedo: {
     name: "Arnedo",
     time: "15 minutos",
     distance: "14 km",
     route: "LR-134",
-    description: "Para los motoristas de la Ciudad del Calzado, somos la opción más técnica y cercana."
+    description:
+      "Para los motoristas de la Ciudad del Calzado, somos la opción más técnica y cercana.",
   },
-  "autol": {
+  autol: {
     name: "Autol",
     time: "10 minutos",
     distance: "7 km",
     route: "LR-115",
-    description: "Estamos prácticamente al lado. Merece la pena el breve trayecto para un servicio premium."
+    description:
+      "Estamos prácticamente al lado. Merece la pena el breve trayecto para un servicio premium.",
   },
   "rincon-de-soto": {
     name: "Rincón de Soto",
     time: "12 minutos",
     distance: "13 km",
     route: "N-232",
-    description: "Atendemos habitualmente a clientes de Rincón que buscan especialistas multimarca."
+    description:
+      "Atendemos habitualmente a clientes de Rincón que buscan especialistas multimarca.",
   },
-  "alfaro": {
+  alfaro: {
     name: "Alfaro",
     time: "20 minutos",
     distance: "24 km",
     route: "N-232",
-    description: "El trayecto desde Alfaro se compensa con nuestra garantía de calidad y rapidez."
+    description:
+      "El trayecto desde Alfaro se compensa con nuestra garantía de calidad y rapidez.",
   },
-  "pradejon": {
+  pradejon: {
     name: "Pradejón",
     time: "8 minutos",
     distance: "6 km",
     route: "N-232",
-    description: "Vecinos de Pradejón, somos vuestro taller de referencia a un paso de casa."
+    description:
+      "Vecinos de Pradejón, somos vuestro taller de referencia a un paso de casa.",
   },
   "san-adrian": {
     name: "San Adrián",
     time: "5 minutos",
     distance: "4 km",
     route: "NA-134",
-    description: "Cruzando el puente ya estás aquí. El servicio más rápido para San Adrián."
+    description:
+      "Cruzando el puente ya estás aquí. El servicio más rápido para San Adrián.",
   },
   "aldeanueva-de-ebro": {
     name: "Aldeanueva de Ebro",
     time: "15 minutos",
     distance: "16 km",
     route: "N-232",
-    description: "Muchos moteros de Aldeanueva ya confían el mantenimiento de sus máquinas a AJ Motorbikes."
-  }
+    description:
+      "Muchos moteros de Aldeanueva ya confían el mantenimiento de sus máquinas a AJ Motorbikes.",
+  },
 };
 
 export async function generateStaticParams() {
@@ -92,10 +99,14 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ town: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ town: string }>;
+}): Promise<Metadata> {
   const { town } = await params;
   const townData = towns[town];
-  
+
   if (!townData) {
     return {
       title: "Taller de Motos | AJ Motorbikes",
@@ -122,7 +133,11 @@ async function getVehiclesForSale() {
   }
 }
 
-export default async function TownPage({ params }: { params: Promise<{ town: string }> }) {
+export default async function TownPage({
+  params,
+}: {
+  params: Promise<{ town: string }>;
+}) {
   const { town } = await params;
   const townData = towns[town];
 
@@ -156,7 +171,7 @@ export default async function TownPage({ params }: { params: Promise<{ town: str
           <div className="absolute top-24 right-1/2 w-3 h-3 border border-yellow-500 rotate-45"></div>
           <div className="absolute bottom-40 left-16 w-4 h-4 border border-yellow-500 transform rotate-12"></div>
         </div>
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative animate-fade-in animate-duration-1000">
@@ -180,29 +195,34 @@ export default async function TownPage({ params }: { params: Promise<{ town: str
               {/* Línea decorativa superior */}
               <div className="w-16 h-0.5 bg-yellow-500 mb-4 animate-fade-in animate-delay-300"></div>
 
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-2 relative z-10 tracking-wider animate-fade-in animate-delay-500">
-                <span className="text-gray-300">SERVICIO PARA</span>
-                <span className="text-yellow-500 block font-black">
-                  {townData.name.toUpperCase()}
+              <h1 className="text-3xl md:text-5xl font-bold text-white mb-6 relative z-10 tracking-wider animate-fade-in animate-delay-500">
+                <span className="text-gray-300 block text-2xl md:text-4xl mb-2">SERVICIO PARA</span>
+                <span className="text-white block font-black">
+                  CALAHORRA Y ALREDEDORES
                 </span>
               </h1>
 
-              {/* Subtítulo militar */}
-              <div className="text-yellow-500 font-mono text-sm tracking-widest mb-4 opacity-80 animate-fade-in animate-delay-700">
-                TU TALLER DE CONFIANZA EN CALAHORRA
+              {/* Subtítulo militar enfocado al pueblo */}
+              <div className="mb-8 animate-fade-in animate-delay-700">
+                 <div className="inline-block border-l-4 border-yellow-500 pl-4 bg-gradient-to-r from-yellow-500/10 to-transparent py-2 pr-12">
+                    <p className="text-yellow-500 font-bold text-xl md:text-2xl tracking-wide uppercase">
+                      {townData.name}
+                    </p>
+                 </div>
               </div>
 
               {/* Línea decorativa inferior */}
               <div className="w-24 h-0.5 bg-yellow-500 mb-6 animate-fade-in animate-delay-700"></div>
               <p className="text-lg text-gray-300 mb-8 font-medium leading-relaxed animate-fade-in animate-delay-1000">
-                <span className="text-yellow-500 font-mono">
-                  AJ MOTORBIKES
-                </span>{" "}
+                <span className="text-yellow-500 font-mono">AJ MOTORBIKES</span>{" "}
                 es tu referencia en la zona.
                 <br />
-                <span className="text-gray-400">Desde nuestras instalaciones en Calahorra</span> damos cobertura completa a motoristas de {townData.name}.
+                <span className="text-gray-400">
+                  Desde nuestras instalaciones en Calahorra
+                </span>{" "}
+                damos cobertura completa a motoristas de {townData.name}.
                 <span className="text-white block mt-2 text-xl font-bold">
-                   ¿Buscas calidad? Merece la pena el trayecto.
+                  ¿Buscas calidad? Merece la pena el trayecto.
                 </span>
               </p>
               <div className="flex flex-col sm:flex-row gap-4 animate-slide-in-bottom animate-delay-1000 animate-duration-700">
@@ -254,27 +274,38 @@ export default async function TownPage({ params }: { params: Promise<{ town: str
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-wrap justify-center items-center gap-8 text-center md:text-left">
             <div className="flex items-center gap-3">
-               <MapPin className="text-yellow-500 h-8 w-8" />
-               <div>
-                 <p className="text-xs text-gray-400 font-mono">ORIGEN - DESTINO</p>
-                 <p className="text-white font-bold">{townData.name} <span className="text-yellow-500">➔</span> Calahorra</p>
-               </div>
+              <MapPin className="text-yellow-500 h-8 w-8" />
+              <div>
+                <p className="text-xs text-gray-400 font-mono">
+                  ORIGEN - DESTINO
+                </p>
+                <p className="text-white font-bold">
+                  {townData.name} <span className="text-yellow-500">➔</span>{" "}
+                  Calahorra
+                </p>
+              </div>
             </div>
             <div className="hidden md:block w-px h-10 bg-yellow-500/30"></div>
             <div className="flex items-center gap-3">
-               <Clock className="text-yellow-500 h-8 w-8" />
-               <div>
-                 <p className="text-xs text-gray-400 font-mono">TIEMPO ESTIMADO</p>
-                 <p className="text-white font-bold">{townData.time}</p>
-               </div>
+              <Clock className="text-yellow-500 h-8 w-8" />
+              <div>
+                <p className="text-xs text-gray-400 font-mono">
+                  TIEMPO ESTIMADO
+                </p>
+                <p className="text-white font-bold">{townData.time}</p>
+              </div>
             </div>
             <div className="hidden md:block w-px h-10 bg-yellow-500/30"></div>
             <div className="flex items-center gap-3">
-               <Navigation className="text-yellow-500 h-8 w-8" />
-               <div>
-                 <p className="text-xs text-gray-400 font-mono">DISTANCIA / RUTA</p>
-                 <p className="text-white font-bold">{townData.distance} por {townData.route}</p>
-               </div>
+              <Navigation className="text-yellow-500 h-8 w-8" />
+              <div>
+                <p className="text-xs text-gray-400 font-mono">
+                  DISTANCIA / RUTA
+                </p>
+                <p className="text-white font-bold">
+                  {townData.distance} por {townData.route}
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -293,8 +324,10 @@ export default async function TownPage({ params }: { params: Promise<{ town: str
                   height={400}
                   className="object-cover w-full h-[400px] grayscale-[0.4] contrast-110"
                   style={{
-                    maskImage: "linear-gradient(45deg, black 0%, black 65%, rgba(0,0,0,0.7) 80%, transparent 100%)",
-                    WebkitMaskImage: "linear-gradient(45deg, black 0%, black 65%, rgba(0,0,0,0.7) 80%, transparent 100%)",
+                    maskImage:
+                      "linear-gradient(45deg, black 0%, black 65%, rgba(0,0,0,0.7) 80%, transparent 100%)",
+                    WebkitMaskImage:
+                      "linear-gradient(45deg, black 0%, black 65%, rgba(0,0,0,0.7) 80%, transparent 100%)",
                   }}
                 />
               </div>
@@ -307,12 +340,17 @@ export default async function TownPage({ params }: { params: Promise<{ town: str
               </h2>
               <p className="text-lg text-gray-300 mb-6 font-medium leading-relaxed">
                 {townData.description}
-                <br/><br/>
-                En <span className="text-yellow-500 font-bold">AJ Motorbikes</span> sabemos que desplazarse desde {townData.name} requiere un esfuerzo, por eso nos aseguramos de que valga la pena con un servicio de máxima calidad y rapidez.
+                <br />
+                <br />
+                En{" "}
+                <span className="text-yellow-500 font-bold">AJ Motorbikes</span>{" "}
+                sabemos que desplazarse desde {townData.name} requiere un
+                esfuerzo, por eso nos aseguramos de que valga la pena con un
+                servicio de máxima calidad y rapidez.
               </p>
-              
-               {/* Estadísticas de calidad */}
-               <div className="grid grid-cols-2 gap-6 mb-8">
+
+              {/* Estadísticas de calidad */}
+              <div className="grid grid-cols-2 gap-6 mb-8">
                 <div className="bg-black/40 border border-yellow-500/30 p-4 text-center">
                   <div className="text-3xl font-bold text-yellow-500 mb-2 font-mono">
                     100%
@@ -336,16 +374,22 @@ export default async function TownPage({ params }: { params: Promise<{ town: str
       </div>
 
       {/* Taller - Servicios */}
-      <section id="taller" className="py-20 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden">
+      <section
+        id="taller"
+        className="py-20 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <div className="w-24 h-0.5 bg-yellow-500 mx-auto mb-6"></div>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-wider">
               <span className="text-gray-300">SERVICIOS PARA</span>{" "}
-              <span className="text-yellow-500">{townData.name.toUpperCase()}</span>
+              <span className="text-yellow-500">
+                {townData.name.toUpperCase()}
+              </span>
             </h2>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto font-medium">
-              Todo lo que tu moto necesita, a un paso de <span className="text-yellow-500">{townData.name}</span>
+              Todo lo que tu moto necesita, a un paso de{" "}
+              <span className="text-yellow-500">{townData.name}</span>
             </p>
           </div>
 
@@ -353,41 +397,65 @@ export default async function TownPage({ params }: { params: Promise<{ town: str
             {/* TALLER MULTIMARCA */}
             <div className="bg-black/60 border-2 border-gray-700 p-8 hover:border-yellow-500 transition-all duration-300 relative group">
               <Settings className="h-12 w-12 text-yellow-500 mb-4" />
-              <h3 className="text-xl font-bold mb-3 text-white tracking-wide">TALLER MULTIMARCA</h3>
-              <p className="text-gray-300 font-medium">Reparación y mantenimiento de todas las marcas.</p>
+              <h3 className="text-xl font-bold mb-3 text-white tracking-wide">
+                TALLER MULTIMARCA
+              </h3>
+              <p className="text-gray-300 font-medium">
+                Reparación y mantenimiento de todas las marcas.
+              </p>
             </div>
             {/* RECAMBIOS */}
             <div className="bg-black/60 border-2 border-gray-700 p-8 hover:border-yellow-500 transition-all duration-300 relative group">
               <Package className="h-12 w-12 text-yellow-500 mb-4" />
-              <h3 className="text-xl font-bold mb-3 text-white tracking-wide">RECAMBIOS</h3>
-              <p className="text-gray-300 font-medium">Piezas originales y compatibles.</p>
+              <h3 className="text-xl font-bold mb-3 text-white tracking-wide">
+                RECAMBIOS
+              </h3>
+              <p className="text-gray-300 font-medium">
+                Piezas originales y compatibles.
+              </p>
             </div>
             {/* NEUMÁTICOS */}
             <div className="bg-black/60 border-2 border-gray-700 p-8 hover:border-yellow-500 transition-all duration-300 relative group">
               <CircleDot className="h-12 w-12 text-yellow-500 mb-4" />
-              <h3 className="text-xl font-bold mb-3 text-white tracking-wide">NEUMÁTICOS</h3>
-              <p className="text-gray-300 font-medium">Venta y montaje de neumáticos.</p>
+              <h3 className="text-xl font-bold mb-3 text-white tracking-wide">
+                NEUMÁTICOS
+              </h3>
+              <p className="text-gray-300 font-medium">
+                Venta y montaje de neumáticos.
+              </p>
             </div>
-             {/* ELECTRICIDAD */}
-             <div className="bg-black/60 border-2 border-gray-700 p-8 hover:border-yellow-500 transition-all duration-300 relative group">
+            {/* ELECTRICIDAD */}
+            <div className="bg-black/60 border-2 border-gray-700 p-8 hover:border-yellow-500 transition-all duration-300 relative group">
               <Zap className="h-12 w-12 text-yellow-500 mb-4" />
-              <h3 className="text-xl font-bold mb-3 text-white tracking-wide">ELECTRICIDAD</h3>
-              <p className="text-gray-300 font-medium">Diagnóstico de fallos eléctricos.</p>
+              <h3 className="text-xl font-bold mb-3 text-white tracking-wide">
+                ELECTRICIDAD
+              </h3>
+              <p className="text-gray-300 font-medium">
+                Diagnóstico de fallos eléctricos.
+              </p>
             </div>
-             {/* MECÁNICA */}
-             <div className="bg-black/60 border-2 border-gray-700 p-8 hover:border-yellow-500 transition-all duration-300 relative group">
+            {/* MECÁNICA */}
+            <div className="bg-black/60 border-2 border-gray-700 p-8 hover:border-yellow-500 transition-all duration-300 relative group">
               <Cog className="h-12 w-12 text-yellow-500 mb-4" />
-              <h3 className="text-xl font-bold mb-3 text-white tracking-wide">MECÁNICA</h3>
-              <p className="text-gray-300 font-medium">Mecánica general y reparaciones complejas.</p>
+              <h3 className="text-xl font-bold mb-3 text-white tracking-wide">
+                MECÁNICA
+              </h3>
+              <p className="text-gray-300 font-medium">
+                Mecánica general y reparaciones complejas.
+              </p>
             </div>
-             {/* PRE-ITV */}
-             <div className="bg-black/60 border-2 border-gray-700 p-8 hover:border-yellow-500 transition-all duration-300 relative group">
+            {/* PRE-ITV */}
+            <div className="bg-black/60 border-2 border-gray-700 p-8 hover:border-yellow-500 transition-all duration-300 relative group">
               <ClipboardCheck className="h-12 w-12 text-yellow-500 mb-4" />
-              <h3 className="text-xl font-bold mb-3 text-white tracking-wide">PRE-ITV</h3>
-              <p className="text-gray-300 font-medium">Revisión completa para pasar la ITV.</p>
+              <h3 className="text-xl font-bold mb-3 text-white tracking-wide">
+                PRE-ITV
+              </h3>
+              <p className="text-gray-300 font-medium">
+                Revisión completa para pasar la ITV.
+              </p>
             </div>
           </div>
-          
+
           {/* Botón Cita Previa */}
           <div className="text-center mt-16">
             <a
@@ -403,18 +471,24 @@ export default async function TownPage({ params }: { params: Promise<{ town: str
       </section>
 
       {/* Vehículos en venta */}
-      <section id="vehiculos" className="py-20 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
-         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <section
+        id="vehiculos"
+        className="py-20 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <div className="w-24 h-0.5 bg-yellow-500 mx-auto mb-6"></div>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-wider">
-              <span className="text-gray-300">VEHÍCULOS</span> <span className="text-yellow-500">EN VENTA</span>
+              <span className="text-gray-300">VEHÍCULOS</span>{" "}
+              <span className="text-yellow-500">EN VENTA</span>
             </h2>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto font-medium">
-              ¿Buscas moto en <span className="text-yellow-500">{townData.name}</span>? Mira nuestras ofertas en Calahorra.
+              ¿Buscas moto en{" "}
+              <span className="text-yellow-500">{townData.name}</span>? Mira
+              nuestras ofertas en Calahorra.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
             {vehiclesForSale.length > 0 ? (
               vehiclesForSale.map((vehicle) => (
@@ -460,7 +534,7 @@ export default async function TownPage({ params }: { params: Promise<{ town: str
                 </div>
               ))
             ) : (
-               <div className="col-span-full text-center py-12">
+              <div className="col-span-full text-center py-12">
                 <p className="text-gray-400 text-lg">
                   Consulta nuestro catálogo completo en el taller.
                 </p>
@@ -471,25 +545,32 @@ export default async function TownPage({ params }: { params: Promise<{ town: str
       </section>
 
       {/* Tasación */}
-      <section id="tasacion" className="py-20 bg-gradient-to-b from-gray-900 via-black to-gray-900 relative overflow-hidden">
+      <section
+        id="tasacion"
+        className="py-20 bg-gradient-to-b from-gray-900 via-black to-gray-900 relative overflow-hidden"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
-             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-wider">
-              <span className="text-gray-300">COMPRAMOS TU MOTO EN</span> <span className="text-yellow-500">{townData.name.toUpperCase()}</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-wider">
+              <span className="text-gray-300">COMPRAMOS TU MOTO EN</span>{" "}
+              <span className="text-yellow-500">
+                {townData.name.toUpperCase()}
+              </span>
             </h2>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto font-medium">
-              Tráenos tu moto desde {townData.name} y te damos la mejor tasación al momento.
+              Tráenos tu moto desde {townData.name} y te damos la mejor tasación
+              al momento.
             </p>
-             <div className="mt-8">
-                <a
-                  href="https://wa.me/34646640511?text=Hola,%20me%20gustaría%20solicitar%20una%20tasación%20para%20mi%20moto"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block bg-yellow-500 hover:bg-yellow-400 text-black px-6 py-3 font-bold tracking-wider transition-all duration-300 transform hover:scale-105 relative overflow-hidden group"
-                >
-                  SOLICITAR TASACIÓN
-                </a>
-              </div>
+            <div className="mt-8">
+              <a
+                href="https://wa.me/34646640511?text=Hola,%20me%20gustaría%20solicitar%20una%20tasación%20para%20mi%20moto"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-yellow-500 hover:bg-yellow-400 text-black px-6 py-3 font-bold tracking-wider transition-all duration-300 transform hover:scale-105 relative overflow-hidden group"
+              >
+                SOLICITAR TASACIÓN
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -497,33 +578,41 @@ export default async function TownPage({ params }: { params: Promise<{ town: str
       {/* Footer - Estilo Militar */}
       <footer className="bg-gradient-to-b from-black to-gray-900 py-12 border-t-2 border-yellow-500/30 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-           <div className="grid md:grid-cols-3 gap-8">
-             <div>
-                <h4 className="text-xl font-bold text-white tracking-wider mb-4">AJ MOTORBIKES</h4>
-                <p className="text-gray-300">
-                  Servicio integral para <span className="text-yellow-500">{townData.name}</span> desde nuestras instalaciones en Calahorra.
-                </p>
-             </div>
-             <div>
-                <h5 className="font-bold text-white tracking-wider mb-4">UBICACIÓN</h5>
-                 <ul className="space-y-2 text-gray-300 font-mono">
-                  <li>Av. Achútegui de Blas, 22</li>
-                  <li>26500 Calahorra, La Rioja</li>
-                 </ul>
-             </div>
-              <div>
-                <h5 className="font-bold text-white tracking-wider mb-4">CONTACTO</h5>
-                 <ul className="space-y-2 text-gray-300 font-mono">
-                  <li>646 64 05 11</li>
-                  <li>ajmotorbikeslr@gmail.com</li>
-                 </ul>
-             </div>
-           </div>
-           <div className="text-center mt-12 pt-8 border-t border-gray-800">
-              <p className="text-gray-500 text-sm">
-                AJ Motorbikes - Servicio para {townData.name} y alrededores.
+          <div className="grid md:grid-cols-3 gap-8">
+            <div>
+              <h4 className="text-xl font-bold text-white tracking-wider mb-4">
+                AJ MOTORBIKES
+              </h4>
+              <p className="text-gray-300">
+                Servicio integral para{" "}
+                <span className="text-yellow-500">{townData.name}</span> desde
+                nuestras instalaciones en Calahorra.
               </p>
-           </div>
+            </div>
+            <div>
+              <h5 className="font-bold text-white tracking-wider mb-4">
+                UBICACIÓN
+              </h5>
+              <ul className="space-y-2 text-gray-300 font-mono">
+                <li>Av. Achútegui de Blas, 22</li>
+                <li>26500 Calahorra, La Rioja</li>
+              </ul>
+            </div>
+            <div>
+              <h5 className="font-bold text-white tracking-wider mb-4">
+                CONTACTO
+              </h5>
+              <ul className="space-y-2 text-gray-300 font-mono">
+                <li>646 64 05 11</li>
+                <li>ajmotorbikeslr@gmail.com</li>
+              </ul>
+            </div>
+          </div>
+          <div className="text-center mt-12 pt-8 border-t border-gray-800">
+            <p className="text-gray-500 text-sm">
+              AJ Motorbikes - Servicio para {townData.name} y alrededores.
+            </p>
+          </div>
         </div>
       </footer>
     </div>
