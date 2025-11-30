@@ -3,10 +3,13 @@
 import { Menu, Phone, X } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,10 +21,17 @@ export function Header() {
   }, []);
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsMobileMenuOpen(false);
+    setIsMobileMenuOpen(false);
+
+    if (pathname === "/") {
+      // Si estamos en la home, scroll suave
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // Si estamos en otra página, navegar a la home con el ancla
+      router.push(`/#${sectionId}`);
     }
   };
 
@@ -37,7 +47,11 @@ export function Header() {
         <div className="flex justify-between items-center py-4">
           {/* Logo y nombre */}
           <div className="flex items-center space-x-3">
-            <div className="relative">
+            <button 
+              type="button"
+              onClick={() => scrollToSection("inicio")}
+              className="relative cursor-pointer"
+            >
               <Image
                 src="/aj-logo.webp"
                 alt="AJ Motorbikes Logo"
@@ -46,7 +60,7 @@ export function Header() {
                 className="rounded-full ring-2 ring-primary/20 transition-all duration-300 hover:ring-primary/40"
               />
               <div className="absolute inset-0 rounded-full bg-primary/10 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-            </div>
+            </button>
             <div>
               <button
                 type="button"
