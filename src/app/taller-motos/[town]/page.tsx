@@ -1,10 +1,21 @@
 import {
+  Bike,
   CircleDot,
   ClipboardCheck,
+  Clock,
   Cog,
+  Gem,
+  Mail,
+  MapPin,
   Package,
+  Phone,
   Settings,
+  Shield,
+  Star,
+  Tag,
+  Wrench,
   Zap,
+  Navigation
 } from "lucide-react";
 import Image from "next/image";
 import { Header } from "@/components/header";
@@ -13,15 +24,66 @@ import { VehicleService } from "@/modules/vehicles/application/services/vehicle-
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-// Mapa de slugs a nombres reales
-const towns: Record<string, string> = {
-  "arnedo": "Arnedo",
-  "autol": "Autol",
-  "rincon-de-soto": "Rincón de Soto",
-  "alfaro": "Alfaro",
-  "pradejon": "Pradejón",
-  "san-adrian": "San Adrián",
-  "aldeanueva-de-ebro": "Aldeanueva de Ebro"
+// Interfaz para los datos de cada pueblo
+interface TownData {
+  name: string;
+  time: string;
+  distance: string;
+  route: string;
+  description: string;
+}
+
+// Datos específicos para cada pueblo (esto hace el contenido único)
+const towns: Record<string, TownData> = {
+  "arnedo": {
+    name: "Arnedo",
+    time: "15 minutos",
+    distance: "14 km",
+    route: "LR-134",
+    description: "Para los motoristas de la Ciudad del Calzado, somos la opción más técnica y cercana."
+  },
+  "autol": {
+    name: "Autol",
+    time: "10 minutos",
+    distance: "7 km",
+    route: "LR-115",
+    description: "Estamos prácticamente al lado. Merece la pena el breve trayecto para un servicio premium."
+  },
+  "rincon-de-soto": {
+    name: "Rincón de Soto",
+    time: "12 minutos",
+    distance: "13 km",
+    route: "N-232",
+    description: "Atendemos habitualmente a clientes de Rincón que buscan especialistas multimarca."
+  },
+  "alfaro": {
+    name: "Alfaro",
+    time: "20 minutos",
+    distance: "24 km",
+    route: "N-232",
+    description: "El trayecto desde Alfaro se compensa con nuestra garantía de calidad y rapidez."
+  },
+  "pradejon": {
+    name: "Pradejón",
+    time: "8 minutos",
+    distance: "6 km",
+    route: "N-232",
+    description: "Vecinos de Pradejón, somos vuestro taller de referencia a un paso de casa."
+  },
+  "san-adrian": {
+    name: "San Adrián",
+    time: "5 minutos",
+    distance: "4 km",
+    route: "NA-134",
+    description: "Cruzando el puente ya estás aquí. El servicio más rápido para San Adrián."
+  },
+  "aldeanueva-de-ebro": {
+    name: "Aldeanueva de Ebro",
+    time: "15 minutos",
+    distance: "16 km",
+    route: "N-232",
+    description: "Muchos moteros de Aldeanueva ya confían el mantenimiento de sus máquinas a AJ Motorbikes."
+  }
 };
 
 export async function generateStaticParams() {
@@ -32,17 +94,17 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ town: string }> }): Promise<Metadata> {
   const { town } = await params;
-  const townName = towns[town];
+  const townData = towns[town];
   
-  if (!townName) {
+  if (!townData) {
     return {
       title: "Taller de Motos | AJ Motorbikes",
     };
   }
 
   return {
-    title: `Taller de Motos para ${townName} | AJ Motorbikes (Calahorra)`,
-    description: `Servicio profesional de taller de motos para clientes de ${townName}. Estamos en Calahorra. Mecánica, mantenimiento y neumáticos. Tu taller de confianza cerca de ti.`,
+    title: `Taller de Motos para ${townData.name} | AJ Motorbikes (Calahorra)`,
+    description: `Servicio de taller de motos para ${townData.name}. Estamos a solo ${townData.time} (${townData.distance}). Mecánica, neumáticos y tasación. Tu taller de confianza cerca.`,
     alternates: {
       canonical: `https://www.ajmotorbikes.com/taller-motos/${town}`,
     },
@@ -62,9 +124,9 @@ async function getVehiclesForSale() {
 
 export default async function TownPage({ params }: { params: Promise<{ town: string }> }) {
   const { town } = await params;
-  const townName = towns[town];
+  const townData = towns[town];
 
-  if (!townName) {
+  if (!townData) {
     notFound();
   }
 
@@ -102,7 +164,7 @@ export default async function TownPage({ params }: { params: Promise<{ town: str
               <div className="absolute -top-8 -right-4 w-80 h-80 opacity-80 pointer-events-none animate-fade-in animate-delay-500">
                 <Image
                   src="/lightb_car.webp"
-                  alt={`Taller de motos AJ Motorbikes servicio para ${townName}`}
+                  alt={`Taller de motos AJ Motorbikes servicio para ${townData.name}`}
                   width={320}
                   height={320}
                   className="w-full h-full object-contain mix-blend-screen"
@@ -121,7 +183,7 @@ export default async function TownPage({ params }: { params: Promise<{ town: str
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-2 relative z-10 tracking-wider animate-fade-in animate-delay-500">
                 <span className="text-gray-300">SERVICIO PARA</span>
                 <span className="text-yellow-500 block font-black">
-                  {townName.toUpperCase()}
+                  {townData.name.toUpperCase()}
                 </span>
               </h1>
 
@@ -138,7 +200,7 @@ export default async function TownPage({ params }: { params: Promise<{ town: str
                 </span>{" "}
                 es tu referencia en la zona.
                 <br />
-                <span className="text-gray-400">Desde nuestras instalaciones en Calahorra</span> damos cobertura completa a motoristas de {townName}.
+                <span className="text-gray-400">Desde nuestras instalaciones en Calahorra</span> damos cobertura completa a motoristas de {townData.name}.
                 <span className="text-white block mt-2 text-xl font-bold">
                    ¿Buscas calidad? Merece la pena el trayecto.
                 </span>
@@ -168,7 +230,7 @@ export default async function TownPage({ params }: { params: Promise<{ town: str
               <div className="relative ">
                 <Image
                   src="/photo-1604260324056-45f7c778754a.avif"
-                  alt={`Taller mecánico de motocicletas cerca de ${townName}`}
+                  alt={`Taller mecánico de motocicletas cerca de ${townData.name}`}
                   width={600}
                   height={400}
                   className="object-cover w-full h-[400px] transform hover:scale-105 transition-transform duration-700"
@@ -187,6 +249,37 @@ export default async function TownPage({ params }: { params: Promise<{ town: str
         </div>
       </section>
 
+      {/* DATOS DE VIAJE (Elemento Diferenciador para SEO) */}
+      <section className="bg-black/80 border-y border-yellow-500/20 py-8">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex flex-wrap justify-center items-center gap-8 text-center md:text-left">
+            <div className="flex items-center gap-3">
+               <MapPin className="text-yellow-500 h-8 w-8" />
+               <div>
+                 <p className="text-xs text-gray-400 font-mono">ORIGEN - DESTINO</p>
+                 <p className="text-white font-bold">{townData.name} <span className="text-yellow-500">➔</span> Calahorra</p>
+               </div>
+            </div>
+            <div className="hidden md:block w-px h-10 bg-yellow-500/30"></div>
+            <div className="flex items-center gap-3">
+               <Clock className="text-yellow-500 h-8 w-8" />
+               <div>
+                 <p className="text-xs text-gray-400 font-mono">TIEMPO ESTIMADO</p>
+                 <p className="text-white font-bold">{townData.time}</p>
+               </div>
+            </div>
+            <div className="hidden md:block w-px h-10 bg-yellow-500/30"></div>
+            <div className="flex items-center gap-3">
+               <Navigation className="text-yellow-500 h-8 w-8" />
+               <div>
+                 <p className="text-xs text-gray-400 font-mono">DISTANCIA / RUTA</p>
+                 <p className="text-white font-bold">{townData.distance} por {townData.route}</p>
+               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Sobre Nosotros (Adaptado) */}
       <div className="py-20 bg-gradient-to-b from-gray-900 via-gray-900 to-black relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -195,7 +288,7 @@ export default async function TownPage({ params }: { params: Promise<{ town: str
               <div className="relative overflow-hidden">
                 <Image
                   src="/motos-taller.webp"
-                  alt={`Reparación de motos para clientes de ${townName}`}
+                  alt={`Reparación de motos para clientes de ${townData.name}`}
                   width={600}
                   height={400}
                   className="object-cover w-full h-[400px] grayscale-[0.4] contrast-110"
@@ -213,9 +306,9 @@ export default async function TownPage({ params }: { params: Promise<{ town: str
                 <span className="text-yellow-500">CERCA DE TI</span>
               </h2>
               <p className="text-lg text-gray-300 mb-6 font-medium leading-relaxed">
-                Muchos clientes de <span className="text-yellow-500 font-bold">{townName}</span> ya confían en nosotros.
-                En <span className="text-yellow-500 font-bold">AJ Motorbikes</span> ofrecemos un servicio de calidad superior, 
-                merece la pena el desplazamiento hasta Calahorra para asegurar el mejor cuidado de tu moto.
+                {townData.description}
+                <br/><br/>
+                En <span className="text-yellow-500 font-bold">AJ Motorbikes</span> sabemos que desplazarse desde {townData.name} requiere un esfuerzo, por eso nos aseguramos de que valga la pena con un servicio de máxima calidad y rapidez.
               </p>
               
                {/* Estadísticas de calidad */}
@@ -249,10 +342,10 @@ export default async function TownPage({ params }: { params: Promise<{ town: str
             <div className="w-24 h-0.5 bg-yellow-500 mx-auto mb-6"></div>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-wider">
               <span className="text-gray-300">SERVICIOS PARA</span>{" "}
-              <span className="text-yellow-500">{townName.toUpperCase()}</span>
+              <span className="text-yellow-500">{townData.name.toUpperCase()}</span>
             </h2>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto font-medium">
-              Todo lo que tu moto necesita, a un paso de <span className="text-yellow-500">{townName}</span>
+              Todo lo que tu moto necesita, a un paso de <span className="text-yellow-500">{townData.name}</span>
             </p>
           </div>
 
@@ -318,7 +411,7 @@ export default async function TownPage({ params }: { params: Promise<{ town: str
               <span className="text-gray-300">VEHÍCULOS</span> <span className="text-yellow-500">EN VENTA</span>
             </h2>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto font-medium">
-              ¿Buscas moto en <span className="text-yellow-500">{townName}</span>? Mira nuestras ofertas en Calahorra.
+              ¿Buscas moto en <span className="text-yellow-500">{townData.name}</span>? Mira nuestras ofertas en Calahorra.
             </p>
           </div>
           
@@ -356,7 +449,7 @@ export default async function TownPage({ params }: { params: Promise<{ town: str
                       </div>
                     </div>
                     <a
-                      href={`https://wa.me/34646640511?text=Hola,%20estoy%20interesado%20en%20la%20${encodeURIComponent(vehicle.name)}%20desde%20${townName}`}
+                      href={`https://wa.me/34646640511?text=Hola,%20estoy%20interesado%20en%20la%20${encodeURIComponent(vehicle.name)}%20desde%20${townData.name}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full bg-yellow-500 hover:bg-yellow-400 text-black py-2 px-4 font-bold text-sm tracking-wider transition-all duration-300 inline-block text-center"
@@ -382,10 +475,10 @@ export default async function TownPage({ params }: { params: Promise<{ town: str
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-wider">
-              <span className="text-gray-300">COMPRAMOS TU MOTO EN</span> <span className="text-yellow-500">{townName.toUpperCase()}</span>
+              <span className="text-gray-300">COMPRAMOS TU MOTO EN</span> <span className="text-yellow-500">{townData.name.toUpperCase()}</span>
             </h2>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto font-medium">
-              Tráenos tu moto desde {townName} y te damos la mejor tasación al momento.
+              Tráenos tu moto desde {townData.name} y te damos la mejor tasación al momento.
             </p>
              <div className="mt-8">
                 <a
@@ -408,7 +501,7 @@ export default async function TownPage({ params }: { params: Promise<{ town: str
              <div>
                 <h4 className="text-xl font-bold text-white tracking-wider mb-4">AJ MOTORBIKES</h4>
                 <p className="text-gray-300">
-                  Servicio integral para <span className="text-yellow-500">{townName}</span> desde nuestras instalaciones en Calahorra.
+                  Servicio integral para <span className="text-yellow-500">{townData.name}</span> desde nuestras instalaciones en Calahorra.
                 </p>
              </div>
              <div>
@@ -428,7 +521,7 @@ export default async function TownPage({ params }: { params: Promise<{ town: str
            </div>
            <div className="text-center mt-12 pt-8 border-t border-gray-800">
               <p className="text-gray-500 text-sm">
-                AJ Motorbikes - Servicio para {townName} y alrededores.
+                AJ Motorbikes - Servicio para {townData.name} y alrededores.
               </p>
            </div>
         </div>
@@ -436,4 +529,3 @@ export default async function TownPage({ params }: { params: Promise<{ town: str
     </div>
   );
 }
-
