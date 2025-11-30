@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   Bike,
   CircleDot,
@@ -1365,6 +1366,40 @@ export default async function Home() {
                   ajmotorbikeslr@gmail.com
                 </li>
               </ul>
+            </div>
+          </div>
+
+          {/* Áreas de Servicio */}
+          <div className="mt-12 pt-8 border-t border-yellow-500/10">
+            <div className="flex items-center mb-6 justify-center">
+              <div className="w-4 h-0.5 bg-yellow-500 mr-3"></div>
+              <h5 className="font-bold text-white tracking-wider text-center uppercase">
+                ¿Vives cerca de Calahorra? Cuenta con nosotros
+              </h5>
+              <div className="w-4 h-0.5 bg-yellow-500 ml-3"></div>
+            </div>
+            <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-mono text-gray-400">
+              <Link href="/taller-motos/arnedo" className="hover:text-yellow-500 transition-colors flex items-center group">
+                <span className="text-yellow-500 mr-1 opacity-0 group-hover:opacity-100 transition-opacity">›</span> Arnedo
+              </Link>
+              <Link href="/taller-motos/autol" className="hover:text-yellow-500 transition-colors flex items-center group">
+                <span className="text-yellow-500 mr-1 opacity-0 group-hover:opacity-100 transition-opacity">›</span> Autol
+              </Link>
+              <Link href="/taller-motos/rincon-de-soto" className="hover:text-yellow-500 transition-colors flex items-center group">
+                <span className="text-yellow-500 mr-1 opacity-0 group-hover:opacity-100 transition-opacity">›</span> Rincón de Soto
+              </Link>
+              <Link href="/taller-motos/alfaro" className="hover:text-yellow-500 transition-colors flex items-center group">
+                <span className="text-yellow-500 mr-1 opacity-0 group-hover:opacity-100 transition-opacity">›</span> Alfaro
+              </Link>
+              <Link href="/taller-motos/pradejon" className="hover:text-yellow-500 transition-colors flex items-center group">
+                <span className="text-yellow-500 mr-1 opacity-0 group-hover:opacity-100 transition-opacity">›</span> Pradejón
+              </Link>
+              <Link href="/taller-motos/san-adrian" className="hover:text-yellow-500 transition-colors flex items-center group">
+                <span className="text-yellow-500 mr-1 opacity-0 group-hover:opacity-100 transition-opacity">›</span> San Adrián
+              </Link>
+              <Link href="/taller-motos/aldeanueva-de-ebro" className="hover:text-yellow-500 transition-colors flex items-center group">
+                <span className="text-yellow-500 mr-1 opacity-0 group-hover:opacity-100 transition-opacity">›</span> Aldeanueva
+              </Link>
             </div>
           </div>
 

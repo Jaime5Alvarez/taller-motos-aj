@@ -45,15 +45,49 @@ export function StructuredData() {
       },
     ],
     priceRange: "€€",
-    areaServed: {
-      "@type": "GeoCircle",
-      geoMidpoint: {
-        "@type": "GeoCoordinates",
-        latitude: "42.3048",
-        longitude: "-1.9648",
+    areaServed: [
+      {
+        "@type": "GeoCircle",
+        geoMidpoint: {
+          "@type": "GeoCoordinates",
+          latitude: "42.3048",
+          longitude: "-1.9648",
+        },
+        geoRadius: "50000",
       },
-      geoRadius: "50000",
-    },
+      {
+        "@type": "City",
+        name: "Calahorra",
+      },
+      {
+        "@type": "City",
+        name: "Arnedo",
+      },
+      {
+        "@type": "City",
+        name: "Autol",
+      },
+      {
+        "@type": "City",
+        name: "Rincón de Soto",
+      },
+      {
+        "@type": "City",
+        name: "Alfaro",
+      },
+      {
+        "@type": "City",
+        name: "Pradejón",
+      },
+      {
+        "@type": "City",
+        name: "San Adrián",
+      },
+      {
+        "@type": "City",
+        name: "Aldeanueva de Ebro",
+      },
+    ],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Servicios de Taller de Motos",
