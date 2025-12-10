@@ -1205,8 +1205,11 @@ export default async function Home() {
               </h4>
               <div className="text-gray-300 font-mono space-y-2">
                 <p>
-                  <span className="text-yellow-500">LUN-VIE:</span> 08:30 -
-                  16:30
+                  <span className="text-yellow-500">LUN-JUE:</span> 09:30 -
+                  13:30 | 16:00 - 18:00
+                </p>
+                <p>
+                  <span className="text-yellow-500">VIE:</span> 09:30 - 15:00
                 </p>
               </div>
             </div>
