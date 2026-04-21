@@ -459,7 +459,7 @@ export default async function TownPage({
           {/* Botón Cita Previa */}
           <div className="text-center mt-16">
             <a
-              href="https://wa.me/34646640511?text=Hola,%20me%20gustaría%20pedir%20cita%20previa%20para%20mi%20moto"
+              href="https://wa.me/34614154659?text=Hola,%20me%20gustaría%20pedir%20cita%20previa%20para%20mi%20moto"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-yellow-500 text-black px-8 py-3 font-bold tracking-wider hover:bg-yellow-400 transition-all duration-300 transform hover:scale-105 relative overflow-hidden group text-center"
@@ -523,7 +523,7 @@ export default async function TownPage({
                       </div>
                     </div>
                     <a
-                      href={`https://wa.me/34646640511?text=Hola,%20estoy%20interesado%20en%20la%20${encodeURIComponent(vehicle.name)}%20desde%20${townData.name}`}
+                      href={`https://wa.me/34614154659?text=Hola,%20estoy%20interesado%20en%20la%20${encodeURIComponent(vehicle.name)}%20desde%20${townData.name}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full bg-yellow-500 hover:bg-yellow-400 text-black py-2 px-4 font-bold text-sm tracking-wider transition-all duration-300 inline-block text-center"
@@ -563,7 +563,7 @@ export default async function TownPage({
             </p>
             <div className="mt-8">
               <a
-                href="https://wa.me/34646640511?text=Hola,%20me%20gustaría%20solicitar%20una%20tasación%20para%20mi%20moto"
+                href="https://wa.me/34614154659?text=Hola,%20me%20gustaría%20solicitar%20una%20tasación%20para%20mi%20moto"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block bg-yellow-500 hover:bg-yellow-400 text-black px-6 py-3 font-bold tracking-wider transition-all duration-300 transform hover:scale-105 relative overflow-hidden group"
@@ -603,7 +603,7 @@ export default async function TownPage({
                 CONTACTO
               </h5>
               <ul className="space-y-2 text-gray-300 font-mono">
-                <li>646 64 05 11</li>
+                <li>614 15 46 59</li>
                 <li>ajmotorbikeslr@gmail.com</li>
               </ul>
             </div>
