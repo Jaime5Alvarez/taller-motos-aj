@@ -19,7 +19,9 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { Header } from "@/components/header";
+import { VacationBanner } from "@/components/vacation-banner";
 import { VehicleImageCarousel } from "@/components/vehicle-image-carousel";
+import { vacationNotice } from "@/lib/vacation-notice";
 import { VehicleService } from "@/modules/vehicles/application/services/vehicle-service";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -151,10 +153,14 @@ export default async function TownPage({
     <div className="min-h-screen bg-gradient-dark">
       <Header />
 
+      <VacationBanner />
+
       {/* Hero Section - Estilo Militarizado */}
       <section
         id="inicio"
-        className="relative bg-gradient-to-br from-slate-900 via-gray-900 to-gray-900 pt-32 pb-32 overflow-hidden"
+        className={`relative bg-gradient-to-br from-slate-900 via-gray-900 to-gray-900 ${
+          vacationNotice.active ? "pt-12" : "pt-32"
+        } pb-32 overflow-hidden`}
       >
         {/* Elementos geométricos militares intensificados */}
         <div className="absolute top-0 left-0 w-full h-full opacity-10">

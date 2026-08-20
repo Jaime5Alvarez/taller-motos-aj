@@ -19,7 +19,9 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { Header } from "@/components/header";
+import { VacationBanner } from "@/components/vacation-banner";
 import { VehicleImageCarousel } from "@/components/vehicle-image-carousel";
+import { vacationNotice } from "@/lib/vacation-notice";
 import { VehicleService } from "@/modules/vehicles/application/services/vehicle-service";
 
 // Configuraciones para mantener los vehículos siempre actualizados
@@ -45,10 +47,14 @@ export default async function Home() {
     <div className="min-h-screen bg-gradient-dark">
       <Header />
 
+      <VacationBanner />
+
       {/* Hero Section - Estilo Militarizado */}
       <section
         id="inicio"
-        className="relative bg-gradient-to-br from-slate-900 via-gray-900 to-gray-900 pt-32 pb-32 overflow-hidden"
+        className={`relative bg-gradient-to-br from-slate-900 via-gray-900 to-gray-900 ${
+          vacationNotice.active ? "pt-12" : "pt-32"
+        } pb-32 overflow-hidden`}
       >
         {/* Elementos geométricos militares intensificados */}
         <div className="absolute top-0 left-0 w-full h-full opacity-10">
@@ -1210,6 +1216,11 @@ export default async function Home() {
                 <p className="text-yellow-500 text-xs tracking-widest">
                   HORARIO DE VERANO
                 </p>
+                {vacationNotice.active && (
+                  <p className="text-red-500 text-xs tracking-widest pt-2 border-t border-gray-700">
+                    {vacationNotice.short}
+                  </p>
+                )}
               </div>
             </div>
 

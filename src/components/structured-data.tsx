@@ -1,3 +1,5 @@
+import { vacationNotice } from "@/lib/vacation-notice";
+
 export function StructuredData() {
   const structuredData = {
     "@context": "https://schema.org",
@@ -38,6 +40,17 @@ export function StructuredData() {
         closes: "15:30",
       },
     ],
+    ...(vacationNotice.active && {
+      specialOpeningHoursSpecification: [
+        {
+          "@type": "OpeningHoursSpecification",
+          validFrom: vacationNotice.startDate,
+          validThrough: vacationNotice.endDate,
+          opens: "00:00",
+          closes: "00:00",
+        },
+      ],
+    }),
     priceRange: "€€",
     areaServed: [
       {
