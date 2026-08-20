@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // resend importa @react-email/render de forma dinámica y opcional (aquí solo se
+  // envía texto plano); sin esto Turbopack falla al no poder resolverlo
+  serverExternalPackages: ["resend"],
   images: {
     remotePatterns: [
       {

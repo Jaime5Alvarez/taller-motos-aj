@@ -111,7 +111,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className="dark" style={{ colorScheme: "dark" }}>
+    <html
+      lang="es"
+      className="dark"
+      style={{ colorScheme: "dark" }}
+      // Con el scroll-behavior: smooth global, Next 16 solo salta al inicio en
+      // los cambios de ruta si se declara este atributo
+      data-scroll-behavior="smooth"
+    >
       <head>
         <StructuredData />
       </head>
