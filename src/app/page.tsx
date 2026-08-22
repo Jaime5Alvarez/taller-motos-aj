@@ -251,19 +251,32 @@ export default async function Home() {
               <div className="absolute -bottom-4 -left-4 w-8 h-8 border-l-2 border-b-2 border-yellow-500 z-20"></div>
               <div className="absolute -bottom-4 -right-4 w-8 h-8 border-r-2 border-b-2 border-yellow-500 z-20"></div>
 
-              {/* Imagen con mask militar */}
-              <div className="relative overflow-hidden">
+              {/* Collage del taller con las nuevas instalaciones */}
+              <div className="relative grid grid-cols-2 gap-3 overflow-hidden">
                 <Image
-                  src="/motos-taller.webp"
-                  alt="Expertos en reparación de motocicletas con más de 20 años de experiencia en Calahorra"
-                  width={600}
-                  height={400}
-                  className="object-cover w-full h-[400px] grayscale-[0.4] contrast-110 animate-fade-in animate-delay-500 animate-duration-1000"
+                  src="/photo-7a257026-465f-4f60-9d3f-c02a250d7ec5.png"
+                  alt="Interior del taller AJ Motorbikes con motocicletas en Calahorra"
+                  width={384}
+                  height={512}
+                  className="object-cover w-full h-[400px] grayscale-[0.15] contrast-110 animate-fade-in animate-delay-500 animate-duration-1000"
                   style={{
                     maskImage:
-                      "linear-gradient(45deg, black 0%, black 65%, rgba(0,0,0,0.7) 80%, transparent 100%)",
+                      "linear-gradient(135deg, black 0%, black 78%, transparent 100%)",
                     WebkitMaskImage:
-                      "linear-gradient(45deg, black 0%, black 65%, rgba(0,0,0,0.7) 80%, transparent 100%)",
+                      "linear-gradient(135deg, black 0%, black 78%, transparent 100%)",
+                  }}
+                />
+                <Image
+                  src="/photo-9ad86925-c16c-4c28-818e-165b99a9e45a.jpeg"
+                  alt="Zona de reparación del taller AJ Motorbikes en Calahorra"
+                  width={384}
+                  height={512}
+                  className="object-cover w-full h-[400px] grayscale-[0.15] contrast-110 animate-fade-in animate-delay-700 animate-duration-1000"
+                  style={{
+                    maskImage:
+                      "linear-gradient(45deg, black 0%, black 78%, transparent 100%)",
+                    WebkitMaskImage:
+                      "linear-gradient(45deg, black 0%, black 78%, transparent 100%)",
                   }}
                 />
                 {/* Overlay militar */}

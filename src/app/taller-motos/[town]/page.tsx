@@ -322,18 +322,31 @@ export default async function TownPage({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative">
-              <div className="relative overflow-hidden">
+              <div className="relative grid grid-cols-2 gap-3 overflow-hidden">
                 <Image
-                  src="/motos-taller.webp"
-                  alt={`Reparación de motos para clientes de ${townData.name}`}
-                  width={600}
-                  height={400}
-                  className="object-cover w-full h-[400px] grayscale-[0.4] contrast-110"
+                  src="/photo-7a257026-465f-4f60-9d3f-c02a250d7ec5.jpeg"
+                  alt={`Interior del taller AJ Motorbikes para clientes de ${townData.name}`}
+                  width={384}
+                  height={512}
+                  className="object-cover w-full h-[400px] grayscale-[0.15] contrast-110"
                   style={{
                     maskImage:
-                      "linear-gradient(45deg, black 0%, black 65%, rgba(0,0,0,0.7) 80%, transparent 100%)",
+                      "linear-gradient(135deg, black 0%, black 78%, transparent 100%)",
                     WebkitMaskImage:
-                      "linear-gradient(45deg, black 0%, black 65%, rgba(0,0,0,0.7) 80%, transparent 100%)",
+                      "linear-gradient(135deg, black 0%, black 78%, transparent 100%)",
+                  }}
+                />
+                <Image
+                  src="/photo-9ad86925-c16c-4c28-818e-165b99a9e45a.jpeg"
+                  alt={`Zona de reparación del taller AJ Motorbikes para clientes de ${townData.name}`}
+                  width={384}
+                  height={512}
+                  className="object-cover w-full h-[400px] grayscale-[0.15] contrast-110"
+                  style={{
+                    maskImage:
+                      "linear-gradient(45deg, black 0%, black 78%, transparent 100%)",
+                    WebkitMaskImage:
+                      "linear-gradient(45deg, black 0%, black 78%, transparent 100%)",
                   }}
                 />
               </div>
