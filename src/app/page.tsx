@@ -1224,10 +1224,11 @@ export default async function Home() {
               </h4>
               <div className="text-gray-300 font-mono space-y-2">
                 <p>
-                  <span className="text-yellow-500">LUN-VIE:</span> 08:30 - 15:30
+                  <span className="text-yellow-500">LUN-JUE:</span> 09:30 -
+                  13:30 | 16:00 - 18:00
                 </p>
-                <p className="text-yellow-500 text-xs tracking-widest">
-                  HORARIO DE VERANO
+                <p>
+                  <span className="text-yellow-500">VIE:</span> 09:30 - 15:00
                 </p>
                 {vacationNotice.active && (
                   <p className="text-red-500 text-xs tracking-widest pt-2 border-t border-gray-700">
