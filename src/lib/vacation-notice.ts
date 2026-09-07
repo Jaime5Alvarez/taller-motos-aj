@@ -1,6 +1,6 @@
 // Aviso de cierre del taller. Para quitarlo de la web, poner `active: false`.
 export const vacationNotice = {
-  active: true,
+  active: false as boolean,
   title: "CERRADO POR VACACIONES",
   range: "Del 24 de agosto al 1 de septiembre",
   detail:
